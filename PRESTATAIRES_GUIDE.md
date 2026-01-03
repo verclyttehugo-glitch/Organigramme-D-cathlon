@@ -12,7 +12,7 @@ Pour modifier l'organigramme, vous devez vous connecter en cliquant sur le caden
 
 | Utilisateur | Mot de passe | Rôle |
 | :--- | :--- | :--- |
-| **`marine`** | `decathlon2025` | **Admin Principal** (Marine GRAHAM) |
+| **`marine`** | `decathlon2025` | **Admin Principal** (Marine DELCHIE) |
 | **`externe`** | `consultant2025` | **Accès Temporaire** (Consultant) |
 
 > **Note :** Une fois connecté, le cadenas disparaît et une barre d'administration noire apparaît en haut de l'écran avec votre nom.

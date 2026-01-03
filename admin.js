@@ -8,7 +8,7 @@ let currentUser = null;
 const adminUsers = {
     'marine': {
         password: 'decathlon2025',
-        name: 'Marine GRAHAM',
+        name: 'Marine DELCHIE',
         role: 'Chief Value Chain Officer'
     },
     'externe': {
