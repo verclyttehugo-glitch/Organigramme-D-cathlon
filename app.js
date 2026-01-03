@@ -22,9 +22,11 @@ function initializeApp() {
 function updateStats() {
     const total = orgConfig.totalEmployees;
     document.getElementById('total-count').textContent = `${total} collaborateurs`;
-    document.getElementById('count-process').textContent = `${orgConfig.departments.process} postes`;
-    document.getElementById('count-sports').textContent = `${orgConfig.departments.sports} postes`;
-    document.getElementById('count-transverse').textContent = `${orgConfig.departments.transverse} postes`;
+
+    // Add null checks for safety
+    if (document.getElementById('count-process')) document.getElementById('count-process').textContent = `${orgConfig.departments.process} postes`;
+    if (document.getElementById('count-sports')) document.getElementById('count-sports').textContent = `${orgConfig.departments.sports} postes`;
+    if (document.getElementById('count-transverse')) document.getElementById('count-transverse').textContent = `${orgConfig.departments.transverse} postes`;
 }
 
 function showView(viewName) {
@@ -54,13 +56,13 @@ function renderView(viewName) {
             section.innerHTML = renderCompleteView();
             break;
         case 'process':
-            section.innerHTML = renderProcessView();
+            section.innerHTML = renderTreeView('process');
             break;
         case 'sports':
-            section.innerHTML = renderSportsView();
+            section.innerHTML = renderTreeView('sports');
             break;
         case 'transverse':
-            section.innerHTML = renderTransverseView();
+            section.innerHTML = renderTreeView('transverse');
             break;
     }
 
@@ -121,57 +123,78 @@ function renderCompleteView() {
     return html;
 }
 
-function renderProcessView() {
-    const departments = groupByDepartment(ORG_DATA.process);
-    let html = '<h2 style="text-align: center; margin-bottom: 30px; color: var(--color-process);">🏭 AXE PROCESS & ENGINEERING</h2>';
+function renderTreeView(axis) {
+    const data = ORG_DATA[axis];
+    if (!data || data.length === 0) return '<p class="empty-msg">Aucune donnée pour cet axe.</p>';
 
-    for (const [dept, people] of Object.entries(departments)) {
-        html += `
-            <div class="department-section">
-                <h3 class="department-title">${dept} (${people.length})</h3>
-                <div class="people-grid">
-                    ${people.map(p => renderPersonCard(p, 'process')).join('')}
-                </div>
-            </div>
-        `;
-    }
+    // Find root nodes (no one reports to them in this axis, or they are directors)
+    const allChildIds = new Set();
+    data.forEach(p => p.children.forEach(cid => allChildIds.add(cid)));
 
+    const roots = data.filter(p => !allChildIds.has(p.id));
+
+    let html = `<div class="tree-container axis-${axis}">`;
+    html += `<h2 class="view-title">${axis.toUpperCase()} - STRUCTURE HIÉRARCHIQUE</h2>`;
+    html += `<div class="scrollable-content">`;
+
+    roots.forEach(root => {
+        html += renderTreeNode(root, data);
+    });
+
+    html += `</div></div>`;
     return html;
 }
 
-function renderSportsView() {
-    let html = '<h2 style="text-align: center; margin-bottom: 30px; color: var(--color-sports);">🏂 AXE SPORTS / MARQUES</h2>';
+function renderTreeNode(person, allData, level = 0) {
+    const children = allData.filter(p => person.children.includes(p.id));
+    const hasChildren = children.length > 0;
+    const isExpanded = level < 1; // Expand first level by default
+
+    let html = `<div class="tree-node" data-id="${person.id}" style="margin-left: ${level > 0 ? 25 : 0}px">`;
+
     html += `
-        <div class="people-grid">
-            ${ORG_DATA.sports.map(p => renderPersonCard(p, 'sports')).join('')}
+        <div class="node-content ${hasChildren ? 'has-children' : ''}" onclick="${hasChildren ? `toggleNode('${person.id}')` : ''}">
+            ${hasChildren ? `<span class="toggle-icon">${isExpanded ? '▼' : '▶'}</span>` : '<span class="leaf-icon">○</span>'}
+            ${renderPersonCard(person, person.axis || 'process')}
         </div>
     `;
+
+    if (hasChildren) {
+        html += `<div class="node-children" id="children-${person.id}" style="display: ${isExpanded ? 'block' : 'none'}">`;
+        children.forEach(child => {
+            html += renderTreeNode(child, allData, level + 1);
+        });
+        html += `</div>`;
+    }
+
+    html += `</div>`;
     return html;
 }
 
-function renderTransverseView() {
-    const departments = groupByDepartment(ORG_DATA.transverse);
-    let html = '<h2 style="text-align: center; margin-bottom: 30px; color: var(--color-transverse);">🔄 MÉTIERS TRANSVERSES</h2>';
+window.toggleNode = function (personId) {
+    const childrenDiv = document.getElementById(`children-${personId}`);
+    const node = document.querySelector(`.tree-node[data-id="${personId}"]`);
+    const icon = node.querySelector('.toggle-icon');
 
-    for (const [dept, people] of Object.entries(departments)) {
-        html += `
-            <div class="department-section">
-                <h3 class="department-title">${dept} (${people.length})</h3>
-                <div class="people-grid">
-                    ${people.map(p => renderPersonCard(p, 'transverse')).join('')}
-                </div>
-            </div>
-        `;
+    if (childrenDiv.style.display === 'none') {
+        childrenDiv.style.display = 'block';
+        icon.textContent = '▼';
+    } else {
+        childrenDiv.style.display = 'none';
+        icon.textContent = '▶';
     }
-
-    return html;
 }
 
 function renderPersonCard(person, type) {
     const isTeamManager = person.isTeamManager || false;
+    const isPrestataire = person.isPrestataire || false;
     const showContact = window.isAdminMode || false;
 
-    let html = `<div class="person-card ${type} ${isTeamManager ? 'team-manager' : ''}" data-id="${person.id}">`;
+    let html = `<div class="person-card ${type} ${isTeamManager ? 'team-manager' : ''} ${isPrestataire ? 'prestataire' : ''}" data-id="${person.id}">`;
+
+    if (isPrestataire) {
+        html += `<div class="prestataire-badge" title="Prestataire Externe">👤 P</div>`;
+    }
 
     html += `<div class="person-name">${person.name}</div>`;
     html += `<div class="person-title">${person.title}</div>`;
@@ -192,11 +215,11 @@ function renderPersonCard(person, type) {
     }
 
     if (isTeamManager) {
-        html += '<div class="team-manager-badge">⭐ Team Manager</div>';
+        html += '<div class="team-manager-badge">⭐ Manager</div>';
     }
 
     if (window.isAdminMode) {
-        html += `<button class="btn-edit" onclick="editPerson('${person.id}')">✏️</button>`;
+        html += `<button class="btn-edit" onclick="event.stopPropagation(); editPerson('${person.id}')">✏️</button>`;
     }
 
     html += '</div>';
@@ -216,7 +239,6 @@ function groupByDepartment(data) {
 }
 
 function findPersonById(id) {
-    // Chercher dans tous les axes
     for (const axis of ['direction', 'process', 'sports', 'transverse']) {
         const person = ORG_DATA[axis].find(p => p.id === id);
         if (person) {

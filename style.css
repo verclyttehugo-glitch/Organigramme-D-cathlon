@@ -4,16 +4,16 @@
     --bg-darker: #2d3748;
     --bg-card: rgba(45, 55, 72, 0.8);
     --bg-header: rgba(26, 32, 44, 0.8);
-    
+
     --color-process: #4299e1;
     --color-sports: #e53e3e;
     --color-transverse: #38b2ac;
     --color-manager: #ecc94b;
-    
+
     --text-primary: #f7fafc;
     --text-secondary: #cbd5e0;
     --text-muted: #a0aec0;
-    
+
     --border-color: rgba(66, 153, 225, 0.3);
     --shadow-color: rgba(0, 0, 0, 0.3);
 }
@@ -126,6 +126,7 @@ body {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -251,6 +252,100 @@ body {
     gap: 15px;
 }
 
+/* ===== TREE NAVIGATION ===== */
+.tree-container {
+    background: var(--bg-header);
+    border-radius: 20px;
+    padding: 20px;
+    border: 2px solid var(--border-color);
+    margin-bottom: 30px;
+}
+
+.view-title {
+    text-align: center;
+    margin-bottom: 25px;
+    color: var(--text-primary);
+    font-size: 1.8em;
+    letter-spacing: 1px;
+}
+
+.scrollable-content {
+    max-height: 80vh;
+    overflow-y: auto;
+    padding-right: 15px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-process) var(--bg-dark);
+}
+
+.scrollable-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.scrollable-content::-webkit-scrollbar-thumb {
+    background: var(--color-process);
+    border-radius: 10px;
+}
+
+.tree-node {
+    margin-top: 10px;
+    position: relative;
+    border-left: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.node-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.node-content.has-children {
+    cursor: pointer;
+}
+
+.toggle-icon {
+    font-size: 0.8em;
+    color: var(--color-process);
+    width: 20px;
+    text-align: center;
+}
+
+.leaf-icon {
+    font-size: 1.2em;
+    color: var(--text-muted);
+    width: 20px;
+    text-align: center;
+}
+
+.node-children {
+    border-left: 2px solid rgba(66, 153, 225, 0.1);
+    margin-top: 5px;
+}
+
+/* ===== PRESTATAIRES ===== */
+.person-card.prestataire {
+    border-left-style: dashed;
+    background: rgba(45, 55, 72, 0.5);
+}
+
+.prestataire-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #4a5568;
+    color: #edf2f7;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7em;
+    font-weight: bold;
+    border: 2px solid var(--bg-dark);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+
 /* ===== VUE GLOBALE ===== */
 .overview-grid {
     display: grid;
@@ -362,19 +457,19 @@ body {
     .header h1 {
         font-size: 1.8em;
     }
-    
+
     .controls {
         flex-direction: column;
     }
-    
+
     .btn-view {
         width: 100%;
     }
-    
+
     .people-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .axis-grid {
         grid-template-columns: 1fr;
     }

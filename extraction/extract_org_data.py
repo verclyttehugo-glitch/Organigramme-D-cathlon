@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Script d'extraction des données d'organigramme Decathlon depuis Oui.html
-Extrait les 542 postes et génère data.js structuré par axes métiers
+Script d'extraction avancé - Organigramme Decathlon
+Extrait 550+ postes, construit la hiérarchie et détecte les prestataires.
 """
 
 import re
@@ -11,223 +11,149 @@ import html
 from collections import defaultdict
 from datetime import datetime
 
-def extract_xml_from_html(html_file):
-    """Extrait le XML depuis le fichier HTML draw.io"""
+def extract_xml_content(html_file):
     with open(html_file, 'r', encoding='utf-8') as f:
         content = f.read()
-    
-    # Extraire le JSON du data-mxgraph
     match = re.search(r'data-mxgraph="({[^"]+})"', content)
-    if not match:
-        print("❌ Impossible de trouver data-mxgraph")
-        return None
-    
+    if not match: return None
     json_str = html.unescape(match.group(1))
-    data = json.loads(json_str)
-    
-    # Extraire le XML
-    if 'xml' in data:
-        return data['xml']
-    
-    print("❌ Pas de XML dans le JSON")
-    return None
+    return json.loads(json_str).get('xml', '')
 
-def classify_by_axis(role, details):
-    """Classifie un poste par axe métier selon son rôle et détails"""
-    role_lower = role.lower()
-    details_lower = details.lower()
-    combined = f"{role_lower} {details_lower}"
+def is_prestataire(role, details):
+    combined = f"{role} {details}".lower()
+    keywords = ['service provider', 'onsite', 'externe', 'consultant', 'prestataire']
+    return any(k in combined for k in keywords)
+
+def classify_axis(role, details, id_to_name, children_map, current_id, root_id):
+    # Base classification on role/details
+    text = f"{role} {details}".lower()
     
-    # Direction
-    if any(keyword in combined for keyword in [
-        'president', 'chief executive officer', 'chief value chain officer', 'ceo'
-    ]):
+    if any(k in text for k in ['president', 'ceo', 'chief executive', 'value chain officer']):
         return 'direction'
     
-    # Process
-    if any(keyword in combined for keyword in [
-        'process director', 'methods engineer', 'technical director',
-        'product engineer', 'component and tech engineer', 'test engineer',
-        'laboratory manager', 'mechanical design engineer', 'materials engineer',
-        'industrial process quality', 'numerical simulation engineer',
-        'packaging engineer', 'component manager', 'emission factor manager',
-        'process', 'plastic composite', 'pack', 'electronics', 'metal', 'bikes',
-        'textile', 'footwear', 'soft equipment', 'coe engineering', 'protection',
-        'foam', 'raw materials'
-    ]):
+    # Check if descendant of known axis heads? (Too complex for now, stay with keywords)
+    if any(k in text for k in ['process', 'engineer', 'test', 'laboratory', 'methods', 'metal', 'bikes', 'textile', 'footwear']):
         return 'process'
     
-    # Sports / Marques
-    if any(keyword in combined for keyword in [
-        'business unit manager', 'design director', 'designer',
-        'innovation manager', 'designer leader', 'design team leader',
-        'apprentice', 'team manager'
-    ]) and 'process' not in combined and 'pack' not in combined:
-        return 'sports'
-    
-    # Transverse
-    if any(keyword in combined for keyword in [
-        'global purchasing manager', 'global strategic buyer',
-        'procurement', 'supply chain manager', 'supply planner',
-        'sustainability director', 'sustainability project manager',
-        'office manager', 'executive assistant', 'project manager',
-        'is engineer', 'software development engineer', 'digital product manager',
-        'business intelligence', 'it service provider', 'component offer director',
-        'component supply chain', 'quality', 'data', 'digital'
-    ]):
+    if any(k in text for k in ['business unit', 'design', 'innovation', 'designer']):
+        if 'process' not in text:
+            return 'sports'
+            
+    if any(k in text for k in ['purchasing', 'supply', 'sustainability', 'office', 'assistant', 'is engineer', 'digital', 'it service', 'quality', 'data']):
         return 'transverse'
-    
-    # Par défaut: transverse
+        
     return 'transverse'
 
 def create_id(name):
-    """Crée un ID unique depuis un nom"""
-    # Enlever accents et caractères spéciaux
+    if not name: return "unknown"
     name_clean = name.lower()
-    name_clean = re.sub(r'[àáâãäå]', 'a', name_clean)
-    name_clean = re.sub(r'[èéêë]', 'e', name_clean)
-    name_clean = re.sub(r'[ìíîï]', 'i', name_clean)
-    name_clean = re.sub(r'[òóôõö]', 'o', name_clean)
-    name_clean = re.sub(r'[ùúûü]', 'u', name_clean)
-    name_clean = re.sub(r'[ýÿ]', 'y', name_clean)
-    name_clean = re.sub(r'[ç]', 'c', name_clean)
+    # Basic normalization
+    for a, b in [('à','a'), ('é','e'), ('è','e'), ('ê','e'), ('ë','e'), ('î','i'), ('ï','i'), ('ô','o'), ('û','u'), ('ù','u'), ('ç','c')]:
+        name_clean = name_clean.replace(a, b)
     name_clean = re.sub(r'[^a-z\s]', '', name_clean)
-    
     parts = name_clean.split()
     if len(parts) >= 2:
         return f"{parts[-1]}-{parts[0][0]}"
-    elif len(parts) == 1:
-        return parts[0]
-    return "unknown"
+    return name_clean or "unknown"
 
-def extract_people(xml_content):
-    """Extrait toutes les personnes depuis le XML"""
-    # Pattern pour extraire les UserObject
-    pattern = r'<UserObject[^>]*Name="([^"]*)"[^>]*Role="([^"]*)"[^>]*Email="([^"]*)"[^>]*Phone="([^"]*)"[^>]*Location="([^"]*)"[^>]*Details="([^"]*)"'
-    
-    matches = re.findall(pattern, xml_content)
-    
-    people = []
-    for match in matches:
-        name, role, email, phone, location, details = match
+def main():
+    print("Demarrage de l'extraction hierarchique...")
+    xml_content = extract_xml_content('Oui.html')
+    if not xml_content:
+        print("Erreur: Impossible de lire le XML")
+        return
+
+    # 1. Map all UserObjects
+    people_by_id = {}
+    # Find all UserObjects - use a more flexible regex for attributes
+    uo_matches = re.finditer(r'<UserObject([^>]+)>', xml_content)
+    for match in uo_matches:
+        uo_body = match.group(1)
         
-        # Ignorer les entrées vides ou invalides
-        if not name or not role:
-            continue
+        # Helper to get attribute safely
+        def get_attr(attr):
+            m = re.search(fr'{attr}="([^"]*)"', uo_body)
+            return m.group(1) if m else ""
+
+        uid = get_attr('id')
+        name = get_attr('Name') or get_attr('label') # Fallback if Name missing
+        if not uid or not name or name == "%Name%": continue
         
-        person = {
+        # Clean labels from name if fallback used
+        name = re.sub(r'<[^>]*>', '', name).strip()
+
+        role = get_attr('Role')
+        email = get_attr('Email')
+        phone = get_attr('Phone')
+        location = get_attr('Location')
+        details = get_attr('Details')
+
+        people_by_id[uid] = {
             'id': create_id(name),
+            'raw_id': uid,
             'name': name,
             'title': role,
             'team': details if details else location,
             'department': details if details else 'AUTRES',
             'phone': phone,
             'email': email,
-            'isTeamManager': 'team manager' in role.lower() or 'manager' in role.lower(),
+            'isTeamManager': 'manager' in role.lower() or 'director' in role.lower() or 'leader' in role.lower(),
+            'isPrestataire': is_prestataire(role, details),
             'children': []
         }
-        
-        # Classifier par axe
-        axis = classify_by_axis(role, details)
-        person['axis'] = axis
-        
-        people.append(person)
-    
-    return people
 
-def generate_data_js(people, output_file):
-    """Génère le fichier data.js"""
+    # 2. Extract relationships
+    edge_matches = re.finditer(r'<mxCell[^>]*edge="1"[^>]*source="([^"]*)"[^>]*target="([^"]*)"[^>]*>', xml_content)
+    for match in edge_matches:
+        source_id = match.group(1)
+        target_id = match.group(2)
+        
+        if source_id in people_by_id and target_id in people_by_id:
+            people_by_id[source_id]['children'].append(people_by_id[target_id]['id'])
+
+    # 3. Organize by Axes
+    axes = {'direction': [], 'process': [], 'sports': [], 'transverse': []}
     
-    # Grouper par axe
-    by_axis = defaultdict(list)
-    for person in people:
-        axis = person.pop('axis')
-        by_axis[axis].append(person)
+    # Sort IDs to keep deterministic output
+    sorted_ids = sorted(people_by_id.keys())
     
-    # Statistiques
-    stats = {
-        'direction': len(by_axis['direction']),
-        'process': len(by_axis['process']),
-        'sports': len(by_axis['sports']),
-        'transverse': len(by_axis['transverse'])
-    }
-    
-    total = sum(stats.values())
-    
-    # Générer le contenu JavaScript
+    for uid in sorted_ids:
+        person = people_by_id[uid]
+        # Copy for output (remove raw_id)
+        out_person = person.copy()
+        raw_id = out_person.pop('raw_id')
+        
+        axis = classify_axis(person['title'], person['department'], None, None, None, None)
+        axes[axis].append(out_person)
+
+    # 4. Generate data.js
+    total = sum(len(a) for a in axes.values())
     js_content = f"""// ==========================================
-// 🌳 DATA.JS - ORGANIGRAMME DECATHLON
-// Généré automatiquement le {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
-// {total} Collaborateurs - Extraction depuis HTML de référence
+// 🌳 DATA.JS - ORGANIGRAMME HIÉRARCHIQUE
+// Généré le {datetime.now().strftime('%d/%m/%Y %H:%M')}
+// Total: {total} collaborateurs
 // ==========================================
 
-const ORG_DATA = {{
-    // 🔵 DIRECTION GÉNÉRALE
-    direction: {json.dumps(by_axis['direction'], indent=4, ensure_ascii=False)},
-    
-    // 🏭 AXE PROCESS & ENGINEERING
-    process: {json.dumps(by_axis['process'], indent=4, ensure_ascii=False)},
-    
-    // 🏂 AXE SPORTS / MARQUES
-    sports: {json.dumps(by_axis['sports'], indent=4, ensure_ascii=False)},
-    
-    // 🔄 AXE TRANSVERSE
-    transverse: {json.dumps(by_axis['transverse'], indent=4, ensure_ascii=False)}
-}};
+const ORG_DATA = {json.dumps(axes, indent=4, ensure_ascii=False)};
 
 const orgConfig = {{
-    version: "2.0",
+    version: "3.0",
     lastUpdate: "{datetime.now().strftime('%Y-%m-%d')}",
     totalEmployees: {total},
     departments: {{
-        direction: {stats['direction']},
-        process: {stats['process']},
-        sports: {stats['sports']},
-        transverse: {stats['transverse']}
+        direction: {len(axes['direction'])},
+        process: {len(axes['process'])},
+        sports: {len(axes['sports'])},
+        transverse: {len(axes['transverse'])}
     }}
 }};
 """
     
-    with open(output_file, 'w', encoding='utf-8') as f:
+    with open('../data.js', 'w', encoding='utf-8') as f:
         f.write(js_content)
     
-    return stats, total
-
-def main():
-    """Fonction principale"""
-    print("Extraction des données de l'organigramme Decathlon")
-    print("=" * 60)
-    
-    input_file = "Oui.html"
-    output_file = "../data.js"
-    
-    # Étape 1: Extraire le XML
-    print("\nLecture du fichier HTML...")
-    xml_content = extract_xml_from_html(input_file)
-    
-    if not xml_content:
-        print("Echec de l'extraction du XML")
-        return
-    
-    print(f"XML extrait ({len(xml_content)} caractères)")
-    
-    # Étape 2: Extraire les personnes
-    print("\nExtraction des collaborateurs...")
-    people = extract_people(xml_content)
-    print(f"{len(people)} collaborateurs extraits")
-    
-    # Étape 3: Générer data.js
-    print("\nGénération de data.js...")
-    stats, total = generate_data_js(people, output_file)
-    
-    print(f"Fichier {output_file} généré avec succès!")
-    print("\nStatistiques:")
-    print(f"   . Direction:   {stats['direction']:3d} postes")
-    print(f"   . Process:     {stats['process']:3d} postes")
-    print(f"   . Sports:      {stats['sports']:3d} postes")
-    print(f"   . Transverse:  {stats['transverse']:3d} postes")
-    print(f"   . TOTAL:       {total:3d} postes")
-    print("\nExtraction terminée avec succès!")
+    print(f"Extraction terminee: {total} personnes.")
+    print(f"Stats: D={len(axes['direction'])} P={len(axes['process'])} S={len(axes['sports'])} T={len(axes['transverse'])}")
 
 if __name__ == "__main__":
     main()
