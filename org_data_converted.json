@@ -1,0 +1,916 @@
+﻿{
+    "direction":  [
+                      {
+                          "id":  "leclercq-j",
+                          "name":  "Julien LECLERCQ",
+                          "phone":  "",
+                          "team":  "DIRECTION",
+                          "email":  "",
+                          "title":  "Decathlon United President"
+                      },
+                      {
+                          "id":  "lopez-j",
+                          "name":  "Javier LOPEZ",
+                          "phone":  "",
+                          "team":  "DIRECTION",
+                          "email":  "",
+                          "title":  "Chief Executive Officer"
+                      },
+                      {
+                          "id":  "graham-m",
+                          "name":  "Marine GRAHAM",
+                          "phone":  "",
+                          "team":  "VALUE CHAIN",
+                          "email":  "",
+                          "title":  "Chief Value Chain Officer"
+                      }
+                  ],
+    "transverse":  [
+
+                   ],
+    "sports":  [
+
+               ],
+    "process":  [
+                    {
+                        "team":  "OFFICE BTWIN",
+                        "id":  "lebeurre-r",
+                        "isTeamManager":  true,
+                        "title":  "Technical Director BIKES PROCESS E-BOOST",
+                        "name":  "Remi LEBEURRE",
+                        "phone":  "+33 6 29 36 53 28",
+                        "department":  "PROCESS",
+                        "email":  "remi.lebeurre@decathlon.com"
+                    },
+                    {
+                        "team":  "OFFICE BTWIN",
+                        "id":  "guillon-r",
+                        "isTeamManager":  true,
+                        "title":  "Business Unit Manager BIKES PROCESS E-BOOST",
+                        "name":  "RENAUD GUILLON",
+                        "phone":  "+33 6 29 94 60 16",
+                        "department":  "PROCESS",
+                        "email":  "renaud.guillon@decathlon.com"
+                    },
+                    {
+                        "team":  "OFFICE BTWIN",
+                        "id":  "cochet-a",
+                        "isTeamManager":  true,
+                        "title":  "Global Purchasing Manager BIKES PROCUREMENT",
+                        "name":  "Antoine COCHET",
+                        "phone":  "+33 7 62 98 26 69",
+                        "department":  "PROCESS",
+                        "email":  "antoine.cochet@decathlon.com"
+                    },
+                    {
+                        "team":  "OFFICE BTWIN",
+                        "id":  "bauduin-f",
+                        "isTeamManager":  true,
+                        "title":  "Office Manager METAL \u0026 BIKES",
+                        "name":  "Flavie BAUDUIN",
+                        "phone":  "+33 6 79 70 82 4",
+                        "department":  "PROCESS",
+                        "email":  "flavie.bauduin@decathlon.com"
+                    },
+                    {
+                        "team":  "OFFICE BTWIN",
+                        "id":  "lesur-g",
+                        "isTeamManager":  true,
+                        "title":  "Global Purchasing Manager METAL \u0026 BIKES",
+                        "name":  "Germain LESUR",
+                        "phone":  "+33 6 62 95 63 75",
+                        "department":  "PROCESS",
+                        "email":  "germain.lesur@decathlon.com"
+                    },
+                    {
+                        "team":  "OFFICE BTWIN",
+                        "id":  "delatour-g",
+                        "isTeamManager":  true,
+                        "title":  "Technical Director TRANSMISSION \u0026 BRAKES",
+                        "name":  "Guillaume DELATOUR",
+                        "phone":  "+33 6 98 42 56 79",
+                        "department":  "PROCESS",
+                        "email":  "guillaume.delatour@decathlon.com"
+                    },
+                    {
+                        "team":  "OFFICE BTWIN",
+                        "id":  "bloch-j",
+                        "isTeamManager":  true,
+                        "title":  "Technical Director CARRY \u0026 PROTECT",
+                        "name":  "Julien BLOCH",
+                        "phone":  "+33 6 79 85 40 48",
+                        "department":  "PROCESS",
+                        "email":  "julien.bloch@decathlon.com"
+                    },
+                    {
+                        "team":  "OFFICE BTWIN",
+                        "id":  "rustico-l",
+                        "isTeamManager":  true,
+                        "title":  "Component Offer Director",
+                        "name":  "Laetitia RUSTICO",
+                        "phone":  "",
+                        "department":  "PROCESS",
+                        "email":  ""
+                    },
+                    {
+                        "team":  "OFFICE BTWIN",
+                        "id":  "lemenand-s",
+                        "isTeamManager":  true,
+                        "title":  "Global Purchasing Manager",
+                        "name":  "Sylvain LEMENAND",
+                        "phone":  "",
+                        "department":  "PROCESS",
+                        "email":  ""
+                    },
+                    {
+                        "team":  "OFFICE BTWIN",
+                        "id":  "lepoutre-g",
+                        "isTeamManager":  true,
+                        "title":  "Technical Director",
+                        "name":  "Geoffrey LEPOUTRE",
+                        "phone":  "",
+                        "department":  "PROCESS",
+                        "email":  ""
+                    },
+                    {
+                        "team":  "OFFICE BTWIN",
+                        "id":  "delay-l",
+                        "isTeamManager":  true,
+                        "title":  "Technical Director",
+                        "name":  "Louise DELAY",
+                        "phone":  "",
+                        "department":  "PROCESS",
+                        "email":  ""
+                    },
+                    {
+                        "team":  "OFFICE BTWIN",
+                        "id":  "sels-t",
+                        "isTeamManager":  true,
+                        "title":  "Technical Director",
+                        "name":  "Thomas SELS",
+                        "phone":  "",
+                        "department":  "PROCESS",
+                        "email":  ""
+                    },
+                    {
+                        "team":  "OFFICE BTWIN",
+                        "id":  "forero-m",
+                        "isTeamManager":  true,
+                        "title":  "Technical Director",
+                        "name":  "Maria FORERO",
+                        "phone":  "",
+                        "department":  "PROCESS",
+                        "email":  ""
+                    },
+                    {
+                        "team":  "OFFICE BTWIN",
+                        "id":  "quoy-n",
+                        "isTeamManager":  true,
+                        "title":  "Technical Director",
+                        "name":  "Nicolas QUOY",
+                        "phone":  "",
+                        "department":  "PROCESS",
+                        "email":  ""
+                    },
+                    {
+                        "team":  "",
+                        "id":  "poquet-v",
+                        "isTeamManager":  true,
+                        "title":  "Technical Director",
+                        "name":  "Vincent POQUET",
+                        "phone":  "",
+                        "department":  "TRANSVERSE",
+                        "email":  ""
+                    },
+                    {
+                        "team":  "OFFICE BTWIN",
+                        "id":  "prudhomme-a",
+                        "isTeamManager":  true,
+                        "title":  "Office Manager",
+                        "name":  "Amandine PRUDHOMME",
+                        "phone":  "",
+                        "department":  "PROCESS",
+                        "email":  ""
+                    },
+                    {
+                        "id":  "callens-f",
+                        "name":  "Florence CALLENS",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Executive Assistant"
+                    },
+                    {
+                        "id":  "briffa-m",
+                        "name":  "Mathilde BRIFFA",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Executive Assistant"
+                    },
+                    {
+                        "team":  "OFFICE BTWIN",
+                        "id":  "amzil-a",
+                        "isTeamManager":  true,
+                        "title":  "Emission Factor Manager",
+                        "name":  "Abir AMZIL",
+                        "phone":  "",
+                        "department":  "PROCESS",
+                        "email":  ""
+                    },
+                    {
+                        "team":  "OFFICE BTWIN",
+                        "id":  "brunquet-p",
+                        "isTeamManager":  true,
+                        "title":  "Emission Factor Manager",
+                        "name":  "Pauline BRUNQUET",
+                        "phone":  "",
+                        "department":  "PROCESS",
+                        "email":  ""
+                    },
+                    {
+                        "id":  "volant-a",
+                        "name":  "Arnaud VOLANT",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Methods Engineer"
+                    },
+                    {
+                        "id":  "nordey-b",
+                        "name":  "Benoit NORDEY",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Component and Tech Engineer"
+                    },
+                    {
+                        "id":  "lopes-c",
+                        "name":  "Claudia LOPES",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Methods Engineer"
+                    },
+                    {
+                        "id":  "chatelain-e",
+                        "name":  "EDDY CHATELAIN",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Methods Engineer"
+                    },
+                    {
+                        "id":  "tartarin-g",
+                        "name":  "Guillaume TARTARIN",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Methods Engineer"
+                    },
+                    {
+                        "id":  "carradot-m",
+                        "name":  "Marion CARRADOT",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Methods Engineer"
+                    },
+                    {
+                        "id":  "gierlowski-m",
+                        "name":  "Mathieu GIERLOWSKI",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Methods Engineer"
+                    },
+                    {
+                        "id":  "poullain-a",
+                        "name":  "Alexandre POULLAIN",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Methods Engineer"
+                    },
+                    {
+                        "id":  "chen-c",
+                        "name":  "Chris CHEN",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Global Strategic Buyer"
+                    },
+                    {
+                        "id":  "daniel-d",
+                        "name":  "Denis DANIEL",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Global Strategic Buyer"
+                    },
+                    {
+                        "id":  "desrippes-e",
+                        "name":  "EDOUARD DESRIPPES",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Global Strategic Buyer"
+                    },
+                    {
+                        "id":  "pourroy-f",
+                        "name":  "Fabrice POURROY",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Global Strategic Buyer"
+                    },
+                    {
+                        "id":  "chambure-f",
+                        "name":  "Francois DE CHAMBURE",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Global Strategic Buyer"
+                    },
+                    {
+                        "id":  "blejdea-i",
+                        "name":  "Ionut BLEJDEA",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Global Supply Planner"
+                    },
+                    {
+                        "id":  "camus-j",
+                        "name":  "Juliette CAMUS",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Global Strategic Buyer"
+                    },
+                    {
+                        "team":  "OFFICE BTWIN",
+                        "id":  "luo-l",
+                        "isTeamManager":  true,
+                        "title":  "Global Procurement \u0026 Supply Manager",
+                        "name":  "Luyao LUO",
+                        "phone":  "",
+                        "department":  "PROCESS",
+                        "email":  ""
+                    },
+                    {
+                        "id":  "rebelle-m",
+                        "name":  "Maxime REBELLE",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Global Strategic Buyer"
+                    },
+                    {
+                        "id":  "montazeri-m",
+                        "name":  "Mona MONTAZERI",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Global Strategic Buyer"
+                    },
+                    {
+                        "id":  "bugalho-o",
+                        "name":  "ORNAN BUGALHO",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Global Strategic Buyer"
+                    },
+                    {
+                        "id":  "thomas-a",
+                        "name":  "ANTHONY THOMAS",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Global Strategic Buyer"
+                    },
+                    {
+                        "id":  "lambert-f",
+                        "name":  "Franck LAMBERT",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Global Strategic Buyer"
+                    },
+                    {
+                        "id":  "rabu-s",
+                        "name":  "Sebastien RABU",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Global Strategic Buyer"
+                    },
+                    {
+                        "id":  "bist-v",
+                        "name":  "Vikram BIST",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Global Strategic Buyer"
+                    },
+                    {
+                        "id":  "dallenne-g",
+                        "name":  "GUILLAUME DALLENNE",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Global Strategic Buyer"
+                    },
+                    {
+                        "id":  "guilvout-j",
+                        "name":  "Joris GUILVOUT",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Global Strategic Buyer"
+                    },
+                    {
+                        "id":  "sun-m",
+                        "name":  "Mengdi SUN",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Global Strategic Buyer"
+                    },
+                    {
+                        "id":  "auplat-s",
+                        "name":  "Stephane AUPLAT",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Procurement \u0026 Supply Planner"
+                    },
+                    {
+                        "id":  "moranda-m",
+                        "name":  "Marie MORANDA",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Apprentice"
+                    },
+                    {
+                        "id":  "decoene-a",
+                        "name":  "ALEXANDRE DECOENE",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Component and Tech Engineer"
+                    },
+                    {
+                        "id":  "gilloots-a",
+                        "name":  "Alexandre GILLOOTS",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Component and Tech Engineer"
+                    },
+                    {
+                        "team":  "OFFICE BTWIN",
+                        "id":  "bertrand-a",
+                        "isTeamManager":  true,
+                        "title":  "Component Manager",
+                        "name":  "Arnaud BERTRAND",
+                        "phone":  "",
+                        "department":  "PROCESS",
+                        "email":  ""
+                    },
+                    {
+                        "id":  "vanbeselaere-a",
+                        "name":  "Arnaud VANBESELAERE",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Prototype Developer"
+                    },
+                    {
+                        "id":  "pinabiaux-a",
+                        "name":  "Arthur PINABIAUX",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Component and Tech Engineer"
+                    },
+                    {
+                        "id":  "pailleux-g",
+                        "name":  "Germain PAILLEUX",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Component and Tech Engineer"
+                    },
+                    {
+                        "id":  "magoni-l",
+                        "name":  "Leo MAGONI",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Component and Tech Engineer"
+                    },
+                    {
+                        "id":  "beau-m",
+                        "name":  "Maxime BEAU",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Component and Tech Engineer"
+                    },
+                    {
+                        "id":  "tardits-o",
+                        "name":  "Orane TARDITS",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Component and Tech Engineer"
+                    },
+                    {
+                        "id":  "colart-p",
+                        "name":  "Pierre COLART",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Component and Tech Engineer"
+                    },
+                    {
+                        "id":  "boutet-a",
+                        "name":  "Antoine BOUTET",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Component and Tech Engineer"
+                    },
+                    {
+                        "id":  "gineste-b",
+                        "name":  "Benjamin GINESTE",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Component and Tech Engineer"
+                    },
+                    {
+                        "id":  "sharma-r",
+                        "name":  "Rahul SHARMA",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Component and Tech Engineer"
+                    },
+                    {
+                        "id":  "giovannetti-s",
+                        "name":  "Sylvain GIOVANNETTI",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Component and Tech Engineer"
+                    },
+                    {
+                        "id":  "faudot-b",
+                        "name":  "Benjamin FAUDOT",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Product Engineer"
+                    },
+                    {
+                        "id":  "bonnefille-f",
+                        "name":  "Florian BONNEFILLE",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Product Engineer"
+                    },
+                    {
+                        "id":  "wojda-m",
+                        "name":  "Matthieu WOJDA",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Product Engineer"
+                    },
+                    {
+                        "id":  "secq-m",
+                        "name":  "Maxence SECQ",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Product Engineer"
+                    },
+                    {
+                        "id":  "crombrugghe-a",
+                        "name":  "Antoine DE CROMBRUGGHE",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Mechanical Design Engineer"
+                    },
+                    {
+                        "id":  "florio-j",
+                        "name":  "Juan FLORIO",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Mechanical Design Engineer"
+                    },
+                    {
+                        "id":  "kirsch-j",
+                        "name":  "Julien KIRSCH",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "BTWIN VILLAGE",
+                        "email":  "",
+                        "title":  "Mechanical Design Engineer"
+                    },
+                    {
+                        "id":  "lemmens-p",
+                        "name":  "Pieter Lemmens LEMMENS",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Mechanical Design Engineer"
+                    },
+                    {
+                        "id":  "coelho-r",
+                        "name":  "Rodrigo COELHO",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Mechanical Design Engineer"
+                    },
+                    {
+                        "team":  "OFFICE BTWIN",
+                        "id":  "blandin-s",
+                        "isTeamManager":  true,
+                        "title":  "Project Manager",
+                        "name":  "Stephane BLANDIN",
+                        "phone":  "",
+                        "department":  "PROCESS",
+                        "email":  ""
+                    },
+                    {
+                        "id":  "epineau-b",
+                        "name":  "Baptiste LEGEAY EPINEAU",
+                        "department":  "TRANSVERSE",
+                        "phone":  "",
+                        "team":  "",
+                        "email":  "",
+                        "title":  "Apprentice"
+                    },
+                    {
+                        "id":  "bourdon-c",
+                        "name":  "Charline BOURDON",
+                        "department":  "PROCESS",
+                        "phone":  "+33 6 84 01 60 22",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "charline.bourdon@decathlon.com",
+                        "title":  "Apprentice HUB ACHAT STRATEGIQUE"
+                    },
+                    {
+                        "team":  "OFFICE BTWIN",
+                        "id":  "larousserie-s",
+                        "isTeamManager":  true,
+                        "title":  "Global Purchasing Risk Manager HUB ACHAT STRATEGIQUE",
+                        "name":  "Sebastien LAROUSSERIE",
+                        "phone":  "+33 6 50 46 93 10",
+                        "department":  "PROCESS",
+                        "email":  "sebastien.larousserie@decathlon.com"
+                    },
+                    {
+                        "team":  "OFFICE BTWIN",
+                        "id":  "cornet-w",
+                        "isTeamManager":  true,
+                        "title":  "Global Supplier Relationship Director HUB ACHAT STRATEGIQUE",
+                        "name":  "Wilfried CORNET",
+                        "phone":  "+33 6 65 73 49 56",
+                        "department":  "PROCESS",
+                        "email":  "wilfried.cornet@decathlon.com"
+                    },
+                    {
+                        "id":  "minier-c",
+                        "name":  "Charlotte MINIER",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Apprentice"
+                    },
+                    {
+                        "id":  "trehan-n",
+                        "name":  "Natacha TREHAN",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Assignment Officer"
+                    },
+                    {
+                        "id":  "bec-n",
+                        "name":  "Nicolas BEC",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Global Strategic Buyer"
+                    },
+                    {
+                        "id":  "moulin-t",
+                        "name":  "Thibaud MOULIN",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Global Strategic Buyer"
+                    },
+                    {
+                        "id":  "gualberto-t",
+                        "name":  "Thomas GUALBERTO",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Assignment Officer"
+                    },
+                    {
+                        "id":  "kayas-a",
+                        "name":  "Abu jar md KAYAS",
+                        "department":  "TRANSVERSE",
+                        "phone":  "",
+                        "team":  "",
+                        "email":  "",
+                        "title":  "Global Strategic Buyer"
+                    },
+                    {
+                        "team":  "OFFICE BTWIN",
+                        "id":  "sanii-a",
+                        "isTeamManager":  true,
+                        "title":  "Digital Product Manager",
+                        "name":  "Amir SANII",
+                        "phone":  "",
+                        "department":  "PROCESS",
+                        "email":  ""
+                    },
+                    {
+                        "id":  "vandewoorde-a",
+                        "name":  "Aymeric VANDEWOORDE",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Business Intelligence Engineer"
+                    },
+                    {
+                        "id":  "fargeix-c",
+                        "name":  "Christophe FARGEIX",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Software Development Engineer"
+                    },
+                    {
+                        "id":  "williatte-c",
+                        "name":  "Corentin WILLIATTE",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "IT Service provider onsite"
+                    },
+                    {
+                        "id":  "degobert-e",
+                        "name":  "Elisa DEGOBERT",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Software Development Engineer"
+                    },
+                    {
+                        "team":  "OFFICE BTWIN",
+                        "id":  "dronkert-f",
+                        "isTeamManager":  true,
+                        "title":  "Project Manager",
+                        "name":  "Fabien DRONKERT",
+                        "phone":  "",
+                        "department":  "PROCESS",
+                        "email":  ""
+                    },
+                    {
+                        "id":  "belkaid-j",
+                        "name":  "Jawad BELKAID",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Apprentice in Digital \u0026 IS"
+                    },
+                    {
+                        "id":  "bette-j",
+                        "name":  "Jérémy BETTE",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "Software Development Engineer"
+                    },
+                    {
+                        "id":  "devin-j",
+                        "name":  "Jonathan DEVIN",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "IT Service provider onsite"
+                    },
+                    {
+                        "id":  "sabos-j",
+                        "name":  "Julian SABOS",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "IS Engineer"
+                    },
+                    {
+                        "id":  "faby-m",
+                        "name":  "Marine FABY",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "IS Engineer"
+                    },
+                    {
+                        "id":  "fauchoit-m",
+                        "name":  "Mélyne FAUCHOIT",
+                        "department":  "PROCESS",
+                        "phone":  "",
+                        "team":  "OFFICE BTWIN",
+                        "email":  "",
+                        "title":  "IT Service provider onsite"
+                    },
+                    {
+                        "id":  "hild-n",
+                        "name":  "Nicolas HILD",
+                        "department":  "TRANSVERSE",
+                        "phone":  "",
+                        "team":  "",
+                        "email":  "",
+                        "title":  "Software Development Engineer"
+                    }
+                ]
+}

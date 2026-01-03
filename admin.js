@@ -1,210 +1,246 @@
-/**
- * Gestion de l'administration pour l'organigramme Decathlon (Version 2025)
- */
+// admin.js - Système d'authentification et édition
 
-const ADMIN_CONFIG = {
-    users: {
-        "marine": { pass: "decathlon2025", name: "Marine GRAHAM", role: "superadmin" },
-        "externe": { pass: "consultant2025", name: "Consultant Externe", role: "editor" }
+// État admin
+window.isAdminMode = false;
+let currentUser = null;
+
+// Utilisateurs autorisés
+const adminUsers = {
+    'marine': {
+        password: 'decathlon2025',
+        name: 'Marine GRAHAM',
+        role: 'Chief Value Chain Officer'
     },
-    storageKey: "decat_org_auth_v2025"
+    'externe': {
+        password: 'consultant2025',
+        name: 'Consultant Externe',
+        role: 'Accès temporaire'
+    }
 };
 
-let CURRENT_USER = null;
-let CURRENT_EDIT_DATA = null;
+// Initialisation des événements
+document.addEventListener('DOMContentLoaded', () => {
+    setupAdminEvents();
+});
 
-function initAdmin() {
-    // Utilisation de sessionStorage comme demandé
-    const storedAuth = sessionStorage.getItem(ADMIN_CONFIG.storageKey);
-    if (storedAuth) {
-        try {
-            const auth = JSON.parse(storedAuth);
-            if (auth.username && ADMIN_CONFIG.users[auth.username]) {
-                loginSuccess(auth.username, true);
-            }
-        } catch (e) {
-            sessionStorage.removeItem(ADMIN_CONFIG.storageKey);
-        }
-    }
+function setupAdminEvents() {
+    // Bouton connexion
+    document.getElementById('btn-login-submit').addEventListener('click', handleLogin);
 
-    // Event Listeners
-    document.getElementById('btn-login-submit')?.addEventListener('click', handleLogin);
-
-    document.querySelector('.admin-trigger')?.addEventListener('click', () => {
-        document.getElementById('login-modal').classList.add('active');
+    // Enter dans les champs de connexion
+    document.getElementById('login-password').addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') handleLogin();
     });
 
-    const loginModal = document.getElementById('login-modal');
-    if (loginModal) {
-        loginModal.addEventListener('click', (e) => {
-            if (e.target === loginModal) loginModal.classList.remove('active');
-        });
-    }
+    // Bouton déconnexion
+    document.getElementById('btn-logout').addEventListener('click', handleLogout);
 
-    document.getElementById('btn-logout')?.addEventListener('click', logout);
-    document.getElementById('btn-export')?.addEventListener('click', exportData);
-    document.getElementById('btn-import')?.addEventListener('click', () => {
+    // Boutons édition
+    document.getElementById('btn-edit-save').addEventListener('click', saveEdit);
+    document.getElementById('btn-edit-cancel').addEventListener('click', closeEditModal);
+    document.getElementById('btn-edit-delete').addEventListener('click', deletePerson);
+
+    // Boutons export/import
+    document.getElementById('btn-export').addEventListener('click', exportData);
+    document.getElementById('btn-import').addEventListener('click', () => {
         document.getElementById('import-file').click();
     });
-    document.getElementById('import-file')?.addEventListener('change', importData);
 
-    document.getElementById('btn-edit-save')?.addEventListener('click', saveEditPerson);
-    document.getElementById('btn-edit-delete')?.addEventListener('click', deletePerson);
-    document.getElementById('btn-edit-cancel')?.addEventListener('click', () => {
-        document.getElementById('edit-modal').classList.remove('active');
-    });
+    document.getElementById('import-file').addEventListener('change', importData);
+}
+
+function checkAdminSession() {
+    const session = sessionStorage.getItem('adminSession');
+    if (session) {
+        try {
+            currentUser = JSON.parse(session);
+            activateAdminMode();
+        } catch (e) {
+            console.error('Session invalide');
+        }
+    }
+}
+
+function openLoginModal() {
+    document.getElementById('login-modal').style.display = 'flex';
+    document.getElementById('login-username').value = '';
+    document.getElementById('login-password').value = '';
+    document.getElementById('login-error').style.display = 'none';
+}
+
+function closeLoginModal() {
+    document.getElementById('login-modal').style.display = 'none';
 }
 
 function handleLogin() {
-    const userIn = document.getElementById('login-username').value;
-    const passIn = document.getElementById('login-password').value;
-    const errorMsg = document.getElementById('login-error');
+    const username = document.getElementById('login-username').value.toLowerCase().trim();
+    const password = document.getElementById('login-password').value;
 
-    if (ADMIN_CONFIG.users[userIn] && ADMIN_CONFIG.users[userIn].pass === passIn) {
-        loginSuccess(userIn);
-        document.getElementById('login-modal').classList.remove('active');
-        document.getElementById('login-username').value = '';
-        document.getElementById('login-password').value = '';
+    const user = adminUsers[username];
+    if (user && user.password === password) {
+        currentUser = { username, ...user };
+        activateAdminMode();
+        closeLoginModal();
     } else {
-        if (errorMsg) {
-            errorMsg.textContent = "Identifiants incorrects";
-            errorMsg.style.display = 'block';
-            errorMsg.style.color = '#e53e3e';
-        }
+        const errorDiv = document.getElementById('login-error');
+        errorDiv.textContent = '❌ Identifiants incorrects';
+        errorDiv.style.display = 'block';
+        errorDiv.style.color = '#e53e3e';
+        errorDiv.style.marginTop = '10px';
     }
 }
 
-function loginSuccess(username, isRestoration = false) {
-    const user = ADMIN_CONFIG.users[username];
-    CURRENT_USER = user;
+function activateAdminMode() {
+    window.isAdminMode = true;
+    document.body.classList.add('admin-mode');
+    document.getElementById('admin-bar').classList.add('active');
+    document.getElementById('admin-user-name').textContent = currentUser.name;
 
-    if (!isRestoration) {
-        sessionStorage.setItem(ADMIN_CONFIG.storageKey, JSON.stringify({
-            username: username,
-            timestamp: new Date().getTime()
-        }));
+    // Sauvegarder la session
+    sessionStorage.setItem('adminSession', JSON.stringify(currentUser));
+
+    // Re-render la vue actuelle
+    renderView(currentView);
+}
+
+function handleLogout() {
+    window.isAdminMode = false;
+    currentUser = null;
+    document.body.classList.remove('admin-mode');
+    document.getElementById('admin-bar').classList.remove('active');
+    sessionStorage.removeItem('adminSession');
+
+    // Re-render la vue actuelle
+    renderView(currentView);
+}
+
+function editPerson(personId) {
+    const result = findPersonById(personId);
+    if (!result) {
+        alert('Personne non trouvée');
+        return;
     }
 
-    document.body.classList.add('admin-active');
-    const bar = document.getElementById('admin-bar');
-    if (bar) {
-        bar.classList.add('visible');
-        document.getElementById('admin-user-name').textContent = user.name;
+    const { person } = result;
+
+    // Remplir le formulaire
+    document.getElementById('edit-original-id').value = personId;
+    document.getElementById('edit-name').value = person.name;
+    document.getElementById('edit-title').value = person.title;
+    document.getElementById('edit-phone').value = person.phone || '';
+    document.getElementById('edit-email').value = person.email || '';
+
+    // Afficher la modal
+    document.getElementById('edit-modal').style.display = 'flex';
+}
+
+function closeEditModal() {
+    document.getElementById('edit-modal').style.display = 'none';
+}
+
+function saveEdit() {
+    const personId = document.getElementById('edit-original-id').value;
+    const result = findPersonById(personId);
+
+    if (!result) {
+        alert('Personne non trouvée');
+        return;
     }
 
-    enableEditMode();
-}
+    const { person } = result;
 
-function logout() {
-    CURRENT_USER = null;
-    sessionStorage.removeItem(ADMIN_CONFIG.storageKey);
-    window.location.reload();
-}
+    // Mettre à jour les données
+    person.name = document.getElementById('edit-name').value;
+    person.title = document.getElementById('edit-title').value;
+    person.phone = document.getElementById('edit-phone').value;
+    person.email = document.getElementById('edit-email').value;
 
-function enableEditMode() {
-    document.body.classList.add('mode-edition');
-    injectControls();
-}
+    // Fermer la modal
+    closeEditModal();
 
-function injectControls() {
-    document.querySelectorAll('.node').forEach(node => {
-        if (node.querySelector('.edit-controls')) return;
+    // Re-render
+    renderView(currentView);
 
-        const controls = document.createElement('div');
-        controls.className = 'edit-controls';
-
-        const editBtn = document.createElement('div');
-        editBtn.className = 'btn-node-action btn-node-edit';
-        editBtn.innerHTML = '✏️';
-        editBtn.onclick = (e) => {
-            e.stopPropagation();
-            openEditModal(node._sourceData);
-        };
-
-        controls.appendChild(editBtn);
-        node.appendChild(controls);
-    });
-}
-
-function openEditModal(data) {
-    if (!data) return;
-    CURRENT_EDIT_DATA = data;
-
-    document.getElementById('edit-name').value = data.name || '';
-    document.getElementById('edit-title').value = data.title || '';
-    document.getElementById('edit-phone').value = data.phone || '';
-    document.getElementById('edit-email').value = data.email || '';
-
-    document.getElementById('edit-modal').classList.add('active');
-}
-
-function saveEditPerson() {
-    if (!CURRENT_EDIT_DATA) return;
-
-    CURRENT_EDIT_DATA.name = document.getElementById('edit-name').value;
-    CURRENT_EDIT_DATA.title = document.getElementById('edit-title').value;
-    CURRENT_EDIT_DATA.phone = document.getElementById('edit-phone').value;
-    CURRENT_EDIT_DATA.email = document.getElementById('edit-email').value;
-
-    document.getElementById('edit-modal').classList.remove('active');
-    refreshView();
+    alert('✅ Modifications enregistrées');
 }
 
 function deletePerson() {
-    if (!CURRENT_EDIT_DATA) return;
-    if (!confirm(`Supprimer ${CURRENT_EDIT_DATA.name} ?`)) return;
+    if (!confirm('⚠️ Êtes-vous sûr de vouloir supprimer cette personne ?')) {
+        return;
+    }
 
-    // Suppression dans les 4 axes
-    ['direction', 'process', 'sports', 'transverse'].forEach(axis => {
-        if (ORG_DATA[axis]) {
-            ORG_DATA[axis] = ORG_DATA[axis].filter(p => p.id !== CURRENT_EDIT_DATA.id);
-        }
-    });
+    const personId = document.getElementById('edit-original-id').value;
+    const result = findPersonById(personId);
 
-    document.getElementById('edit-modal').classList.remove('active');
-    refreshView();
-}
+    if (!result) {
+        alert('Personne non trouvée');
+        return;
+    }
 
-function refreshView() {
-    const activeView = (document.querySelector('.btn-view.active')?.id || '').replace('btn-', '') || 'complete';
-    if (window.showView) {
-        window.showView(activeView);
-        setTimeout(injectControls, 100);
+    const { axis } = result;
+
+    // Supprimer de l'axe
+    const index = ORG_DATA[axis].findIndex(p => p.id === personId);
+    if (index !== -1) {
+        ORG_DATA[axis].splice(index, 1);
+
+        // Mettre à jour les stats
+        orgConfig.departments[axis]--;
+        orgConfig.totalEmployees--;
+
+        updateStats();
+        closeEditModal();
+        renderView(currentView);
+
+        alert('✅ Personne supprimée');
     }
 }
 
 function exportData() {
-    const dataStr = "const ORG_DATA = " + JSON.stringify(ORG_DATA, null, 4) + ";";
-    const blob = new Blob([dataStr], { type: 'application/javascript' });
+    const dataStr = `// Données de l'organigramme Decathlon
+// Exporté le ${new Date().toLocaleString('fr-FR')}
+
+const ORG_DATA = ${JSON.stringify(ORG_DATA, null, 4)};
+
+const orgConfig = ${JSON.stringify(orgConfig, null, 4)};
+`;
+
+    const blob = new Blob([dataStr], { type: 'text/javascript' });
     const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = 'data.js';
-    link.click();
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `data-export-${Date.now()}.js`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+
+    alert('✅ Données exportées');
 }
 
-function importData(e) {
-    const file = e.target.files[0];
+function importData(event) {
+    const file = event.target.files[0];
     if (!file) return;
+
     const reader = new FileReader();
-    reader.onload = function (e) {
+    reader.onload = (e) => {
         try {
-            let content = e.target.result;
-            const jsonStart = content.indexOf('{');
-            if (jsonStart > -1) {
-                const jsonStr = content.substring(jsonStart);
-                const newData = JSON.parse(jsonStr.replace(/;$/, ''));
-                if (newData.direction) {
-                    Object.assign(ORG_DATA, newData);
-                    refreshView();
-                    alert("Import réussi !");
-                }
-            }
-        } catch (err) {
-            alert("Erreur Import: Format invalide");
+            // Évaluer le fichier JS
+            eval(e.target.result);
+
+            // Mettre à jour les stats
+            updateStats();
+
+            // Re-render
+            renderView(currentView);
+
+            alert('✅ Données importées avec succès');
+        } catch (error) {
+            alert('❌ Erreur lors de l\'import: ' + error.message);
         }
     };
     reader.readAsText(file);
-}
 
-document.addEventListener('DOMContentLoaded', initAdmin);
+    // Reset l'input
+    event.target.value = '';
+}

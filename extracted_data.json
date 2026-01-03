@@ -1,0 +1,667 @@
+﻿[
+    {
+        "name":  "Remi LEBEURRE",
+        "title":  "Technical Director BIKES PROCESS E-BOOST",
+        "location":  "OFFICE BTWIN",
+        "email":  "remi.lebeurre@decathlon.com",
+        "phone":  "+33 6 29 36 53 28"
+    },
+    {
+        "name":  "RENAUD GUILLON",
+        "title":  "Business Unit Manager BIKES PROCESS E-BOOST",
+        "location":  "OFFICE BTWIN",
+        "email":  "renaud.guillon@decathlon.com",
+        "phone":  "+33 6 29 94 60 16"
+    },
+    {
+        "name":  "Antoine COCHET",
+        "title":  "Global Purchasing Manager BIKES PROCUREMENT",
+        "location":  "OFFICE BTWIN",
+        "email":  "antoine.cochet@decathlon.com",
+        "phone":  "+33 7 62 98 26 69"
+    },
+    {
+        "name":  "Flavie BAUDUIN",
+        "title":  "Office Manager METAL \u0026 BIKES",
+        "location":  "OFFICE BTWIN",
+        "email":  "flavie.bauduin@decathlon.com",
+        "phone":  "+33 6 79 70 82 4"
+    },
+    {
+        "name":  "Germain LESUR",
+        "title":  "Global Purchasing Manager METAL \u0026 BIKES",
+        "location":  "OFFICE BTWIN",
+        "email":  "germain.lesur@decathlon.com",
+        "phone":  "+33 6 62 95 63 75"
+    },
+    {
+        "name":  "Guillaume DELATOUR",
+        "title":  "Technical Director TRANSMISSION \u0026 BRAKES",
+        "location":  "OFFICE BTWIN",
+        "email":  "guillaume.delatour@decathlon.com",
+        "phone":  "+33 6 98 42 56 79"
+    },
+    {
+        "name":  "Julien BLOCH",
+        "title":  "Technical Director CARRY \u0026 PROTECT",
+        "location":  "OFFICE BTWIN",
+        "email":  "julien.bloch@decathlon.com",
+        "phone":  "+33 6 79 85 40 48"
+    },
+    {
+        "name":  "Laetitia RUSTICO",
+        "title":  "Component Offer Director",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Sylvain LEMENAND",
+        "title":  "Global Purchasing Manager",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Geoffrey LEPOUTRE",
+        "title":  "Technical Director",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Louise DELAY",
+        "title":  "Technical Director",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Thomas SELS",
+        "title":  "Technical Director",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Maria FORERO",
+        "title":  "Technical Director",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Nicolas QUOY",
+        "title":  "Technical Director",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Vincent POQUET",
+        "title":  "Technical Director",
+        "location":  "",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Amandine PRUDHOMME",
+        "title":  "Office Manager",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Florence CALLENS",
+        "title":  "Executive Assistant",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Mathilde BRIFFA",
+        "title":  "Executive Assistant",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Abir AMZIL",
+        "title":  "Emission Factor Manager",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Pauline BRUNQUET",
+        "title":  "Emission Factor Manager",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Arnaud VOLANT",
+        "title":  "Methods Engineer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Benoit NORDEY",
+        "title":  "Component and Tech Engineer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Claudia LOPES",
+        "title":  "Methods Engineer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "EDDY CHATELAIN",
+        "title":  "Methods Engineer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Guillaume TARTARIN",
+        "title":  "Methods Engineer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Marion CARRADOT",
+        "title":  "Methods Engineer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Mathieu GIERLOWSKI",
+        "title":  "Methods Engineer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Alexandre POULLAIN",
+        "title":  "Methods Engineer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Chris CHEN",
+        "title":  "Global Strategic Buyer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Denis DANIEL",
+        "title":  "Global Strategic Buyer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "EDOUARD DESRIPPES",
+        "title":  "Global Strategic Buyer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Fabrice POURROY",
+        "title":  "Global Strategic Buyer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Francois DE CHAMBURE",
+        "title":  "Global Strategic Buyer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Ionut BLEJDEA",
+        "title":  "Global Supply Planner",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Juliette CAMUS",
+        "title":  "Global Strategic Buyer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Luyao LUO",
+        "title":  "Global Procurement \u0026 Supply Manager",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Maxime REBELLE",
+        "title":  "Global Strategic Buyer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Mona MONTAZERI",
+        "title":  "Global Strategic Buyer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "ORNAN BUGALHO",
+        "title":  "Global Strategic Buyer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "ANTHONY THOMAS",
+        "title":  "Global Strategic Buyer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Franck LAMBERT",
+        "title":  "Global Strategic Buyer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Sebastien RABU",
+        "title":  "Global Strategic Buyer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Vikram BIST",
+        "title":  "Global Strategic Buyer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "GUILLAUME DALLENNE",
+        "title":  "Global Strategic Buyer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Joris GUILVOUT",
+        "title":  "Global Strategic Buyer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Mengdi SUN",
+        "title":  "Global Strategic Buyer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Stephane AUPLAT",
+        "title":  "Procurement \u0026 Supply Planner",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Marie MORANDA",
+        "title":  "Apprentice",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "ALEXANDRE DECOENE",
+        "title":  "Component and Tech Engineer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Alexandre GILLOOTS",
+        "title":  "Component and Tech Engineer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Arnaud BERTRAND",
+        "title":  "Component Manager",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Arnaud VANBESELAERE",
+        "title":  "Prototype Developer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Arthur PINABIAUX",
+        "title":  "Component and Tech Engineer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Germain PAILLEUX",
+        "title":  "Component and Tech Engineer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Leo MAGONI",
+        "title":  "Component and Tech Engineer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Maxime BEAU",
+        "title":  "Component and Tech Engineer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Orane TARDITS",
+        "title":  "Component and Tech Engineer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Pierre COLART",
+        "title":  "Component and Tech Engineer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Antoine BOUTET",
+        "title":  "Component and Tech Engineer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Benjamin GINESTE",
+        "title":  "Component and Tech Engineer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Rahul SHARMA",
+        "title":  "Component and Tech Engineer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Sylvain GIOVANNETTI",
+        "title":  "Component and Tech Engineer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Benjamin FAUDOT",
+        "title":  "Product Engineer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Florian BONNEFILLE",
+        "title":  "Product Engineer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Matthieu WOJDA",
+        "title":  "Product Engineer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Maxence SECQ",
+        "title":  "Product Engineer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Antoine DE CROMBRUGGHE",
+        "title":  "Mechanical Design Engineer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Juan FLORIO",
+        "title":  "Mechanical Design Engineer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Julien KIRSCH",
+        "title":  "Mechanical Design Engineer",
+        "location":  "BTWIN VILLAGE",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Pieter Lemmens LEMMENS",
+        "title":  "Mechanical Design Engineer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Rodrigo COELHO",
+        "title":  "Mechanical Design Engineer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Stephane BLANDIN",
+        "title":  "Project Manager",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Baptiste LEGEAY EPINEAU",
+        "title":  "Apprentice",
+        "location":  "",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Charline BOURDON",
+        "title":  "Apprentice HUB ACHAT STRATEGIQUE",
+        "location":  "OFFICE BTWIN",
+        "email":  "charline.bourdon@decathlon.com",
+        "phone":  "+33 6 84 01 60 22"
+    },
+    {
+        "name":  "Sebastien LAROUSSERIE",
+        "title":  "Global Purchasing Risk Manager HUB ACHAT STRATEGIQUE",
+        "location":  "OFFICE BTWIN",
+        "email":  "sebastien.larousserie@decathlon.com",
+        "phone":  "+33 6 50 46 93 10"
+    },
+    {
+        "name":  "Wilfried CORNET",
+        "title":  "Global Supplier Relationship Director HUB ACHAT STRATEGIQUE",
+        "location":  "OFFICE BTWIN",
+        "email":  "wilfried.cornet@decathlon.com",
+        "phone":  "+33 6 65 73 49 56"
+    },
+    {
+        "name":  "Charlotte MINIER",
+        "title":  "Apprentice",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Natacha TREHAN",
+        "title":  "Assignment Officer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Nicolas BEC",
+        "title":  "Global Strategic Buyer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Thibaud MOULIN",
+        "title":  "Global Strategic Buyer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Thomas GUALBERTO",
+        "title":  "Assignment Officer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Abu jar md KAYAS",
+        "title":  "Global Strategic Buyer",
+        "location":  "",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Amir SANII",
+        "title":  "Digital Product Manager",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Aymeric VANDEWOORDE",
+        "title":  "Business Intelligence Engineer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Christophe FARGEIX",
+        "title":  "Software Development Engineer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Corentin WILLIATTE",
+        "title":  "IT Service provider onsite",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Elisa DEGOBERT",
+        "title":  "Software Development Engineer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Fabien DRONKERT",
+        "title":  "Project Manager",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Jawad BELKAID",
+        "title":  "Apprentice in Digital \u0026 IS",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Jérémy BETTE",
+        "title":  "Software Development Engineer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Jonathan DEVIN",
+        "title":  "IT Service provider onsite",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Julian SABOS",
+        "title":  "IS Engineer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Marine FABY",
+        "title":  "IS Engineer",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Mélyne FAUCHOIT",
+        "title":  "IT Service provider onsite",
+        "location":  "OFFICE BTWIN",
+        "email":  "",
+        "phone":  ""
+    },
+    {
+        "name":  "Nicolas HILD",
+        "title":  "Software Development Engineer",
+        "location":  "",
+        "email":  "",
+        "phone":  ""
+    }
+]

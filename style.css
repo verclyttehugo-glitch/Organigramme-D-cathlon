@@ -8,7 +8,7 @@
     --text-main: #f7fafc;
     --text-muted: #a0aec0;
     --glass-border: rgba(255, 255, 255, 0.1);
-    --line-color: rgba(255, 255, 255, 0.2);
+    --line-color: rgba(255, 255, 255, 0.3);
 }
 
 * {
@@ -26,14 +26,14 @@ body {
 }
 
 .container {
-    max-width: 95vw;
+    max-width: 100%;
     margin: 0 auto;
     padding: 20px;
 }
 
 .header {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 
 .header h1 {
@@ -44,12 +44,12 @@ body {
     -webkit-text-fill-color: transparent;
 }
 
-/* Navigation Buttons */
+/* Navigation */
 .controls {
     display: flex;
     justify-content: center;
     gap: 15px;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 
 .btn {
@@ -70,168 +70,203 @@ body {
     border-color: transparent;
 }
 
-/* Tree Structure */
-.org-tree-root {
-    display: flex;
-    justify-content: center;
-    padding-top: 20px;
-}
-
-.node-wrapper {
+/* Vertical Org Chart Container */
+.org-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    gap: 40px;
+    padding: 20px;
+}
+
+.section {
     position: relative;
-    padding: 0 10px;
+    padding-left: 30px;
 }
 
-.node-card {
-    min-width: 220px;
-    max-width: 300px;
-    background: rgba(45, 55, 72, 0.8);
-    border: 1px solid var(--glass-border);
-    border-radius: 12px;
-    padding: 15px 20px;
-    position: relative;
-    backdrop-filter: blur(10px);
-    z-index: 10;
-    transition: transform 0.2s;
-    cursor: default;
-}
-
-.node-card:hover {
-    transform: translateY(-3px);
-    border-color: rgba(255, 255, 255, 0.3);
-}
-
-.node-toggle {
-    position: absolute;
-    bottom: -12px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 24px;
-    height: 24px;
-    background: var(--primary-blue);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    z-index: 20;
-}
-
-.node-name {
-    font-weight: 700;
-    font-size: 1.1em;
-    margin-bottom: 4px;
-}
-
-.node-title {
-    font-size: 0.85em;
-    color: var(--primary-blue);
-    font-weight: 500;
-}
-
-/* Hierarchical Connectors (Vertical Lines) */
-.children-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 40px;
-    position: relative;
-    padding-top: 20px;
-}
-
-.children-container::before {
+.section::before {
     content: '';
     position: absolute;
-    top: -20px;
-    left: 50%;
+    left: 0;
+    top: 40px;
+    bottom: 0;
     width: 2px;
-    height: 40px;
     background: var(--line-color);
 }
 
-.node-wrapper::after {
+.section-title {
+    font-size: 1.5em;
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Levels (Horizontal rows) */
+.level {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.level::before {
     content: '';
     position: absolute;
-    top: 20px;
-    left: 0;
-    width: 100%;
+    left: -30px;
+    top: 50%;
+    width: 30px;
     height: 2px;
     background: var(--line-color);
 }
 
-.node-wrapper:first-child::after {
-    left: 50%;
-    width: 50%;
-}
-
-.node-wrapper:last-child::after {
-    width: 50%;
-}
-
-.node-wrapper:only-child::after {
-    display: none;
-}
-
-/* Specialized Node Styles */
-.type-axis .node-card {
-    border-top: 4px solid var(--primary-blue);
-}
-
-.type-department .node-card {
-    border-top: 4px solid var(--text-muted);
-}
-
-.type-axis.blue .node-title {
-    color: var(--primary-blue);
-}
-
-.type-axis.red .node-title {
-    color: var(--primary-red);
-}
-
-.type-axis.green .node-title {
-    color: var(--primary-green);
-}
-
-/* Grid Layout for Departments with many people */
-.grid-layout {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+.dept-label {
     width: 100%;
-    max-width: 1000px;
-    gap: 20px;
+    font-size: 0.9em;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 5px;
 }
 
-.grid-layout::before,
-.grid-layout .node-wrapper::after {
-    display: none;
+/* Person Cards */
+.person-card {
+    min-width: 250px;
+    max-width: 300px;
+    background: rgba(45, 55, 72, 0.8);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 15px;
+    position: relative;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s;
+    cursor: pointer;
 }
 
-/* Animations */
-.node-wrapper {
-    animation: fadeIn 0.4s ease-out;
+.person-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: scale(0.95);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
+.person-card.director {
+    border-left: 4px solid var(--primary-blue);
 }
 
-/* Admin Controls alignment */
+.person-card.manager {
+    border-left: 4px solid var(--accent-gold);
+}
+
+.provider-bubble {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 24px;
+    height: 24px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.person-name {
+    font-weight: 700;
+    font-size: 1.1em;
+    margin-bottom: 5px;
+    color: white;
+}
+
+.person-title {
+    font-size: 0.85em;
+    color: var(--primary-blue);
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.person-location {
+    font-size: 0.75em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Contact Info (hidden by default) */
+.contact-info {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--glass-border);
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.person-card:hover .contact-info {
+    opacity: 1;
+    max-height: 100px;
+}
+
+.contact-item {
+    font-size: 0.75em;
+    color: var(--text-muted);
+    margin-top: 3px;
+}
+
+.contact-item a {
+    color: var(--primary-blue);
+    text-decoration: none;
+}
+
+.contact-item a:hover {
+    text-decoration: underline;
+}
+
+/* Admin Controls */
 .edit-controls {
-    top: -10px !important;
-    right: -10px !important;
-    left: auto !important;
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    display: flex;
+    gap: 5px;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.person-card:hover .edit-controls {
+    opacity: 1;
+}
+
+.btn-node-action {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 1.8em;
+    }
+
+    .person-card {
+        min-width: 100%;
+    }
+
+    .level {
+        flex-direction: column;
+    }
 }
