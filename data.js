@@ -2028,6 +2028,18 @@ const ORG_DATA = {
             ]
         },
         {
+            "id": "lernould-c",
+            "name": "Christophe LERNOULD",
+            "title": "Team Manager",
+            "team": "OFFICE BTWIN",
+            "department": "TREKKING",
+            "phone": "",
+            "email": "",
+            "isTeamManager": true,
+            "isPrestataire": false,
+            "children": []
+        },
+        {
             "id": "cuminal-j",
             "name": "Jean-Baptiste CUMINAL",
             "title": "Project Manager",
@@ -5854,18 +5866,6 @@ const ORG_DATA = {
                 "hamblin-t",
                 "hassaine-v"
             ]
-        },
-        {
-            "id": "lernould-c",
-            "name": "Christophe LERNOULD",
-            "title": "Team Manager",
-            "team": "OFFICE BTWIN",
-            "department": "AUTRES",
-            "phone": "",
-            "email": "",
-            "isTeamManager": true,
-            "isPrestataire": false,
-            "children": []
         },
         {
             "id": "lagante-g",
