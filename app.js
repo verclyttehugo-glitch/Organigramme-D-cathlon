@@ -299,14 +299,15 @@ function renderPersonCard(person, type, peopleMap = null) {
     let html = `<div class="person-card ${type} ${isTeamManager ? 'team-manager' : ''} ${isPrestataire ? 'prestataire' : ''}" data-id="${person.id}">`;
 
     if (isPrestataire) {
-        html += `<div class="prestataire-badge" title="Prestataire Externe">👤 P</div>`;
+        html += `<div class="provider-bubble" title="Prestataire Externe">?</div>`;
     }
 
     // Count prestataires in team if peopleMap is provided
     if (peopleMap && person.children && person.children.length > 0) {
         const teamPrestataireCount = countPrestatairesinTeam(person, peopleMap);
         if (teamPrestataireCount > 0) {
-            html += `<div class="team-prestataire-count" title="${teamPrestataireCount} prestataire(s) dans l'équipe">👥 ${teamPrestataireCount}</div>`;
+            const label = teamPrestataireCount === 1 ? 'Prestataire' : 'Prestataires';
+            html += `<div class="team-prestataire-count" title="${teamPrestataireCount} prestataire(s) dans l'équipe">${teamPrestataireCount} ${label}</div>`;
         }
     }
 

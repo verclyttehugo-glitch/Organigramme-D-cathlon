@@ -468,6 +468,26 @@ body {
     white-space: nowrap;
 }
 
+.provider-bubble {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #007abd;
+    color: #ffffff;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85em;
+    font-weight: bold;
+    border: 2px solid var(--bg-dark);
+    box-shadow: 0 2px 8px rgba(0, 122, 189, 0.6);
+    z-index: 3;
+    cursor: help;
+}
+
 /* ===== VUE GLOBALE ===== */
 .overview-grid {
     display: grid;
