@@ -20,18 +20,14 @@
 
         <!-- NAVIGATION -->
         <div class="controls">
-            <button class="btn btn-view active" onclick="showView('complete')">
-                🌍 VUE GLOBALE
-            </button>
-            <button class="btn btn-view" onclick="showView('process')">
-                🏭 PROCESS & ENG.
-            </button>
-            <button class="btn btn-view" onclick="showView('sports')">
-                🏂 SPORTS / MARQUES
-            </button>
-            <button class="btn btn-view" onclick="showView('transverse')">
-                🔄 TRANSVERSE
-            </button>
+            <div class="dropdown-nav">
+                <select id="view-selector" class="nav-select" onchange="showView(this.value)">
+                    <option value="complete">🌍 VUE GLOBALE</option>
+                    <option value="process">🏭 AXE PROCESS & ENG.</option>
+                    <option value="sports">🏂 AXE SPORTS / MARQUES</option>
+                    <option value="transverse">🔄 MÉTIERS TRANSVERSES</option>
+                </select>
+            </div>
         </div>
 
         <!-- VUES (remplies dynamiquement par app.js) -->
@@ -77,7 +73,7 @@
     </div>
 
     <!-- BOUTON ACCÈS ADMIN (flottant) -->
-    <div class="admin-trigger" onclick="openLoginModal()" title="Accès Administrateur">🔓</div>
+    <div class="admin-trigger" onclick="openLoginModal()" title="Accès Administrateur">🔒</div>
 
     <!-- MODAL CONNEXION -->
     <div id="login-modal" class="admin-modal-overlay">
@@ -85,7 +81,7 @@
             <h2>🔐 Connexion Admin</h2>
             <div class="form-group">
                 <label>Identifiant</label>
-                <input type="text" id="login-username" class="form-input" placeholder="marine ou externe">
+                <input type="text" id="login-username" class="form-input" placeholder="Entrez votre identifiant">
             </div>
             <div class="form-group">
                 <label>Mot de passe</label>

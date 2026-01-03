@@ -35,12 +35,11 @@ function showView(viewName) {
 }
 
 function renderView(viewName) {
-    // Mise à jour des boutons actifs
-    document.querySelectorAll('.btn-view').forEach(btn => {
-        btn.classList.remove('active');
-    });
-    event?.target?.classList.add('active') ||
-        document.querySelector(`.btn-view:nth-child(${viewName === 'complete' ? 1 : viewName === 'process' ? 2 : viewName === 'sports' ? 3 : 4})`).classList.add('active');
+    // Update dropdown selection
+    const selector = document.getElementById('view-selector');
+    if (selector) {
+        selector.value = viewName;
+    }
 
     // Afficher la section active
     document.querySelectorAll('.org-section').forEach(section => {
