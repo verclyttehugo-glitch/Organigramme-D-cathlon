@@ -4,5 +4,5 @@ Codes_Acces.txt
 Decathlon_contacts_extraits.xlsx
 Organigramme DECATHLON (1).pdf
 temp_extract.zip
-temp_extract/
+# temp_extract/
 *.png
