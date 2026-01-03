@@ -52,9 +52,32 @@ Une fois connecté en admin :
 
 ✨ **Résultat :** Le badge violet apparaît immédiatement avec le compteur à jour.
 
+✨ **Résultat :** Le badge violet apparaît immédiatement avec le compteur à jour.
+
 ---
 
-## 🔍 4. Visualisation & Filtres
+## ➕ 4. Gestion des Postes (Ajouter / Supprimer)
+
+Vous avez la main totale sur la structure de l'organigramme.
+
+### Créer un nouveau poste
+1.  Dans la barre noire d'administration (en haut), cliquez sur **`➕ Ajouter`**.
+2.  Une fenêtre s'ouvre :
+    *   **Axe :** Choisissez le département (ex: Process, Sports...).
+    *   **Manager :** Sélectionnez le manager hiérarchique direct dans la liste.
+    *   **Nom et Titre :** Remplissez les infos.
+3.  Cliquez sur **`Créer`**. La nouvelle carte s'ajoute immédiatement sous son manager.
+
+### Supprimer un poste
+1.  Cliquez sur le **crayon (✏️)** du poste à supprimer.
+2.  En bas à gauche de la fenêtre, cliquez sur le bouton rouge **`🗑️ Supprimer`**.
+3.  Confirmez l'alerte.
+
+> **Attention :** Si vous supprimez un manager, pensez à réaffecter ses équipes avant !
+
+---
+
+## 🔍 5. Visualisation & Filtres
 
 ### Le Bouton Magique
 En haut de la page, cliquez sur le bouton violet :
