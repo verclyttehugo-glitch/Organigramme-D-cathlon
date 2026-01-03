@@ -191,7 +191,7 @@ function renderCompleteTreeNode(person, peopleMap, level = 0) {
     html += `
         <div class="node-content ${hasChildren ? 'has-children' : ''}" onclick="${hasChildren ? `toggleNode('${person.id}')` : ''}">
             ${hasChildren ? `<span class="toggle-icon">${isExpanded ? '▼' : '▶'}</span>` : '<span class="leaf-icon">●</span>'}
-            ${renderPersonCard(person, cardType)}
+            ${renderPersonCard(person, cardType, peopleMap)}
         </div>
     `;
 
@@ -234,12 +234,16 @@ function renderTreeNode(person, allData, level = 0) {
     const hasChildren = children.length > 0;
     const isExpanded = level < 2; // Expand first 2 levels by default
 
+    // Build peopleMap for this axis
+    const peopleMap = {};
+    allData.forEach(p => peopleMap[p.id] = p);
+
     let html = `<div class="tree-node" data-id="${person.id}" data-level="${level}">`;
 
     html += `
         <div class="node-content ${hasChildren ? 'has-children' : ''}" onclick="${hasChildren ? `toggleNode('${person.id}')` : ''}">
             ${hasChildren ? `<span class="toggle-icon">${isExpanded ? '▼' : '▶'}</span>` : '<span class="leaf-icon">●</span>'}
-            ${renderPersonCard(person, person.axis || 'process')}
+            ${renderPersonCard(person, person.axis || 'process', peopleMap)}
         </div>
     `;
 
@@ -269,7 +273,25 @@ window.toggleNode = function (personId) {
     }
 }
 
-function renderPersonCard(person, type) {
+function countPrestatairesinTeam(person, peopleMap) {
+    let count = 0;
+
+    function countRecursive(personId) {
+        const p = peopleMap[personId];
+        if (!p) return;
+
+        if (p.isPrestataire) {
+            count++;
+        }
+
+        p.children.forEach(childId => countRecursive(childId));
+    }
+
+    person.children.forEach(childId => countRecursive(childId));
+    return count;
+}
+
+function renderPersonCard(person, type, peopleMap = null) {
     const isTeamManager = person.isTeamManager || false;
     const isPrestataire = person.isPrestataire || false;
     const showContact = true; // Always show contact info
@@ -278,6 +300,14 @@ function renderPersonCard(person, type) {
 
     if (isPrestataire) {
         html += `<div class="prestataire-badge" title="Prestataire Externe">👤 P</div>`;
+    }
+
+    // Count prestataires in team if peopleMap is provided
+    if (peopleMap && person.children && person.children.length > 0) {
+        const teamPrestataireCount = countPrestatairesinTeam(person, peopleMap);
+        if (teamPrestataireCount > 0) {
+            html += `<div class="team-prestataire-count" title="${teamPrestataireCount} prestataire(s) dans l'équipe">👥 ${teamPrestataireCount}</div>`;
+        }
     }
 
     html += `<div class="person-name">${person.name}</div>`;
