@@ -5,67 +5,117 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manuel Utilisateur - Organigramme Decathlon</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <style>
+        :root {
+            --primary: #007abd;
+            --dark: #050505;
+            --light: #f7fafc;
+            --text-main: #2d3748;
+            --text-muted: #718096;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 800px;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: var(--text-main);
+            max-width: 900px;
             margin: 0 auto;
-            padding: 40px;
+            padding: 60px 40px;
+            background-color: white;
         }
 
         h1 {
-            color: #0082c3;
-            /* Decathlon Blue */
-            border-bottom: 2px solid #0082c3;
-            padding-bottom: 10px;
+            color: var(--dark);
+            font-weight: 800;
+            font-size: 2.5em;
+            letter-spacing: -0.02em;
+            margin-bottom: 30px;
+            border-bottom: 4px solid var(--primary);
+            padding-bottom: 20px;
         }
 
         h2 {
-            color: #2d3748;
-            margin-top: 30px;
-            border-bottom: 1px solid #e2e8f0;
-            padding-bottom: 5px;
+            color: var(--primary);
+            font-weight: 700;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            font-size: 1.8em;
         }
 
         h3 {
-            color: #4a5568;
-            margin-top: 20px;
+            color: var(--dark);
+            margin-top: 30px;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 20px;
         }
 
         .code-block {
-            background-color: #f7fafc;
+            background-color: var(--light);
             border: 1px solid #e2e8f0;
-            padding: 15px;
-            border-radius: 5px;
-            font-family: monospace;
-            margin: 10px 0;
+            padding: 25px;
+            border-radius: 12px;
+            font-family: 'Fira Code', monospace;
+            margin: 20px 0;
+            font-size: 0.95em;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+        }
+
+        .code-block strong {
+            color: var(--primary);
+            display: block;
+            margin-bottom: 10px;
+            font-family: 'Inter', sans-serif;
         }
 
         .note {
             background-color: #ebf8ff;
             border-left: 4px solid #4299e1;
-            padding: 15px;
-            margin: 20px 0;
+            padding: 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 30px 0;
         }
 
         .warning {
             background-color: #fff5f5;
             border-left: 4px solid #f56565;
-            padding: 15px;
-            margin: 20px 0;
+            padding: 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 30px 0;
+        }
+
+        .badge {
+            background: var(--primary);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: 700;
+        }
+
+        ol {
+            padding-left: 20px;
+            margin-bottom: 30px;
+        }
+
+        li {
+            margin-bottom: 12px;
         }
 
         @media print {
             body {
                 padding: 0;
-                font-size: 12pt;
+                font-size: 11pt;
             }
 
-            a {
-                text-decoration: none;
-                color: #333;
+            .no-print {
+                display: none;
             }
         }
     </style>
@@ -73,66 +123,79 @@
 
 <body>
 
-    <h1>Manuel Utilisateur - Organigramme Decathlon</h1>
-    <p><em>Version Administrateur 1.0</em></p>
+    <header>
+        <h1>Manuel Utilisateur - Organigramme Decathlon</h1>
+        <p style="color: var(--text-muted); font-size: 1.1em;">Version Administrateur 1.1 — <span
+                class="badge">PREMIUM</span></p>
+    </header>
 
-    <h2>1. Vue d'ensemble</h2>
-    <p>Ce document explique comment utiliser l'interface d'administration de l'organigramme pour mettre à jour les
-        équipes Process, Sports et Transverses en toute autonomie.</p>
+    <section>
+        <h2>1. Vue d'ensemble</h2>
+        <p>Ce document détaille l'utilisation de la plateforme de visualisation et de gestion de l'organigramme
+            Decathlon. L'application permet une navigation fluide entre les axes métier (<strong>Process</strong>,
+            <strong>Sports</strong>, <strong>Transverse</strong>) et offre des outils d'édition avancés pour les
+            administrateurs.</p>
+    </section>
 
-    <h2>2. Codes d'Accès Administrateur</h2>
-    <p>Pour accéder au mode édition, cliquez sur le cadenas 🔓 en bas à droite de l'écran.</p>
+    <section>
+        <h2>2. Accès au Mode Édition</h2>
+        <p>L'interface d'édition est sécurisée. Pour l'activer, repérez l'icône de cadenas flottante 🔓 en bas à droite
+            de votre écran.</p>
 
-    <div class="code-block">
-        <strong>Accès Super Admin (Marine GRAHAM)</strong><br>
-        Utilisateur : <code>marine</code><br>
-        Mot de passe : <code>decathlon2024</code>
-    </div>
+        <div class="code-block">
+            <strong>Compte Super Administrateur</strong>
+            Utilisateur: <code>marine</code><br>
+            Mot de passe: <code>decathlon2024</code>
+        </div>
 
-    <div class="code-block">
-        <strong>Accès Consultant (Consultant Externe)</strong><br>
-        Utilisateur : <code>externe</code><br>
-        Mot de passe : <code>externe2024</code>
-    </div>
+        <div class="code-block">
+            <strong>Compte Éditeur / Consultant</strong>
+            Utilisateur: <code>externe</code><br>
+            Mot de passe: <code>externe2024</code>
+        </div>
+    </section>
 
-    <h2>3. Guide d'Utilisation</h2>
+    <section>
+        <h2>3. Fonctionnalités Administrateur</h2>
 
-    <h3>A. Modifier une personne</h3>
-    <ol>
-        <li>Assurez-vous d'être en <strong>MODE ADMIN</strong> (barre bleue visible).</li>
-        <li>Cliquez sur <strong>n'importe quelle case</strong> de l'organigramme.</li>
-        <li>Un formulaire s'ouvre pour modifier le Nom, Titre, Téléphone, etc.</li>
-        <li>Cliquez sur <strong>Enregistrer</strong>.</li>
-    </ol>
+        <h3>A. Modification d'une fiche</h3>
+        <ol>
+            <li>Survolez le collaborateur ciblé pour faire apparaître l'icône <strong>✏️</strong>.</li>
+            <li>Cliquez sur l'icône pour ouvrir le panneau d'édition latéral.</li>
+            <li>Mettez à jour les champs (Nom, Titre, Contact, Téléphone).</li>
+            <li>Validez avec le bouton <strong>Enregistrer</strong>.</li>
+        </ol>
 
-    <h3>B. Ajouter une nouvelle personne</h3>
-    <ol>
-        <li>Survolez la case du futur manager.</li>
-        <li>Cliquez sur le bouton <strong>➕</strong> qui apparaît.</li>
-        <li>Saisissez le nom et validez.</li>
-        <li>Une nouvelle fiche est créée. Cliquez dessus pour compléter les infos.</li>
-    </ol>
+        <h3>B. Ajout de collaborateurs</h3>
+        <ol>
+            <li>Survolez le manager sous lequel vous souhaitez ajouter un membre.</li>
+            <li>Cliquez sur l'icône <strong>➕</strong>.</li>
+            <li>Suivez les instructions à l'écran pour définir le nom du nouveau membre.</li>
+        </ol>
 
-    <h3>C. Supprimer une personne</h3>
-    <div class="warning">
-        <strong>Attention :</strong> Supprimer un manager supprime aussi toute son équipe !
-    </div>
-    <ol>
-        <li>Cliquez sur la fiche à supprimer.</li>
-        <li>Dans le formulaire, cliquez sur le bouton rouge <strong>🗑️ Supprimer</strong>.</li>
-        <li>Confirmez l'action.</li>
-    </ol>
+        <div class="warning">
+            <strong>Important :</strong> La suppression d'un manager est une action irréversible qui impacte également
+            la visibilité de ses collaborateurs directs.
+        </div>
+    </section>
 
-    <h2>4. Sauvegarde des Données (Important)</h2>
-    <p>Les modifications sont stockées dans votre navigateur. Pour éviter de tout perdre en cas de nettoyage du cache,
-        faites des sauvegardes régulières.</p>
+    <section>
+        <h2>4. Persistance & Exportation</h2>
+        <p>L'application utilise une architecture légère sans base de données serveur pour garantir rapidité et
+            portabilité. Les modifications sont enregistrées localement dans votre navigateur.</p>
 
-    <ul>
-        <li><strong>Pour Sauvegarder :</strong> Cliquez sur <strong>📥 Exporter</strong>. Conservez le fichier
-            <code>data_backup.js</code> téléchargé.</li>
-        <li><strong>Pour Restaurer :</strong> Cliquez sur <strong>📤 Importer</strong> et sélectionnez votre fichier de
-            sauvegarde.</li>
-    </ul>
+        <div class="note">
+            <strong>Pour fixer vos changements :</strong><br>
+            Utilisez le bouton <strong>📥 Exporter</strong> dans la barre supérieure pour générer un nouveau fichier de
+            données. Ce fichier peut être utilisé pour mettre à jour durablement la plateforme ou être partagé avec
+            d'autres administrateurs via le bouton <strong>📤 Importer</strong>.
+        </div>
+    </section>
+
+    <footer
+        style="margin-top: 60px; padding-top: 20px; border-top: 1px solid #e2e8f0; color: var(--text-muted); font-size: 0.9em;">
+        &copy; 2024 Decathlon United - Guide Technique Admin
+    </footer>
 
 </body>
 
