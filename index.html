@@ -7,6 +7,37 @@
     <title>Organigramme Decathlon - Structuré par Axe</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="admin.css">
+    <style>
+        /* ADMIN STYLES FALLBACK */
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            padding: 10px;
+            background: rgba(159, 122, 234, 0.1);
+            border-radius: 8px;
+            border: 1px solid rgba(159, 122, 234, 0.3);
+            margin-bottom: 15px;
+        }
+
+        .form-checkbox {
+            width: 20px;
+            height: 20px;
+            accent-color: #9f7aea;
+        }
+
+        .checkbox-label span {
+            color: #cbd5e0;
+        }
+
+        #contractors-fields,
+        #contractors-type-field {
+            margin-left: 20px;
+            padding-left: 20px;
+            border-left: 3px solid rgba(159, 122, 234, 0.4);
+        }
+    </style>
 </head>
 
 <body>
@@ -32,6 +63,11 @@
                     <option value="transverse">🔄 MÉTIERS TRANSVERSES</option>
                 </select>
             </div>
+
+            <!-- ⭐ FILTER BUTTON FOR CONTRACTORS -->
+            <button class="btn-filter" onclick="toggleContractorsFilter()" id="btn-contractors">
+                👥 AVEC PRESTATAIRES
+            </button>
         </div>
 
         <!-- VUES (remplies dynamiquement par app.js) -->
@@ -109,9 +145,29 @@
                 <label>Nom Complet</label>
                 <input type="text" id="edit-name" class="form-input">
             </div>
+
             <div class="form-group">
                 <label>Titre / Poste</label>
                 <input type="text" id="edit-title" class="form-input">
+            </div>
+
+            <!-- ⭐ MANAGED CONTRACTORS FIELDS -->
+            <div class="form-group">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="edit-has-contractors" class="form-checkbox">
+                    <span>Ce poste gère des prestataires externes</span>
+                </label>
+            </div>
+
+            <div class="form-group" id="contractors-fields" style="display: none;">
+                <label>Nombre de prestataires gérés</label>
+                <input type="number" id="edit-contractors-count" class="form-input" min="0" max="999" value="0">
+            </div>
+
+            <div class="form-group" id="contractors-type-field" style="display: none;">
+                <label>Type de prestataires (optionnel)</label>
+                <input type="text" id="edit-contractors-type" class="form-input"
+                    placeholder="Ex: Consultants IT, Designers freelance...">
             </div>
             <div class="form-group">
                 <label>Téléphone</label>

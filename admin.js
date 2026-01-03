@@ -47,6 +47,29 @@ function setupAdminEvents() {
     });
 
     document.getElementById('import-file').addEventListener('change', importData);
+
+    // ⭐ Toggle champs prestataires
+    const contractorCheckbox = document.getElementById('edit-has-contractors');
+    if (contractorCheckbox) {
+        contractorCheckbox.addEventListener('change', toggleContractorsFields);
+    }
+}
+
+// ⭐ Fonction pour basculer l'affichage des champs
+function toggleContractorsFields() {
+    const hasContractors = document.getElementById('edit-has-contractors').checked;
+    const contractorsFields = document.getElementById('contractors-fields');
+    const contractorsTypeField = document.getElementById('contractors-type-field');
+
+    if (contractorsFields && contractorsTypeField) {
+        if (hasContractors) {
+            contractorsFields.style.display = 'block';
+            contractorsTypeField.style.display = 'block';
+        } else {
+            contractorsFields.style.display = 'none';
+            contractorsTypeField.style.display = 'none';
+        }
+    }
 }
 
 function checkAdminSession() {
@@ -130,6 +153,17 @@ function editPerson(personId) {
     document.getElementById('edit-phone').value = person.phone || '';
     document.getElementById('edit-email').value = person.email || '';
 
+    // ⭐ REMPLIR CHAMPS PRESTATAIRES
+    const hasContractors = person.hasContractors || false;
+    const checkbox = document.getElementById('edit-has-contractors');
+    if (checkbox) checkbox.checked = hasContractors;
+
+    document.getElementById('edit-contractors-count').value = person.contractorsCount || 0;
+    document.getElementById('edit-contractors-type').value = person.contractorsType || '';
+
+    // Mettre à jour visibilité
+    toggleContractorsFields();
+
     // Afficher la modal
     document.getElementById('edit-modal').style.display = 'flex';
 }
@@ -150,10 +184,26 @@ function saveEdit() {
     const { person } = result;
 
     // Mettre à jour les données
+    // Mettre à jour les données
     person.name = document.getElementById('edit-name').value;
     person.title = document.getElementById('edit-title').value;
     person.phone = document.getElementById('edit-phone').value;
     person.email = document.getElementById('edit-email').value;
+
+    // ⭐ SAUVEGARDER PRESTATAIRES
+    person.hasContractors = document.getElementById('edit-has-contractors').checked;
+
+    if (person.hasContractors) {
+        person.contractorsCount = parseInt(document.getElementById('edit-contractors-count').value) || 0;
+        person.contractorsType = document.getElementById('edit-contractors-type').value;
+    } else {
+        // Reset si désactivé
+        person.contractorsCount = 0;
+        person.contractorsType = '';
+    }
+
+    // Mettre à jour les stats globales immediatement
+    updateStats();
 
     // Fermer la modal
     closeEditModal();

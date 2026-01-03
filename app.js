@@ -2,6 +2,7 @@
 
 // État global
 let currentView = 'complete';
+let showOnlyContractors = false;  // ⭐ NEW - Filter for positions with contractors
 
 // Initialisation au chargement de la page
 document.addEventListener('DOMContentLoaded', () => {
@@ -23,17 +24,34 @@ function updateStats() {
     const total = orgConfig.totalEmployees;
     document.getElementById('total-count').textContent = `${total} collaborateurs`;
 
-    // Calculate prestataires
-    const prestataires = [
-        ...ORG_DATA.direction,
-        ...ORG_DATA.process,
-        ...ORG_DATA.sports,
-        ...ORG_DATA.transverse
-    ].filter(p => p.isPrestataire).length;
+    // 1. Prestataires individuels (Badge bleu ?)
+    let individualContractors = 0;
+    ['direction', 'process', 'sports', 'transverse'].forEach(key => {
+        individualContractors += ORG_DATA[key].filter(p => p.isPrestataire === true).length;
+    });
+
+    // 2. Prestataires gérés (Badge violet 👥)
+    let totalManagedContractors = 0;
+    let postesWithContractors = 0;
+    ['direction', 'process', 'sports', 'transverse'].forEach(key => {
+        ORG_DATA[key].forEach(person => {
+            if (person.hasContractors) {
+                totalManagedContractors += person.contractorsCount || 0;
+                postesWithContractors++;
+            }
+        });
+    });
 
     const prestataireEl = document.getElementById('prestataire-count');
     if (prestataireEl) {
-        prestataireEl.innerHTML = `<span class="prestataire-badge-inline" title="Prestataires Externes">👤 ${prestataires} Prestataires</span>`;
+        prestataireEl.innerHTML = `
+            <span class="prestataire-badge-inline" title="Personnes prestataires (Badge ?)">
+                🔵 ${individualContractors} Prestataires
+            </span>
+            <span class="contractors-badge-inline" title="Prestataires gérés externe (Badge 👥)">
+                👥 ${totalManagedContractors} Externes gérés
+            </span>
+        `;
     }
 
     // Add null checks for safety
@@ -294,9 +312,11 @@ function countPrestatairesinTeam(person, peopleMap) {
 function renderPersonCard(person, type, peopleMap = null) {
     const isTeamManager = person.isTeamManager || false;
     const isPrestataire = person.isPrestataire || false;
+    const hasContractors = person.hasContractors || false;
+    const contractorsCount = person.contractorsCount || 0;
     const showContact = true; // Always show contact info
 
-    let html = `<div class="person-card ${type} ${isTeamManager ? 'team-manager' : ''} ${isPrestataire ? 'prestataire' : ''}" data-id="${person.id}">`;
+    let html = `<div class="person-card ${type} ${isTeamManager ? 'team-manager' : ''} ${isPrestataire ? 'prestataire' : ''} ${hasContractors ? 'has-contractors' : ''}" data-id="${person.id}">`;
 
     if (isPrestataire) {
         html += `<div class="provider-bubble" title="Prestataire Externe">?</div>`;
@@ -333,6 +353,18 @@ function renderPersonCard(person, type, peopleMap = null) {
         html += '<div class="team-manager-badge">⭐ Manager</div>';
     }
 
+    // ⭐ NEW - Purple badge for positions managing contractors
+    if (hasContractors && contractorsCount > 0) {
+        const contractorLabel = contractorsCount > 1 ? 'prestataires' : 'prestataire';
+        html += `<div class="contractors-badge" title="${person.contractorsType || 'Prestataires externes'}">
+                   👥 ${contractorsCount} ${contractorLabel}
+                 </div>`;
+
+        if (person.contractorsType) {
+            html += `<div class="contractors-type">${person.contractorsType}</div>`;
+        }
+    }
+
     if (window.isAdminMode) {
         html += `<button class="btn-edit" onclick="event.stopPropagation(); editPerson('${person.id}')">✏️</button>`;
     }
@@ -362,3 +394,31 @@ function findPersonById(id) {
     }
     return null;
 }
+
+// ⭐ NEW - Contractors Filter Functions
+function toggleContractorsFilter() {
+    showOnlyContractors = !showOnlyContractors;
+
+    const btn = document.getElementById('btn-contractors');
+    if (btn) {
+        if (showOnlyContractors) {
+            btn.classList.add('active');
+            btn.innerHTML = '👥 AVEC PRESTATAIRES ✓';
+        } else {
+            btn.classList.remove('active');
+            btn.innerHTML = '👥 AVEC PRESTATAIRES';
+        }
+    }
+
+    renderView(currentView);
+}
+
+function filterByContractors(data) {
+    if (!showOnlyContractors) {
+        return data;
+    }
+    return data.filter(person => person.hasContractors === true);
+}
+
+// Expose to window for onclick handlers
+window.toggleContractorsFilter = toggleContractorsFilter;
