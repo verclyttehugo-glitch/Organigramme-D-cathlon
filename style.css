@@ -265,21 +265,21 @@ body {
 .tree-container {
     background: var(--bg-header);
     border-radius: 20px;
-    padding: 20px;
+    padding: 30px;
     border: 2px solid var(--border-color);
     margin-bottom: 30px;
 }
 
 .view-title {
     text-align: center;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
     color: var(--text-primary);
     font-size: 1.8em;
     letter-spacing: 1px;
 }
 
 .scrollable-content {
-    max-height: 80vh;
+    max-height: 75vh;
     overflow-y: auto;
     padding-right: 15px;
     scrollbar-width: thin;
@@ -287,7 +287,12 @@ body {
 }
 
 .scrollable-content::-webkit-scrollbar {
-    width: 6px;
+    width: 8px;
+}
+
+.scrollable-content::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+    border-radius: 10px;
 }
 
 .scrollable-content::-webkit-scrollbar-thumb {
@@ -295,39 +300,91 @@ body {
     border-radius: 10px;
 }
 
+.scrollable-content::-webkit-scrollbar-thumb:hover {
+    background: #3182ce;
+}
+
 .tree-node {
-    margin-top: 10px;
+    margin-bottom: 8px;
     position: relative;
-    border-left: 1px dashed rgba(255, 255, 255, 0.1);
+    padding-left: 0;
 }
 
 .node-content {
     display: flex;
-    align-items: center;
-    gap: 10px;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 8px;
+    position: relative;
 }
 
 .node-content.has-children {
     cursor: pointer;
 }
 
+.node-content.has-children:hover .toggle-icon {
+    color: var(--text-primary);
+    transform: scale(1.2);
+}
+
 .toggle-icon {
-    font-size: 0.8em;
+    font-size: 0.9em;
     color: var(--color-process);
-    width: 20px;
-    text-align: center;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(66, 153, 225, 0.1);
+    border-radius: 4px;
+    flex-shrink: 0;
+    margin-top: 15px;
+    transition: all 0.2s ease;
 }
 
 .leaf-icon {
-    font-size: 1.2em;
+    font-size: 0.7em;
     color: var(--text-muted);
-    width: 20px;
-    text-align: center;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 15px;
 }
 
 .node-children {
-    border-left: 2px solid rgba(66, 153, 225, 0.1);
-    margin-top: 5px;
+    margin-left: 36px;
+    padding-left: 20px;
+    border-left: 2px solid rgba(66, 153, 225, 0.2);
+    position: relative;
+}
+
+.node-children::before {
+    content: '';
+    position: absolute;
+    left: -2px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, rgba(66, 153, 225, 0.3) 0%, transparent 100%);
+}
+
+.node-children .tree-node:last-child {
+    margin-bottom: 0;
+}
+
+/* Enhanced person card in tree */
+.tree-node .person-card {
+    flex: 1;
+    margin-bottom: 0;
+    transition: all 0.3s ease;
+}
+
+.tree-node .person-card:hover {
+    transform: translateX(8px);
+    box-shadow: 0 6px 20px rgba(66, 153, 225, 0.4);
 }
 
 /* ===== PRESTATAIRES ===== */

@@ -147,13 +147,13 @@ function renderTreeView(axis) {
 function renderTreeNode(person, allData, level = 0) {
     const children = allData.filter(p => person.children.includes(p.id));
     const hasChildren = children.length > 0;
-    const isExpanded = level < 1; // Expand first level by default
+    const isExpanded = level < 2; // Expand first 2 levels by default
 
-    let html = `<div class="tree-node" data-id="${person.id}" style="margin-left: ${level > 0 ? 25 : 0}px">`;
+    let html = `<div class="tree-node" data-id="${person.id}" data-level="${level}">`;
 
     html += `
         <div class="node-content ${hasChildren ? 'has-children' : ''}" onclick="${hasChildren ? `toggleNode('${person.id}')` : ''}">
-            ${hasChildren ? `<span class="toggle-icon">${isExpanded ? '▼' : '▶'}</span>` : '<span class="leaf-icon">○</span>'}
+            ${hasChildren ? `<span class="toggle-icon">${isExpanded ? '▼' : '▶'}</span>` : '<span class="leaf-icon">●</span>'}
             ${renderPersonCard(person, person.axis || 'process')}
         </div>
     `;
