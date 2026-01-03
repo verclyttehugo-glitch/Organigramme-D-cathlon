@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organigramme Decathlon - Structuré par Axe</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌳 Organigramme Decathlon</h1>
+            <p style="color: #a0aec0; margin-top: 10px;">Classification par Axes : PROCESS | SPORTS | TRANSVERSE</p>
+        </div>
+
+        <div class="controls">
+            <button class="btn btn-view active" onclick="showView('complete')" id="btn-complete">🌍 VUE GLOBALE</button>
+            <button class="btn btn-view" onclick="showView('process')" id="btn-process">🏭 PROCESS & ENG.</button>
+            <button class="btn btn-view" onclick="showView('sports')" id="btn-sports">🏂 SPORTS / MARQUES</button>
+            <button class="btn btn-view" onclick="showView('transverse')" id="btn-transverse">🔄 TRANSVERSE</button>
+        </div>
+
+        <!-- VUES -->
+        <div class="org-section active" id="section-complete"></div>
+        <div class="org-section" id="section-process"></div>
+        <div class="org-section" id="section-sports"></div>
+        <div class="org-section" id="section-transverse"></div>
+        <div style="max-width: 1200px; margin: 0 auto; padding: 40px;">
+            <h2 style="text-align: center; color: #ffffff; font-size: 2em; margin-bottom: 40px;">
+                📚 Classification par Axes Métiers
+            </h2>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                <!-- AXE PROCESS -->
+                <div style="background: #1a365d; padding: 25px; border-radius: 15px; border-left: 8px solid #4299e1;">
+                    <h3 style="color: #ffffff; margin-bottom: 10px;">🔵 AXE PROCESS</h3>
+                    <p style="color: #a0aec0; font-size: 0.9em; line-height: 1.6;">
+                        Engineering, Industrialisation, Tests, Laboratoires, Manufacturing, Supply, Méthodes et
+                        amélioration continue.
+                    </p>
+                </div>
+
+                <!-- AXE SPORTS -->
+                <div style="background: #431a1a; padding: 25px; border-radius: 15px; border-left: 8px solid #e53e3e;">
+                    <h3 style="color: #ffffff; margin-bottom: 10px;">🔴 AXE SPORTS / MARQUES</h3>
+                    <p style="color: #a0aec0; font-size: 0.9em; line-height: 1.6;">
+                        Organisation par sport (Kipsta, Tribord, Btwin, etc.). Regroupe les rôles techniques et
+                        managers liés à chaque sport.
+                    </p>
+                </div>
+
+                <!-- AXE TRANSVERSE -->
+                <div style="background: #234e52; padding: 25px; border-radius: 15px; border-left: 8px solid #38b2ac;">
+                    <h3 style="color: #ffffff; margin-bottom: 10px;">🟢 MÉTIERS TRANSVERSES</h3>
+                    <p style="color: #a0aec0; font-size: 0.9em; line-height: 1.6;">
+                        Qualité, Sustainability / RSE, Achats, Data / Digital et autres fonctions support
+                        transversales.
+                    </p>
+                </div>
+            </div>
+
+            <div
+                style="margin-top: 30px; background: #2d3748; padding: 20px; border-radius: 10px; border: 2px solid #ecc94b;">
+                <h3 style="color: #ecc94b; margin-bottom: 10px;">⭐ Team Managers</h3>
+                <p style="color: #ffffff; font-size: 0.9em;">
+                    Les rôles de **Team Manager** sont mis en évidence avec une bordure dorée pour une visibilité
+                    immédiate.
+                </p>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- BARRE D'ADMINISTRATION (Masquée par défaut) -->
+    <div id="admin-bar" class="admin-bar">
+        <div class="admin-info">
+            <span>🛡️ MODE ADMIN</span>
+            <span style="opacity: 0.5;">|</span>
+            <span id="admin-user-name">Utilisateur</span>
+        </div>
+        <div class="admin-actions">
+            <button class="btn btn-admin" id="btn-export" title="Télécharger data.js">📥 Exporter</button>
+            <button class="btn btn-admin" id="btn-import" title="Importer data.js">📤 Importer</button>
+            <button class="btn btn-admin btn-logout" id="btn-logout">Déconnexion</button>
+        </div>
+    </div>
+
+    <!-- BOUTON D'ACCÈS LOGIN (Flottant) -->
+    <div class="admin-trigger" title="Accès Administrateur">
+        🔓
+    </div>
+
+    <!-- MODAL DE CONNEXION -->
+    <div id="login-modal" class="admin-modal-overlay">
+        <div class="login-box">
+            <h2>🔐 Connexion Admin</h2>
+            <div class="form-group">
+                <label>Identifiant</label>
+                <input type="text" id="login-username" class="form-input" placeholder="ex: marine ou externe">
+            </div>
+            <div class="form-group">
+                <label>Mot de passe</label>
+                <input type="password" id="login-password" class="form-input" placeholder="••••••••">
+            </div>
+            <div id="login-error" style="display:none; margin-bottom:15px;"></div>
+            <button id="btn-login-submit" class="btn-login">Se connecter</button>
+        </div>
+    </div>
+
+    <!-- MODAL D'ÉDITION -->
+    <div id="edit-modal" class="admin-modal-overlay">
+        <div class="login-box edit-modal">
+            <h2>✏️ Éditer Personne</h2>
+            <input type="hidden" id="edit-original-id">
+
+            <div class="form-group">
+                <label>Nom Complet</label>
+                <input type="text" id="edit-name" class="form-input">
+            </div>
+
+            <div class="form-group">
+                <label>Titre / Poste</label>
+                <input type="text" id="edit-title" class="form-input">
+            </div>
+
+            <div class="form-group">
+                <label>Téléphone</label>
+                <input type="text" id="edit-phone" class="form-input">
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input type="text" id="edit-email" class="form-input">
+            </div>
+
+            <div class="modal-actions" style="justify-content: space-between;">
+                <button id="btn-edit-delete" class="btn-admin btn-delete">🗑️ Supprimer</button>
+                <div style="display: flex; gap: 10px;">
+                    <button id="btn-edit-cancel" class="btn-admin btn-cancel">Annuler</button>
+                    <button id="btn-edit-save" class="btn-login btn-save"
+                        style="width: auto; padding: 0 20px;">Enregistrer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <input type="file" id="import-file" style="display: none;" accept=".js,.json,.txt">
+
+    <!-- Scripts -->
+    <script src="data.js"></script>
+    <script src="admin.js"></script> <!-- Script admin ajouté -->
+    <script src="app.js"></script>
+</body>
+
+</html>
