@@ -1,7 +1,8 @@
 // app.js - Logique d'affichage et navigation de l'organigramme
 
 // État global
-let currentView = 'complete';
+// État global
+let currentView = 'hierarchy';
 let showOnlyContractors = false;  // ⭐ NEW - Filter for positions with contractors
 
 // Initialisation au chargement de la page
@@ -14,7 +15,8 @@ function initializeApp() {
     updateStats();
 
     // Afficher la vue par défaut
-    renderView('complete');
+    // Afficher la vue par défaut
+    renderView('hierarchy');
 
     // Vérifier si session admin active
     checkAdminSession();
@@ -81,10 +83,8 @@ function renderView(viewName) {
     section.classList.add('active');
 
     // Générer le contenu
+    // Générer le contenu
     switch (viewName) {
-        case 'complete':
-            section.innerHTML = renderCompleteView();
-            break;
         case 'hierarchy':
             section.innerHTML = renderCompleteHierarchy();
             break;
@@ -103,58 +103,7 @@ function renderView(viewName) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-function renderCompleteView() {
-    let html = '<div class="overview-grid">';
 
-    // Direction
-    if (ORG_DATA.direction && ORG_DATA.direction.length > 0) {
-        html += `
-            <div class="overview-card">
-                <h3>⭐ DIRECTION</h3>
-                <div class="people-grid">
-                    ${ORG_DATA.direction.map(p => renderPersonCard(p, 'executive')).join('')}
-                </div>
-            </div>
-        `;
-    }
-
-    // Process
-    html += `
-        <div class="overview-card process">
-            <h3>🔵 PROCESS & ENGINEERING</h3>
-            <p>${orgConfig.departments.process} collaborateurs</p>
-            <p style="margin-top: 10px; color: var(--text-secondary);">
-                Engineering, Industrialisation, Tests, Laboratoires
-            </p>
-        </div>
-    `;
-
-    // Sports
-    html += `
-        <div class="overview-card sports">
-            <h3>🔴 SPORTS / MARQUES</h3>
-            <p>${orgConfig.departments.sports} collaborateurs</p>
-            <p style="margin-top: 10px; color: var(--text-secondary);">
-                Business Units, Design, Innovation
-            </p>
-        </div>
-    `;
-
-    // Transverse
-    html += `
-        <div class="overview-card transverse">
-            <h3>🟢 TRANSVERSE</h3>
-            <p>${orgConfig.departments.transverse} collaborateurs</p>
-            <p style="margin-top: 10px; color: var(--text-secondary);">
-                Achats, Sustainability, Qualité, Digital, Support
-            </p>
-        </div>
-    `;
-
-    html += '</div>';
-
-    return html;
-}
 
 function renderCompleteHierarchy() {
     // Combine all axes to find the true root
