@@ -259,7 +259,7 @@ window.toggleNode = function (personId) {
 function renderPersonCard(person, type) {
     const isTeamManager = person.isTeamManager || false;
     const isPrestataire = person.isPrestataire || false;
-    const showContact = window.isAdminMode || false;
+    const showContact = true; // Always show contact info
 
     let html = `<div class="person-card ${type} ${isTeamManager ? 'team-manager' : ''} ${isPrestataire ? 'prestataire' : ''}" data-id="${person.id}">`;
 
