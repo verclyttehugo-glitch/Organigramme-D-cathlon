@@ -23,6 +23,19 @@ function updateStats() {
     const total = orgConfig.totalEmployees;
     document.getElementById('total-count').textContent = `${total} collaborateurs`;
 
+    // Calculate prestataires
+    const prestataires = [
+        ...ORG_DATA.direction,
+        ...ORG_DATA.process,
+        ...ORG_DATA.sports,
+        ...ORG_DATA.transverse
+    ].filter(p => p.isPrestataire).length;
+
+    const prestataireEl = document.getElementById('prestataire-count');
+    if (prestataireEl) {
+        prestataireEl.innerHTML = `<span class="prestataire-badge-inline" title="Prestataires Externes">👤 ${prestataires} Prestataires</span>`;
+    }
+
     // Add null checks for safety
     if (document.getElementById('count-process')) document.getElementById('count-process').textContent = `${orgConfig.departments.process} postes`;
     if (document.getElementById('count-sports')) document.getElementById('count-sports').textContent = `${orgConfig.departments.sports} postes`;
