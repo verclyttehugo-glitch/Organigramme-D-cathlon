@@ -54,6 +54,9 @@ function renderView(viewName) {
         case 'complete':
             section.innerHTML = renderCompleteView();
             break;
+        case 'hierarchy':
+            section.innerHTML = renderCompleteHierarchy();
+            break;
         case 'process':
             section.innerHTML = renderTreeView('process');
             break;
@@ -119,6 +122,75 @@ function renderCompleteView() {
 
     html += '</div>';
 
+    return html;
+}
+
+function renderCompleteHierarchy() {
+    // Combine all axes to find the true root
+    const allPeople = [
+        ...ORG_DATA.direction,
+        ...ORG_DATA.process,
+        ...ORG_DATA.sports,
+        ...ORG_DATA.transverse
+    ];
+
+    // Build ID to person map
+    const peopleMap = {};
+    allPeople.forEach(p => peopleMap[p.id] = p);
+
+    // Find all people who are children
+    const allChildIds = new Set();
+    allPeople.forEach(p => p.children.forEach(cid => allChildIds.add(cid)));
+
+    // Find root (person with no parent)
+    const roots = allPeople.filter(p => !allChildIds.has(p.id));
+
+    let html = `<div class="tree-container hierarchy-complete">`;
+    html += `<h2 class="view-title">🌳 HIÉRARCHIE COMPLÈTE - ORGANIGRAMME GLOBAL</h2>`;
+    html += `<div class="scrollable-content">`;
+
+    roots.forEach(root => {
+        html += renderCompleteTreeNode(root, peopleMap);
+    });
+
+    html += `</div></div>`;
+    return html;
+}
+
+function renderCompleteTreeNode(person, peopleMap, level = 0) {
+    const children = person.children.map(cid => peopleMap[cid]).filter(Boolean);
+    const hasChildren = children.length > 0;
+    const isExpanded = level < 2;
+
+    // Determine card type based on role
+    let cardType = 'transverse';
+    const role = person.title.toLowerCase();
+    if (role.includes('process') || role.includes('engineer') || role.includes('lab')) {
+        cardType = 'process';
+    } else if (role.includes('sport') || role.includes('design') || role.includes('brand')) {
+        cardType = 'sports';
+    } else if (level === 0) {
+        cardType = 'executive';
+    }
+
+    let html = `<div class="tree-node" data-id="${person.id}" data-level="${level}">`;
+
+    html += `
+        <div class="node-content ${hasChildren ? 'has-children' : ''}" onclick="${hasChildren ? `toggleNode('${person.id}')` : ''}">
+            ${hasChildren ? `<span class="toggle-icon">${isExpanded ? '▼' : '▶'}</span>` : '<span class="leaf-icon">●</span>'}
+            ${renderPersonCard(person, cardType)}
+        </div>
+    `;
+
+    if (hasChildren) {
+        html += `<div class="node-children" id="children-${person.id}" style="display: ${isExpanded ? 'block' : 'none'}">`;
+        children.forEach(child => {
+            html += renderCompleteTreeNode(child, peopleMap, level + 1);
+        });
+        html += `</div>`;
+    }
+
+    html += `</div>`;
     return html;
 }
 

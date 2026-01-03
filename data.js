@@ -1,7 +1,8 @@
 // ==========================================
 // 🌳 DATA.JS - ORGANIGRAMME HIÉRARCHIQUE
-// Généré le 03/01/2026 08:53
+// Généré le 03/01/2026 09:26
 // Total: 553 collaborateurs
+// Classification: Par rôle (compatible avec hiérarchie)
 // ==========================================
 
 const ORG_DATA = {
@@ -18,20 +19,6 @@ const ORG_DATA = {
             "isPrestataire": false,
             "children": [
                 "lopez-j"
-            ]
-        },
-        {
-            "id": "lopez-j",
-            "name": "Javier LOPEZ",
-            "title": "Chief Executive Officer",
-            "team": "",
-            "department": "AUTRES",
-            "phone": "",
-            "email": "",
-            "isTeamManager": false,
-            "isPrestataire": false,
-            "children": [
-                "graham-m"
             ]
         },
         {
@@ -395,6 +382,18 @@ const ORG_DATA = {
             "children": []
         },
         {
+            "id": "coelho-f",
+            "name": "Filipe COELHO",
+            "title": "Supply Chain Manager Industry",
+            "team": "OFFICE BTWIN",
+            "department": "AUTRES",
+            "phone": "",
+            "email": "",
+            "isTeamManager": true,
+            "isPrestataire": false,
+            "children": []
+        },
+        {
             "id": "deliniere-h",
             "name": "Helene DELINIERE",
             "title": "Component and Tech Engineer",
@@ -624,6 +623,25 @@ const ORG_DATA = {
             ]
         },
         {
+            "id": "bielaire-r",
+            "name": "Romain BIELAIRE",
+            "title": "Global Purchasing Manager",
+            "team": "PACK INDUSTRIAL TEAM",
+            "department": "PACK INDUSTRIAL TEAM",
+            "phone": "+33664476667",
+            "email": "romain.bielaire@decathlon.com",
+            "isTeamManager": true,
+            "isPrestataire": false,
+            "children": [
+                "hoang-a",
+                "leroy-c",
+                "mahreen-f",
+                "yao-n",
+                "walk-t",
+                "loks-x"
+            ]
+        },
+        {
             "id": "matt-s",
             "name": "Stephane MATT",
             "title": "Industrial Process Quality Manager",
@@ -699,6 +717,18 @@ const ORG_DATA = {
             "phone": "",
             "email": "",
             "isTeamManager": false,
+            "isPrestataire": false,
+            "children": []
+        },
+        {
+            "id": "ding-l",
+            "name": "Leaf DING",
+            "title": "Component Supply Chain Manager",
+            "team": "DOMYOS MARCQ",
+            "department": "AUTRES",
+            "phone": "",
+            "email": "",
+            "isTeamManager": true,
             "isPrestataire": false,
             "children": []
         },
@@ -871,6 +901,18 @@ const ORG_DATA = {
             "children": []
         },
         {
+            "id": "martin-m",
+            "name": "Marina MARTIN",
+            "title": "Component Supply Chain Manager",
+            "team": "OFFICE BTWIN",
+            "department": "AUTRES",
+            "phone": "",
+            "email": "",
+            "isTeamManager": true,
+            "isPrestataire": false,
+            "children": []
+        },
+        {
             "id": "loosveldt-r",
             "name": "Remi LOOSVELDT",
             "title": "Test Engineer",
@@ -939,6 +981,30 @@ const ORG_DATA = {
             "phone": "",
             "email": "",
             "isTeamManager": false,
+            "isPrestataire": false,
+            "children": []
+        },
+        {
+            "id": "hoang-a",
+            "name": "Anh NGUYEN-DELAUNE THI HOANG",
+            "title": "Component Supply Chain Manager",
+            "team": "OFFICE BTWIN",
+            "department": "AUTRES",
+            "phone": "",
+            "email": "",
+            "isTeamManager": true,
+            "isPrestataire": false,
+            "children": []
+        },
+        {
+            "id": "yao-n",
+            "name": "Nicolas YAO",
+            "title": "Component Supply Chain Manager",
+            "team": "OFFICE BTWIN",
+            "department": "AUTRES",
+            "phone": "",
+            "email": "",
+            "isTeamManager": true,
             "isPrestataire": false,
             "children": []
         },
@@ -1050,6 +1116,42 @@ const ORG_DATA = {
             "id": "toldov-v",
             "name": "Viktor TOLDOV",
             "title": "Component and Tech Engineer",
+            "team": "OFFICE BTWIN",
+            "department": "AUTRES",
+            "phone": "",
+            "email": "",
+            "isTeamManager": false,
+            "isPrestataire": false,
+            "children": []
+        },
+        {
+            "id": "guignard-a",
+            "name": "ARNAUD GUIGNARD",
+            "title": "Procurement &amp; Supply Planner",
+            "team": "OFFICE BTWIN",
+            "department": "AUTRES",
+            "phone": "",
+            "email": "",
+            "isTeamManager": false,
+            "isPrestataire": false,
+            "children": []
+        },
+        {
+            "id": "erkan-c",
+            "name": "Cem ERKAN",
+            "title": "Procurement &amp; Supply Planner",
+            "team": "OFFICE BTWIN",
+            "department": "AUTRES",
+            "phone": "",
+            "email": "",
+            "isTeamManager": false,
+            "isPrestataire": false,
+            "children": []
+        },
+        {
+            "id": "liu-s",
+            "name": "Stephie LIU",
+            "title": "Procurement &amp; Supply Planner",
             "team": "OFFICE BTWIN",
             "department": "AUTRES",
             "phone": "",
@@ -1191,81 +1293,6 @@ const ORG_DATA = {
             "children": []
         },
         {
-            "id": "lorenzi-a",
-            "name": "Andrew LORENZI",
-            "title": "Business Unit Manager",
-            "team": "BIKES DESIGN &amp; STRUCTURE",
-            "department": "BIKES DESIGN &amp; STRUCTURE",
-            "phone": "+33698327988",
-            "email": "andrew.lorenzi@decathlon.com",
-            "isTeamManager": true,
-            "isPrestataire": false,
-            "children": [
-                "volant-a",
-                "nordey-b",
-                "lopes-c",
-                "chatelain-e",
-                "tartarin-g",
-                "delay-l",
-                "carradot-m",
-                "gierlowski-m",
-                "sels-t"
-            ]
-        },
-        {
-            "id": "cochet-a",
-            "name": "Antoine COCHET",
-            "title": "Global Purchasing Manager",
-            "team": "BIKES PROCUREMENT",
-            "department": "BIKES PROCUREMENT",
-            "phone": "+33762982669",
-            "email": "antoine.cochet@decathlon.com",
-            "isTeamManager": true,
-            "isPrestataire": false,
-            "children": [
-                "chen-c",
-                "daniel-d",
-                "desrippes-e",
-                "pourroy-f",
-                "chambure-f",
-                "blejdea-i",
-                "camus-j",
-                "luo-l",
-                "rebelle-m",
-                "montazeri-m",
-                "bugalho-o",
-                "rabu-s",
-                "lemenand-s",
-                "bist-v"
-            ]
-        },
-        {
-            "id": "bauduin-f",
-            "name": "Flavie BAUDUIN",
-            "title": "Office Manager",
-            "team": "METAL &amp; BIKES",
-            "department": "METAL &amp; BIKES",
-            "phone": "+3367970824",
-            "email": "flavie.bauduin@decathlon.com",
-            "isTeamManager": true,
-            "isPrestataire": false,
-            "children": []
-        },
-        {
-            "id": "lesur-g",
-            "name": "Germain LESUR",
-            "title": "Global Purchasing Manager",
-            "team": "METAL &amp; BIKES",
-            "department": "METAL &amp; BIKES",
-            "phone": "+33662956375",
-            "email": "germain.lesur@decathlon.com",
-            "isTeamManager": true,
-            "isPrestataire": false,
-            "children": [
-                "admin-e"
-            ]
-        },
-        {
             "id": "simon-l",
             "name": "Laurent SIMON",
             "title": "Process Director",
@@ -1326,20 +1353,6 @@ const ORG_DATA = {
                 "blandin-s",
                 "giovannetti-s",
                 "poquet-v"
-            ]
-        },
-        {
-            "id": "gossart-v",
-            "name": "VINCENT GOSSART",
-            "title": "Component Offer Director",
-            "team": "METAL &amp; BIKES",
-            "department": "METAL &amp; BIKES",
-            "phone": "+33762968602",
-            "email": "vincent.gossart@decathlon.com",
-            "isTeamManager": true,
-            "isPrestataire": false,
-            "children": [
-                "epineau-b"
             ]
         },
         {
@@ -1418,6 +1431,18 @@ const ORG_DATA = {
             "id": "gierlowski-m",
             "name": "Mathieu GIERLOWSKI",
             "title": "Methods Engineer",
+            "team": "OFFICE BTWIN",
+            "department": "AUTRES",
+            "phone": "",
+            "email": "",
+            "isTeamManager": false,
+            "isPrestataire": false,
+            "children": []
+        },
+        {
+            "id": "auplat-s",
+            "name": "Stephane AUPLAT",
+            "title": "Procurement &amp; Supply Planner",
             "team": "OFFICE BTWIN",
             "department": "AUTRES",
             "phone": "",
@@ -1691,21 +1716,28 @@ const ORG_DATA = {
             "children": []
         },
         {
-            "id": "corbier-a",
-            "name": "Aurelien CORBIER",
-            "title": "Technical Director",
-            "team": "DIRECTION TEXTILE",
-            "department": "DIRECTION TEXTILE",
-            "phone": "+33603136907",
-            "email": "aurelien.corbier@decathlon.com",
+            "id": "blejdea-i",
+            "name": "Ionut BLEJDEA",
+            "title": "Global Supply Planner",
+            "team": "OFFICE BTWIN",
+            "department": "AUTRES",
+            "phone": "",
+            "email": "",
+            "isTeamManager": false,
+            "isPrestataire": false,
+            "children": []
+        },
+        {
+            "id": "luo-l",
+            "name": "Luyao LUO",
+            "title": "Global Procurement &amp; Supply Manager",
+            "team": "OFFICE BTWIN",
+            "department": "AUTRES",
+            "phone": "",
+            "email": "",
             "isTeamManager": true,
             "isPrestataire": false,
-            "children": [
-                "mejdi-i",
-                "abadie-l",
-                "maret-o",
-                "salome-s"
-            ]
+            "children": []
         },
         {
             "id": "loncke-d",
@@ -1723,18 +1755,6 @@ const ORG_DATA = {
                 "chandran-k",
                 "picard-m"
             ]
-        },
-        {
-            "id": "lugez-d",
-            "name": "Domitille LUGEZ",
-            "title": "Office Manager",
-            "team": "DIRECTION TEXTILE",
-            "department": "DIRECTION TEXTILE",
-            "phone": "+33625285419",
-            "email": "domitille.lugez@decathlon.com",
-            "isTeamManager": true,
-            "isPrestataire": false,
-            "children": []
         },
         {
             "id": "mauffet-e",
@@ -1913,6 +1933,18 @@ const ORG_DATA = {
             "children": []
         },
         {
+            "id": "rougegrez-m",
+            "name": "Matthias ROUGEGREZ",
+            "title": "Supply Chain Manager Industry",
+            "team": "DOMYOS MARCQ",
+            "department": "AUTRES",
+            "phone": "",
+            "email": "",
+            "isTeamManager": true,
+            "isPrestataire": false,
+            "children": []
+        },
+        {
             "id": "arnaud-s",
             "name": "Sandra ARNAUD",
             "title": "Sustainability Director Process",
@@ -2026,18 +2058,6 @@ const ORG_DATA = {
                 "motte-v",
                 "herlemont-v"
             ]
-        },
-        {
-            "id": "lernould-c",
-            "name": "Christophe LERNOULD",
-            "title": "Team Manager",
-            "team": "OFFICE BTWIN",
-            "department": "TREKKING",
-            "phone": "",
-            "email": "",
-            "isTeamManager": true,
-            "isPrestataire": false,
-            "children": []
         },
         {
             "id": "cuminal-j",
@@ -2522,6 +2542,30 @@ const ORG_DATA = {
             ]
         },
         {
+            "id": "barbier-f",
+            "name": "Francois BARBIER",
+            "title": "Procurement &amp; Supply Planner",
+            "team": "HENDAYE",
+            "department": "AUTRES",
+            "phone": "",
+            "email": "",
+            "isTeamManager": false,
+            "isPrestataire": false,
+            "children": []
+        },
+        {
+            "id": "lobato-m",
+            "name": "Marta ABLANEDO LOBATO",
+            "title": "Procurement &amp; Supply Planner",
+            "team": "HENDAYE",
+            "department": "AUTRES",
+            "phone": "",
+            "email": "",
+            "isTeamManager": false,
+            "isPrestataire": false,
+            "children": []
+        },
+        {
             "id": "ferreol-p",
             "name": "Pascal FERREOL",
             "title": "Methods Engineer",
@@ -2774,6 +2818,48 @@ const ORG_DATA = {
             "children": []
         },
         {
+            "id": "bigarani-c",
+            "name": "Cedric BIGARANI",
+            "title": "Sustainability Director Product",
+            "team": "SUSTAINABLE &amp; CIRCULAR CYCLING",
+            "department": "SUSTAINABLE &amp; CIRCULAR CYCLING",
+            "phone": "+33665739912",
+            "email": "cedric.bigarani@decathlon.com",
+            "isTeamManager": true,
+            "isPrestataire": false,
+            "children": [
+                "jaffre-a",
+                "pouget-l",
+                "molines-l",
+                "turpin-m",
+                "sterckeman-p",
+                "lecompte-r",
+                "soulard-s"
+            ]
+        },
+        {
+            "id": "moujoud-a",
+            "name": "Audrey BOUSQUET EL MOUJOUD",
+            "title": "Global Purchasing Manager",
+            "team": "PURCHASE &amp; SUPPLY",
+            "department": "PURCHASE &amp; SUPPLY",
+            "phone": "+33754382881",
+            "email": "audrey.bousquetelmoujoud@decathlon.com",
+            "isTeamManager": true,
+            "isPrestataire": false,
+            "children": [
+                "finas-a",
+                "cocaud-b",
+                "bot-e",
+                "vandamme-g",
+                "prieto-h",
+                "gasser-l",
+                "islam-m",
+                "gavory-n",
+                "noleau-p"
+            ]
+        },
+        {
             "id": "delerue-b",
             "name": "Benjamin DELERUE",
             "title": "Quality Director",
@@ -2791,25 +2877,6 @@ const ORG_DATA = {
             ]
         },
         {
-            "id": "benoit-b",
-            "name": "Brice BENOIT",
-            "title": "Innovation Director",
-            "team": "FOOTWEAR",
-            "department": "FOOTWEAR",
-            "phone": "+33669327459",
-            "email": "brice.benoit1@decathlon.com",
-            "isTeamManager": true,
-            "isPrestataire": false,
-            "children": [
-                "chen-b",
-                "huang-b",
-                "chang-c",
-                "guenegou-s",
-                "charnet-s",
-                "fu-w"
-            ]
-        },
-        {
             "id": "goubet-c",
             "name": "Clemence GOUBET",
             "title": "Sustainability Director Process",
@@ -2820,55 +2887,6 @@ const ORG_DATA = {
             "isTeamManager": true,
             "isPrestataire": false,
             "children": []
-        },
-        {
-            "id": "diaz-m",
-            "name": "Manon CARBALLO DIAZ",
-            "title": "Office Manager",
-            "team": "FOOTWEAR",
-            "department": "FOOTWEAR",
-            "phone": "+33699845051",
-            "email": "manon.carballodiaz@decathlon.com",
-            "isTeamManager": true,
-            "isPrestataire": false,
-            "children": []
-        },
-        {
-            "id": "ramina-m",
-            "name": "Michele RAMINA",
-            "title": "Project Manager",
-            "team": "FOOTWEAR",
-            "department": "FOOTWEAR",
-            "phone": "+33614464309",
-            "email": "michele.ramina@decathlon.com",
-            "isTeamManager": true,
-            "isPrestataire": false,
-            "children": [
-                "footwear-a",
-                "deraed-a",
-                "pietro-c"
-            ]
-        },
-        {
-            "id": "alpini-s",
-            "name": "Stefano ALPINI",
-            "title": "Global Purchasing Manager",
-            "team": "FOOTWEAR",
-            "department": "FOOTWEAR",
-            "phone": "+8618721124402",
-            "email": "stefano.alpini@decathlon.com",
-            "isTeamManager": true,
-            "isPrestataire": false,
-            "children": [
-                "zhang-b",
-                "partner-d",
-                "meunier-f",
-                "duforest-m",
-                "chamoulaud-m",
-                "prevost-p",
-                "chevallier-p",
-                "luccini-t"
-            ]
         },
         {
             "id": "misleh-p",
@@ -2970,6 +2988,102 @@ const ORG_DATA = {
             "id": "stolz-y",
             "name": "Yann STOLZ",
             "title": "Materials Engineer",
+            "team": "OFFICE FOOTWEAR",
+            "department": "AUTRES",
+            "phone": "",
+            "email": "",
+            "isTeamManager": false,
+            "isPrestataire": false,
+            "children": []
+        },
+        {
+            "id": "cocaud-b",
+            "name": "Barbara COCAUD",
+            "title": "Procurement &amp; Supply Planner",
+            "team": "OFFICE FOOTWEAR",
+            "department": "AUTRES",
+            "phone": "",
+            "email": "",
+            "isTeamManager": false,
+            "isPrestataire": false,
+            "children": []
+        },
+        {
+            "id": "bot-e",
+            "name": "Emilie LE BOT",
+            "title": "Procurement &amp; Supply Planner",
+            "team": "DOMANCY",
+            "department": "AUTRES",
+            "phone": "",
+            "email": "",
+            "isTeamManager": false,
+            "isPrestataire": false,
+            "children": []
+        },
+        {
+            "id": "vandamme-g",
+            "name": "GUY VANDAMME",
+            "title": "Global Supply Planner",
+            "team": "OFFICE FOOTWEAR",
+            "department": "AUTRES",
+            "phone": "",
+            "email": "",
+            "isTeamManager": false,
+            "isPrestataire": false,
+            "children": []
+        },
+        {
+            "id": "prieto-h",
+            "name": "HELENE PRIETO",
+            "title": "Procurement &amp; Supply Planner",
+            "team": "OFFICE FOOTWEAR",
+            "department": "AUTRES",
+            "phone": "",
+            "email": "",
+            "isTeamManager": false,
+            "isPrestataire": false,
+            "children": []
+        },
+        {
+            "id": "gasser-l",
+            "name": "Laurence GASSER",
+            "title": "Procurement &amp; Supply Planner",
+            "team": "DOMANCY",
+            "department": "AUTRES",
+            "phone": "",
+            "email": "",
+            "isTeamManager": false,
+            "isPrestataire": false,
+            "children": []
+        },
+        {
+            "id": "islam-m",
+            "name": "Md Ariful ISLAM",
+            "title": "Procurement &amp; Supply Planner",
+            "team": "OFFICE FOOTWEAR",
+            "department": "AUTRES",
+            "phone": "",
+            "email": "",
+            "isTeamManager": false,
+            "isPrestataire": false,
+            "children": []
+        },
+        {
+            "id": "gavory-n",
+            "name": "NADIA GAVORY",
+            "title": "Component Supply Chain Manager",
+            "team": "OFFICE FOOTWEAR",
+            "department": "AUTRES",
+            "phone": "",
+            "email": "",
+            "isTeamManager": true,
+            "isPrestataire": false,
+            "children": []
+        },
+        {
+            "id": "noleau-p",
+            "name": "Pierrick NOLEAU",
+            "title": "Procurement &amp; Supply Planner",
             "team": "OFFICE FOOTWEAR",
             "department": "AUTRES",
             "phone": "",
@@ -3456,6 +3570,28 @@ const ORG_DATA = {
             "children": []
         },
         {
+            "id": "lorenzi-a",
+            "name": "Andrew LORENZI",
+            "title": "Business Unit Manager",
+            "team": "BIKES DESIGN &amp; STRUCTURE",
+            "department": "BIKES DESIGN &amp; STRUCTURE",
+            "phone": "+33698327988",
+            "email": "andrew.lorenzi@decathlon.com",
+            "isTeamManager": true,
+            "isPrestataire": false,
+            "children": [
+                "volant-a",
+                "nordey-b",
+                "lopes-c",
+                "chatelain-e",
+                "tartarin-g",
+                "delay-l",
+                "carradot-m",
+                "gierlowski-m",
+                "sels-t"
+            ]
+        },
+        {
             "id": "lanigan-c",
             "name": "CAROLINE LANIGAN",
             "title": "Innovation Manager",
@@ -3552,6 +3688,115 @@ const ORG_DATA = {
             "children": []
         },
         {
+            "id": "jeulin-b",
+            "name": "Benoit JEULIN",
+            "title": "Sustainability Director Product",
+            "team": "HIKING SPORTS",
+            "department": "HIKING SPORTS",
+            "phone": "+33763086800",
+            "email": "benoit.jeulin@decathlon.com",
+            "isTeamManager": true,
+            "isPrestataire": false,
+            "children": [
+                "andre-c",
+                "miloche-l",
+                "schul-m",
+                "colloc-o",
+                "richez-s"
+            ]
+        },
+        {
+            "id": "brizard-m",
+            "name": "Manon BRIZARD",
+            "title": "Sustainability Director Product",
+            "team": "Sports Sustainability Team",
+            "department": "Sports Sustainability Team",
+            "phone": "+33763852815",
+            "email": "manon.brizard@decathlon.com",
+            "isTeamManager": true,
+            "isPrestataire": false,
+            "children": []
+        },
+        {
+            "id": "ribolzi-m",
+            "name": "Maxime RIBOLZI",
+            "title": "Sustainability Director Product",
+            "team": "SPORT PRODUCTS SUSTAINABILITY",
+            "department": "SPORT PRODUCTS SUSTAINABILITY",
+            "phone": "+33664906974",
+            "email": "maxime.ribolzi@decathlon.com",
+            "isTeamManager": true,
+            "isPrestataire": false,
+            "children": [
+                "support-l"
+            ]
+        },
+        {
+            "id": "laboussole-o",
+            "name": "Olivier LABOUSSOLE",
+            "title": "Sustainability Director Product",
+            "team": "SPORT PRODUCTS SUSTAINABILITY",
+            "department": "SPORT PRODUCTS SUSTAINABILITY",
+            "phone": "+33664906974",
+            "email": "olivier.laboussole@decathlon.com",
+            "isTeamManager": true,
+            "isPrestataire": false,
+            "children": []
+        },
+        {
+            "id": "dienne-s",
+            "name": "Suzanne DIENNE",
+            "title": "Sustainability Director Product",
+            "team": "SPORT PRODUCTS SUSTAINABILITY",
+            "department": "SPORT PRODUCTS SUSTAINABILITY",
+            "phone": "+33668250597",
+            "email": "suzanne.dienne@domyos.com",
+            "isTeamManager": true,
+            "isPrestataire": false,
+            "children": []
+        },
+        {
+            "id": "bricout-a",
+            "name": "Anna BRICOUT",
+            "title": "Technical Director",
+            "team": "EC - ATHLETICS &amp; FEDERATED SPORTS",
+            "department": "EC - ATHLETICS &amp; FEDERATED SPORTS",
+            "phone": "+33660798859",
+            "email": "anna.bricout@decathlon.com",
+            "isTeamManager": true,
+            "isPrestataire": false,
+            "children": [
+                "thuot-d",
+                "mok-e",
+                "demuynck-j",
+                "wisel-k",
+                "guillot-m",
+                "misleh-p",
+                "hattais-s",
+                "benaddi-s",
+                "rousseau-y"
+            ]
+        },
+        {
+            "id": "benoit-b",
+            "name": "Brice BENOIT",
+            "title": "Innovation Director",
+            "team": "FOOTWEAR",
+            "department": "FOOTWEAR",
+            "phone": "+33669327459",
+            "email": "brice.benoit1@decathlon.com",
+            "isTeamManager": true,
+            "isPrestataire": false,
+            "children": [
+                "chen-b",
+                "huang-b",
+                "chang-c",
+                "guenegou-s",
+                "charnet-s",
+                "fu-w"
+            ]
+        },
+        {
             "id": "roberts-e",
             "name": "Edward ROBERTS",
             "title": "Business Unit Manager",
@@ -3588,6 +3833,20 @@ const ORG_DATA = {
         }
     ],
     "transverse": [
+        {
+            "id": "lopez-j",
+            "name": "Javier LOPEZ",
+            "title": "Chief Executive Officer",
+            "team": "",
+            "department": "AUTRES",
+            "phone": "",
+            "email": "",
+            "isTeamManager": false,
+            "isPrestataire": false,
+            "children": [
+                "graham-m"
+            ]
+        },
         {
             "id": "pierlot-f",
             "name": "Francois PIERLOT",
@@ -3735,18 +3994,6 @@ const ORG_DATA = {
             "children": []
         },
         {
-            "id": "coelho-f",
-            "name": "Filipe COELHO",
-            "title": "Supply Chain Manager Industry",
-            "team": "OFFICE BTWIN",
-            "department": "AUTRES",
-            "phone": "",
-            "email": "",
-            "isTeamManager": true,
-            "isPrestataire": false,
-            "children": []
-        },
-        {
             "id": "maas-k",
             "name": "Katherine MAAS",
             "title": "Project Manager",
@@ -3870,25 +4117,6 @@ const ORG_DATA = {
             "children": []
         },
         {
-            "id": "bielaire-r",
-            "name": "Romain BIELAIRE",
-            "title": "Global Purchasing Manager",
-            "team": "PACK INDUSTRIAL TEAM",
-            "department": "PACK INDUSTRIAL TEAM",
-            "phone": "+33664476667",
-            "email": "romain.bielaire@decathlon.com",
-            "isTeamManager": true,
-            "isPrestataire": false,
-            "children": [
-                "hoang-a",
-                "leroy-c",
-                "mahreen-f",
-                "yao-n",
-                "walk-t",
-                "loks-x"
-            ]
-        },
-        {
             "id": "castro-m",
             "name": "Maria Camila CASTRO",
             "title": "Global Strategic Buyer",
@@ -3981,18 +4209,6 @@ const ORG_DATA = {
             "phone": "",
             "email": "",
             "isTeamManager": false,
-            "isPrestataire": false,
-            "children": []
-        },
-        {
-            "id": "ding-l",
-            "name": "Leaf DING",
-            "title": "Component Supply Chain Manager",
-            "team": "DOMYOS MARCQ",
-            "department": "AUTRES",
-            "phone": "",
-            "email": "",
-            "isTeamManager": true,
             "isPrestataire": false,
             "children": []
         },
@@ -4153,18 +4369,6 @@ const ORG_DATA = {
             "children": []
         },
         {
-            "id": "martin-m",
-            "name": "Marina MARTIN",
-            "title": "Component Supply Chain Manager",
-            "team": "OFFICE BTWIN",
-            "department": "AUTRES",
-            "phone": "",
-            "email": "",
-            "isTeamManager": true,
-            "isPrestataire": false,
-            "children": []
-        },
-        {
             "id": "guignard-m",
             "name": "Maxime GUIGNARD",
             "title": "Global Strategic Buyer",
@@ -4297,18 +4501,6 @@ const ORG_DATA = {
             "children": []
         },
         {
-            "id": "hoang-a",
-            "name": "Anh NGUYEN-DELAUNE THI HOANG",
-            "title": "Component Supply Chain Manager",
-            "team": "OFFICE BTWIN",
-            "department": "AUTRES",
-            "phone": "",
-            "email": "",
-            "isTeamManager": true,
-            "isPrestataire": false,
-            "children": []
-        },
-        {
             "id": "leroy-c",
             "name": "Camille LEROY",
             "title": "Global Strategic Buyer",
@@ -4329,18 +4521,6 @@ const ORG_DATA = {
             "phone": "",
             "email": "",
             "isTeamManager": false,
-            "isPrestataire": false,
-            "children": []
-        },
-        {
-            "id": "yao-n",
-            "name": "Nicolas YAO",
-            "title": "Component Supply Chain Manager",
-            "team": "OFFICE BTWIN",
-            "department": "AUTRES",
-            "phone": "",
-            "email": "",
-            "isTeamManager": true,
             "isPrestataire": false,
             "children": []
         },
@@ -4488,33 +4668,9 @@ const ORG_DATA = {
             "children": []
         },
         {
-            "id": "guignard-a",
-            "name": "ARNAUD GUIGNARD",
-            "title": "Procurement &amp; Supply Planner",
-            "team": "OFFICE BTWIN",
-            "department": "AUTRES",
-            "phone": "",
-            "email": "",
-            "isTeamManager": false,
-            "isPrestataire": false,
-            "children": []
-        },
-        {
             "id": "leplat-a",
             "name": "AUDREY LEPLAT",
             "title": "Global Strategic Buyer",
-            "team": "OFFICE BTWIN",
-            "department": "AUTRES",
-            "phone": "",
-            "email": "",
-            "isTeamManager": false,
-            "isPrestataire": false,
-            "children": []
-        },
-        {
-            "id": "erkan-c",
-            "name": "Cem ERKAN",
-            "title": "Procurement &amp; Supply Planner",
             "team": "OFFICE BTWIN",
             "department": "AUTRES",
             "phone": "",
@@ -4572,18 +4728,6 @@ const ORG_DATA = {
             "children": []
         },
         {
-            "id": "liu-s",
-            "name": "Stephie LIU",
-            "title": "Procurement &amp; Supply Planner",
-            "team": "OFFICE BTWIN",
-            "department": "AUTRES",
-            "phone": "",
-            "email": "",
-            "isTeamManager": false,
-            "isPrestataire": false,
-            "children": []
-        },
-        {
             "id": "durieux-b",
             "name": "Basile DURIEUX",
             "title": "Apprentice",
@@ -4606,6 +4750,59 @@ const ORG_DATA = {
             "isTeamManager": false,
             "isPrestataire": false,
             "children": []
+        },
+        {
+            "id": "cochet-a",
+            "name": "Antoine COCHET",
+            "title": "Global Purchasing Manager",
+            "team": "BIKES PROCUREMENT",
+            "department": "BIKES PROCUREMENT",
+            "phone": "+33762982669",
+            "email": "antoine.cochet@decathlon.com",
+            "isTeamManager": true,
+            "isPrestataire": false,
+            "children": [
+                "chen-c",
+                "daniel-d",
+                "desrippes-e",
+                "pourroy-f",
+                "chambure-f",
+                "blejdea-i",
+                "camus-j",
+                "luo-l",
+                "rebelle-m",
+                "montazeri-m",
+                "bugalho-o",
+                "rabu-s",
+                "lemenand-s",
+                "bist-v"
+            ]
+        },
+        {
+            "id": "bauduin-f",
+            "name": "Flavie BAUDUIN",
+            "title": "Office Manager",
+            "team": "METAL &amp; BIKES",
+            "department": "METAL &amp; BIKES",
+            "phone": "+3367970824",
+            "email": "flavie.bauduin@decathlon.com",
+            "isTeamManager": true,
+            "isPrestataire": false,
+            "children": []
+        },
+        {
+            "id": "lesur-g",
+            "name": "Germain LESUR",
+            "title": "Global Purchasing Manager",
+            "team": "METAL &amp; BIKES",
+            "department": "METAL &amp; BIKES",
+            "phone": "+33662956375",
+            "email": "germain.lesur@decathlon.com",
+            "isTeamManager": true,
+            "isPrestataire": false,
+            "children": [
+                "admin-e"
+            ]
         },
         {
             "id": "delatour-g",
@@ -4645,6 +4842,20 @@ const ORG_DATA = {
                 "bonnefille-f",
                 "wojda-m",
                 "secq-m"
+            ]
+        },
+        {
+            "id": "gossart-v",
+            "name": "VINCENT GOSSART",
+            "title": "Component Offer Director",
+            "team": "METAL &amp; BIKES",
+            "department": "METAL &amp; BIKES",
+            "phone": "+33762968602",
+            "email": "vincent.gossart@decathlon.com",
+            "isTeamManager": true,
+            "isPrestataire": false,
+            "children": [
+                "epineau-b"
             ]
         },
         {
@@ -4788,18 +4999,6 @@ const ORG_DATA = {
             "phone": "",
             "email": "",
             "isTeamManager": true,
-            "isPrestataire": false,
-            "children": []
-        },
-        {
-            "id": "auplat-s",
-            "name": "Stephane AUPLAT",
-            "title": "Procurement &amp; Supply Planner",
-            "team": "OFFICE BTWIN",
-            "department": "AUTRES",
-            "phone": "",
-            "email": "",
-            "isTeamManager": false,
             "isPrestataire": false,
             "children": []
         },
@@ -4960,18 +5159,6 @@ const ORG_DATA = {
             "children": []
         },
         {
-            "id": "blejdea-i",
-            "name": "Ionut BLEJDEA",
-            "title": "Global Supply Planner",
-            "team": "OFFICE BTWIN",
-            "department": "AUTRES",
-            "phone": "",
-            "email": "",
-            "isTeamManager": false,
-            "isPrestataire": false,
-            "children": []
-        },
-        {
             "id": "camus-j",
             "name": "Juliette CAMUS",
             "title": "Global Strategic Buyer",
@@ -4980,18 +5167,6 @@ const ORG_DATA = {
             "phone": "",
             "email": "",
             "isTeamManager": false,
-            "isPrestataire": false,
-            "children": []
-        },
-        {
-            "id": "luo-l",
-            "name": "Luyao LUO",
-            "title": "Global Procurement &amp; Supply Manager",
-            "team": "OFFICE BTWIN",
-            "department": "AUTRES",
-            "phone": "",
-            "email": "",
-            "isTeamManager": true,
             "isPrestataire": false,
             "children": []
         },
@@ -5068,6 +5243,23 @@ const ORG_DATA = {
             "children": []
         },
         {
+            "id": "corbier-a",
+            "name": "Aurelien CORBIER",
+            "title": "Technical Director",
+            "team": "DIRECTION TEXTILE",
+            "department": "DIRECTION TEXTILE",
+            "phone": "+33603136907",
+            "email": "aurelien.corbier@decathlon.com",
+            "isTeamManager": true,
+            "isPrestataire": false,
+            "children": [
+                "mejdi-i",
+                "abadie-l",
+                "maret-o",
+                "salome-s"
+            ]
+        },
+        {
             "id": "verdy-d",
             "name": "David VERDY",
             "title": "Quality Director",
@@ -5085,6 +5277,18 @@ const ORG_DATA = {
                 "stahl-n",
                 "carlu-p"
             ]
+        },
+        {
+            "id": "lugez-d",
+            "name": "Domitille LUGEZ",
+            "title": "Office Manager",
+            "team": "DIRECTION TEXTILE",
+            "department": "DIRECTION TEXTILE",
+            "phone": "+33625285419",
+            "email": "domitille.lugez@decathlon.com",
+            "isTeamManager": true,
+            "isPrestataire": false,
+            "children": []
         },
         {
             "id": "leclercq-m",
@@ -5306,18 +5510,6 @@ const ORG_DATA = {
             "id": "delesalle-e",
             "name": "Edouard DELESALLE",
             "title": "Global Purchasing Manager",
-            "team": "DOMYOS MARCQ",
-            "department": "AUTRES",
-            "phone": "",
-            "email": "",
-            "isTeamManager": true,
-            "isPrestataire": false,
-            "children": []
-        },
-        {
-            "id": "rougegrez-m",
-            "name": "Matthias ROUGEGREZ",
-            "title": "Supply Chain Manager Industry",
             "team": "DOMYOS MARCQ",
             "department": "AUTRES",
             "phone": "",
@@ -5868,6 +6060,18 @@ const ORG_DATA = {
             ]
         },
         {
+            "id": "lernould-c",
+            "name": "Christophe LERNOULD",
+            "title": "Team Manager",
+            "team": "OFFICE BTWIN",
+            "department": "AUTRES",
+            "phone": "",
+            "email": "",
+            "isTeamManager": true,
+            "isPrestataire": false,
+            "children": []
+        },
+        {
             "id": "lagante-g",
             "name": "Gilles LAGANTE",
             "title": "Technical Manager",
@@ -5980,30 +6184,6 @@ const ORG_DATA = {
             "name": "Newsletter HTC",
             "title": "Support",
             "team": "",
-            "department": "AUTRES",
-            "phone": "",
-            "email": "",
-            "isTeamManager": false,
-            "isPrestataire": false,
-            "children": []
-        },
-        {
-            "id": "barbier-f",
-            "name": "Francois BARBIER",
-            "title": "Procurement &amp; Supply Planner",
-            "team": "HENDAYE",
-            "department": "AUTRES",
-            "phone": "",
-            "email": "",
-            "isTeamManager": false,
-            "isPrestataire": false,
-            "children": []
-        },
-        {
-            "id": "lobato-m",
-            "name": "Marta ABLANEDO LOBATO",
-            "title": "Procurement &amp; Supply Planner",
-            "team": "HENDAYE",
             "department": "AUTRES",
             "phone": "",
             "email": "",
@@ -6254,24 +6434,6 @@ const ORG_DATA = {
             "children": []
         },
         {
-            "id": "jeulin-b",
-            "name": "Benoit JEULIN",
-            "title": "Sustainability Director Product",
-            "team": "HIKING SPORTS",
-            "department": "HIKING SPORTS",
-            "phone": "+33763086800",
-            "email": "benoit.jeulin@decathlon.com",
-            "isTeamManager": true,
-            "isPrestataire": false,
-            "children": [
-                "andre-c",
-                "miloche-l",
-                "schul-m",
-                "colloc-o",
-                "richez-s"
-            ]
-        },
-        {
             "id": "cardock-c",
             "name": "Candice CARDOCK",
             "title": "Sustainability Director Product",
@@ -6286,26 +6448,6 @@ const ORG_DATA = {
                 "amoureux-e",
                 "lamy-m",
                 "descarpentries-s"
-            ]
-        },
-        {
-            "id": "bigarani-c",
-            "name": "Cedric BIGARANI",
-            "title": "Sustainability Director Product",
-            "team": "SUSTAINABLE &amp; CIRCULAR CYCLING",
-            "department": "SUSTAINABLE &amp; CIRCULAR CYCLING",
-            "phone": "+33665739912",
-            "email": "cedric.bigarani@decathlon.com",
-            "isTeamManager": true,
-            "isPrestataire": false,
-            "children": [
-                "jaffre-a",
-                "pouget-l",
-                "molines-l",
-                "turpin-m",
-                "sterckeman-p",
-                "lecompte-r",
-                "soulard-s"
             ]
         },
         {
@@ -6350,44 +6492,6 @@ const ORG_DATA = {
             "children": []
         },
         {
-            "id": "brizard-m",
-            "name": "Manon BRIZARD",
-            "title": "Sustainability Director Product",
-            "team": "Sports Sustainability Team",
-            "department": "Sports Sustainability Team",
-            "phone": "+33763852815",
-            "email": "manon.brizard@decathlon.com",
-            "isTeamManager": true,
-            "isPrestataire": false,
-            "children": []
-        },
-        {
-            "id": "ribolzi-m",
-            "name": "Maxime RIBOLZI",
-            "title": "Sustainability Director Product",
-            "team": "SPORT PRODUCTS SUSTAINABILITY",
-            "department": "SPORT PRODUCTS SUSTAINABILITY",
-            "phone": "+33664906974",
-            "email": "maxime.ribolzi@decathlon.com",
-            "isTeamManager": true,
-            "isPrestataire": false,
-            "children": [
-                "support-l"
-            ]
-        },
-        {
-            "id": "laboussole-o",
-            "name": "Olivier LABOUSSOLE",
-            "title": "Sustainability Director Product",
-            "team": "SPORT PRODUCTS SUSTAINABILITY",
-            "department": "SPORT PRODUCTS SUSTAINABILITY",
-            "phone": "+33664906974",
-            "email": "olivier.laboussole@decathlon.com",
-            "isTeamManager": true,
-            "isPrestataire": false,
-            "children": []
-        },
-        {
             "id": "francois-p",
             "name": "Pierre FRANCOIS",
             "title": "Sustainability Director Product",
@@ -6401,18 +6505,6 @@ const ORG_DATA = {
                 "jimenez-c",
                 "bur-t"
             ]
-        },
-        {
-            "id": "dienne-s",
-            "name": "Suzanne DIENNE",
-            "title": "Sustainability Director Product",
-            "team": "SPORT PRODUCTS SUSTAINABILITY",
-            "department": "SPORT PRODUCTS SUSTAINABILITY",
-            "phone": "+33668250597",
-            "email": "suzanne.dienne@domyos.com",
-            "isTeamManager": true,
-            "isPrestataire": false,
-            "children": []
         },
         {
             "id": "ferrie-t",
@@ -6793,28 +6885,6 @@ const ORG_DATA = {
             "children": []
         },
         {
-            "id": "bricout-a",
-            "name": "Anna BRICOUT",
-            "title": "Technical Director",
-            "team": "EC - ATHLETICS &amp; FEDERATED SPORTS",
-            "department": "EC - ATHLETICS &amp; FEDERATED SPORTS",
-            "phone": "+33660798859",
-            "email": "anna.bricout@decathlon.com",
-            "isTeamManager": true,
-            "isPrestataire": false,
-            "children": [
-                "thuot-d",
-                "mok-e",
-                "demuynck-j",
-                "wisel-k",
-                "guillot-m",
-                "misleh-p",
-                "hattais-s",
-                "benaddi-s",
-                "rousseau-y"
-            ]
-        },
-        {
             "id": "wittouck-a",
             "name": "Arthur WITTOUCK",
             "title": "Sustainability Director Retail",
@@ -6838,25 +6908,52 @@ const ORG_DATA = {
             ]
         },
         {
-            "id": "moujoud-a",
-            "name": "Audrey BOUSQUET EL MOUJOUD",
-            "title": "Global Purchasing Manager",
-            "team": "PURCHASE &amp; SUPPLY",
-            "department": "PURCHASE &amp; SUPPLY",
-            "phone": "+33754382881",
-            "email": "audrey.bousquetelmoujoud@decathlon.com",
+            "id": "diaz-m",
+            "name": "Manon CARBALLO DIAZ",
+            "title": "Office Manager",
+            "team": "FOOTWEAR",
+            "department": "FOOTWEAR",
+            "phone": "+33699845051",
+            "email": "manon.carballodiaz@decathlon.com",
+            "isTeamManager": true,
+            "isPrestataire": false,
+            "children": []
+        },
+        {
+            "id": "ramina-m",
+            "name": "Michele RAMINA",
+            "title": "Project Manager",
+            "team": "FOOTWEAR",
+            "department": "FOOTWEAR",
+            "phone": "+33614464309",
+            "email": "michele.ramina@decathlon.com",
             "isTeamManager": true,
             "isPrestataire": false,
             "children": [
-                "finas-a",
-                "cocaud-b",
-                "bot-e",
-                "vandamme-g",
-                "prieto-h",
-                "gasser-l",
-                "islam-m",
-                "gavory-n",
-                "noleau-p"
+                "footwear-a",
+                "deraed-a",
+                "pietro-c"
+            ]
+        },
+        {
+            "id": "alpini-s",
+            "name": "Stefano ALPINI",
+            "title": "Global Purchasing Manager",
+            "team": "FOOTWEAR",
+            "department": "FOOTWEAR",
+            "phone": "+8618721124402",
+            "email": "stefano.alpini@decathlon.com",
+            "isTeamManager": true,
+            "isPrestataire": false,
+            "children": [
+                "zhang-b",
+                "partner-d",
+                "meunier-f",
+                "duforest-m",
+                "chamoulaud-m",
+                "prevost-p",
+                "chevallier-p",
+                "luccini-t"
             ]
         },
         {
@@ -6988,102 +7085,6 @@ const ORG_DATA = {
             "phone": "",
             "email": "",
             "isTeamManager": true,
-            "isPrestataire": false,
-            "children": []
-        },
-        {
-            "id": "cocaud-b",
-            "name": "Barbara COCAUD",
-            "title": "Procurement &amp; Supply Planner",
-            "team": "OFFICE FOOTWEAR",
-            "department": "AUTRES",
-            "phone": "",
-            "email": "",
-            "isTeamManager": false,
-            "isPrestataire": false,
-            "children": []
-        },
-        {
-            "id": "bot-e",
-            "name": "Emilie LE BOT",
-            "title": "Procurement &amp; Supply Planner",
-            "team": "DOMANCY",
-            "department": "AUTRES",
-            "phone": "",
-            "email": "",
-            "isTeamManager": false,
-            "isPrestataire": false,
-            "children": []
-        },
-        {
-            "id": "vandamme-g",
-            "name": "GUY VANDAMME",
-            "title": "Global Supply Planner",
-            "team": "OFFICE FOOTWEAR",
-            "department": "AUTRES",
-            "phone": "",
-            "email": "",
-            "isTeamManager": false,
-            "isPrestataire": false,
-            "children": []
-        },
-        {
-            "id": "prieto-h",
-            "name": "HELENE PRIETO",
-            "title": "Procurement &amp; Supply Planner",
-            "team": "OFFICE FOOTWEAR",
-            "department": "AUTRES",
-            "phone": "",
-            "email": "",
-            "isTeamManager": false,
-            "isPrestataire": false,
-            "children": []
-        },
-        {
-            "id": "gasser-l",
-            "name": "Laurence GASSER",
-            "title": "Procurement &amp; Supply Planner",
-            "team": "DOMANCY",
-            "department": "AUTRES",
-            "phone": "",
-            "email": "",
-            "isTeamManager": false,
-            "isPrestataire": false,
-            "children": []
-        },
-        {
-            "id": "islam-m",
-            "name": "Md Ariful ISLAM",
-            "title": "Procurement &amp; Supply Planner",
-            "team": "OFFICE FOOTWEAR",
-            "department": "AUTRES",
-            "phone": "",
-            "email": "",
-            "isTeamManager": false,
-            "isPrestataire": false,
-            "children": []
-        },
-        {
-            "id": "gavory-n",
-            "name": "NADIA GAVORY",
-            "title": "Component Supply Chain Manager",
-            "team": "OFFICE FOOTWEAR",
-            "department": "AUTRES",
-            "phone": "",
-            "email": "",
-            "isTeamManager": true,
-            "isPrestataire": false,
-            "children": []
-        },
-        {
-            "id": "noleau-p",
-            "name": "Pierrick NOLEAU",
-            "title": "Procurement &amp; Supply Planner",
-            "team": "OFFICE FOOTWEAR",
-            "department": "AUTRES",
-            "phone": "",
-            "email": "",
-            "isTeamManager": false,
             "isPrestataire": false,
             "children": []
         },
@@ -7283,13 +7284,13 @@ const ORG_DATA = {
 };
 
 const orgConfig = {
-    version: "3.0",
+    version: "4.1",
     lastUpdate: "2026-01-03",
     totalEmployees: 553,
     departments: {
-        direction: 3,
-        process: 224,
-        sports: 34,
-        transverse: 292
+        direction: 2,
+        process: 238,
+        sports: 42,
+        transverse: 271
     }
 };
