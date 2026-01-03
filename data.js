@@ -32,41 +32,19 @@ const ORG_DATA = {
                                         type: "team-manager"
                                     },
                                     {
-                                        name: "Franck PACAUD",
-                                        title: "Process Director",
-                                        phone: "+33 6 98 77 41 54",
-                                        type: "process"
-                                    },
-                                    {
-                                        name: "Romain THERY",
-                                        title: "Technical Director",
-                                        type: "process"
-                                    },
-                                    {
                                         name: "Thibault LEMAITRE",
                                         title: "Laboratory Manager",
                                         type: "team-manager"
                                     },
-                                    {
-                                        name: "Jerome LEROY",
-                                        title: "Process Director COE",
-                                        type: "process"
-                                    },
-                                    {
-                                        name: "Jean-Baptiste CABANAL",
-                                        title: "Project Manager",
-                                        type: "process"
-                                    },
-                                    {
-                                        name: "Maud ROGET",
-                                        title: "Project Manager",
-                                        type: "process"
-                                    },
-                                    {
-                                        name: "Stephanie ROUSSEL",
-                                        title: "Project Manager",
-                                        type: "process"
-                                    }
+                                    { name: "Antoine LOMBERTY", title: "Team Member", type: "process" },
+                                    { name: "Clement DUBORPER", title: "Team Member", type: "process" },
+                                    { name: "Gilles LAGANTE", title: "Team Member", type: "process" },
+                                    { name: "Hard Equipment Lab", title: "Laboratory", type: "team-manager" },
+                                    { name: "Kenn MAKOUANGOU", title: "Team Member", type: "process" },
+                                    { name: "Simon HORB", title: "Team Member", type: "process" },
+                                    { name: "Sophie DAVID", title: "Team Member", type: "process" },
+                                    { name: "Vianney MOTTE", title: "Team Member", type: "process" },
+                                    { name: "Vincent HERLEMONT", title: "Team Member", type: "process" }
                                 ]
                             },
                             {
