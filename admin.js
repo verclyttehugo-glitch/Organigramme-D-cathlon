@@ -294,3 +294,96 @@ function importData(event) {
     // Reset l'input
     event.target.value = '';
 }
+
+// ⭐ AJOUT DE PERSONNES
+function openAddModal() {
+    document.getElementById('add-modal').style.display = 'flex';
+    document.getElementById('add-name').value = '';
+    document.getElementById('add-title').value = '';
+    document.getElementById('add-is-prestataire').checked = false;
+
+    // Initialiser la liste des managers
+    updateManagerSelect();
+}
+
+function closeAddModal() {
+    document.getElementById('add-modal').style.display = 'none';
+}
+
+function updateManagerSelect() {
+    const axis = document.getElementById('add-axis').value;
+    const managerSelect = document.getElementById('add-manager');
+    managerSelect.innerHTML = '';
+
+    // Récupérer toutes les personnes de cet axe
+    const people = ORG_DATA[axis] || [];
+
+    // Trier par nom pour faciliter la recherche
+    people.sort((a, b) => a.name.localeCompare(b.name));
+
+    people.forEach(person => {
+        const option = document.createElement('option');
+        option.value = person.id;
+        option.textContent = `${person.name} - ${person.title}`;
+        managerSelect.appendChild(option);
+    });
+}
+
+function generateId(name) {
+    return name.toLowerCase()
+        .replace(/[^a-z0-9]/g, '-')
+        .replace(/-+/g, '-')
+        .replace(/^-|-$/g, '') + '-' + Math.floor(Math.random() * 1000);
+}
+
+function saveNewPerson() {
+    const axis = document.getElementById('add-axis').value;
+    const managerId = document.getElementById('add-manager').value;
+    const name = document.getElementById('add-name').value.trim();
+    const title = document.getElementById('add-title').value.trim();
+    const isPrestataire = document.getElementById('add-is-prestataire').checked;
+
+    if (!name || !title || !managerId) {
+        alert('❌ Veuillez remplir tous les champs obligatoires');
+        return;
+    }
+
+    const newId = generateId(name);
+
+    // Créer le nouvel objet personne
+    const newPerson = {
+        id: newId,
+        name: name,
+        title: title,
+        team: "",
+        department: axis.toUpperCase(),
+        phone: "",
+        email: "",
+        isTeamManager: false,
+        isPrestataire: isPrestataire,
+        children: []
+    };
+
+    // 1. Ajouter à la liste principale de l'axe
+    ORG_DATA[axis].push(newPerson);
+
+    // 2. Mettre à jour le parent (manager)
+    const manager = ORG_DATA[axis].find(p => p.id === managerId);
+    if (manager) {
+        manager.children.push(newId);
+        manager.isTeamManager = true; // Devient manager s'il ne l'était pas
+    } else {
+        alert('❌ Erreur : Manager introuvable');
+        return;
+    }
+
+    // 3. Mettre à jour les stats globales
+    orgConfig.departments[axis]++;
+    orgConfig.totalEmployees++;
+
+    updateStats();
+    closeAddModal();
+    renderView(currentView);
+
+    alert(`✅ ${name} a été ajouté(e) avec succès !`);
+}

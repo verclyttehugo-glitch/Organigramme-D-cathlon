@@ -105,6 +105,7 @@
             <span id="admin-user-name">Utilisateur</span>
         </div>
         <div class="admin-actions">
+            <button class="btn-admin" id="btn-add" onclick="openAddModal()">➕ Ajouter</button>
             <button class="btn-admin" id="btn-export">📥 Exporter</button>
             <button class="btn-admin" id="btn-import">📤 Importer</button>
             <button class="btn-admin btn-logout" id="btn-logout">Déconnexion</button>
@@ -181,6 +182,46 @@
                 </button>
                 <button id="btn-edit-cancel" class="btn-admin">Annuler</button>
                 <button id="btn-edit-save" class="btn-login">Enregistrer</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL AJOUT -->
+    <div id="add-modal" class="admin-modal-overlay">
+        <div class="login-box edit-modal">
+            <h2>➕ Ajouter une Personne</h2>
+            <div class="form-group">
+                <label>Axe / Département</label>
+                <select id="add-axis" class="form-input" onchange="updateManagerSelect()">
+                    <option value="process">PROCESS & ENGINEERING</option>
+                    <option value="sports">SPORTS / MARQUES</option>
+                    <option value="transverse">MÉTIERS TRANSVERSES</option>
+                    <option value="direction">DIRECTION</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Manager (Rattachement)</label>
+                <select id="add-manager" class="form-input">
+                    <!-- Rempli dynamiquement -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Nom Complet</label>
+                <input type="text" id="add-name" class="form-input" placeholder="Ex: Jean DUPONT">
+            </div>
+            <div class="form-group">
+                <label>Titre / Poste</label>
+                <input type="text" id="add-title" class="form-input" placeholder="Ex: Leader Sport">
+            </div>
+            <div class="form-group">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="add-is-prestataire" class="form-checkbox">
+                    <span>Est un prestataire (Badge Bleu)</span>
+                </label>
+            </div>
+            <div class="modal-actions">
+                <button onclick="closeAddModal()" class="btn-admin">Annuler</button>
+                <button onclick="saveNewPerson()" class="btn-login">Créer</button>
             </div>
         </div>
     </div>
