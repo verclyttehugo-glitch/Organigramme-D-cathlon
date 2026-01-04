@@ -139,7 +139,7 @@ function renderOrgChartImage() {
         <div class="tree-controls no-print" style="text-align: center; margin-bottom: 15px; display: flex; gap: 10px; justify-content: center; align-items: center; flex-wrap: wrap;">
             <button class="btn-admin" onclick="renderView('hierarchy')">🔙 Retour Vue Hiérarchie</button>
             <button class="btn-admin" onclick="downloadOrgChart()" title="Télécharger l'image statique d'origine" style="background: linear-gradient(135deg, #38b2ac 0%, #2c7a7b 100%);">💾 Image d'origine</button>
-            <button class="btn-admin" onclick="captureLiveChart()" title="Capturer l'organigramme actuel avec vos modifs" style="background: linear-gradient(135deg, #9f7aea 0%, #667eea 100%);">📸 Capturer Vue Actuelle</button>
+            <button class="btn-admin" onclick="captureLiveChart(this)" title="Capturer l'organigramme actuel avec vos modifs" style="background: linear-gradient(135deg, #9f7aea 0%, #667eea 100%);">📸 Capturer Vue Actuelle</button>
             <button class="btn-admin" onclick="window.print()" style="background: linear-gradient(135deg, #38b2ac 0%, #2c7a7b 100%);">🖨️ Imprimer</button>
         </div>
     `;
@@ -171,40 +171,63 @@ window.downloadOrgChart = function () {
 }
 
 // Function to capture the current DOM as image
-window.captureLiveChart = function () {
-    const btn = event.currentTarget;
-    const originalText = btn.innerHTML;
-    btn.innerHTML = '⌛ Préparation...';
-    btn.disabled = true;
+window.captureLiveChart = function (btn) {
+    if (typeof html2canvas === 'undefined') {
+        alert('❌ Erreur : La bibliothèque de capture (html2canvas) n\'est pas chargée. Veuillez rafraîchir la page.');
+        return;
+    }
+
+    // Fallback for button if not passed
+    if (!btn && typeof event !== 'undefined') btn = event.currentTarget;
+
+    const originalText = btn ? btn.innerHTML : 'Capture';
+    if (btn) {
+        btn.innerHTML = '⌛ Préparation...';
+        btn.disabled = true;
+    }
 
     // 1. Create a temporary container for capture
     const captureContainer = document.createElement('div');
     captureContainer.id = 'temp-capture-container';
-    captureContainer.style.position = 'absolute';
-    captureContainer.style.left = '-9999px';
+    captureContainer.style.position = 'fixed';
+    captureContainer.style.left = '0';
     captureContainer.style.top = '0';
-    captureContainer.style.width = '1400px';
+    captureContainer.style.zIndex = '-9999';
+    captureContainer.style.opacity = '0.01';
+    captureContainer.style.width = '2400px'; // Wide enough for any branch
     captureContainer.style.background = '#1a202c';
+    captureContainer.style.pointerEvents = 'none';
     document.body.appendChild(captureContainer);
 
     // 2. Render the hierarchy into it with FORCE EXPAND
-    captureContainer.innerHTML = renderCompleteHierarchy(true);
+    try {
+        captureContainer.innerHTML = renderCompleteHierarchy(true);
+    } catch (e) {
+        console.error('Rendering error:', e);
+        alert('Erreur lors de la génération de l\'organigramme : ' + e.message);
+        if (btn) {
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+        }
+        document.body.removeChild(captureContainer);
+        return;
+    }
 
-    btn.innerHTML = '⌛ Capture en cours...';
+    if (btn) btn.innerHTML = '⌛ Capture en cours...';
 
-    // 3. Wait a bit for rendering
+    // 3. Wait a bit for rendering and layout
     setTimeout(() => {
         html2canvas(captureContainer, {
             backgroundColor: '#1a202c',
-            scale: 2,
+            scale: 2, // High quality
             useCORS: true,
             logging: false,
-            width: captureContainer.offsetWidth,
-            height: captureContainer.offsetHeight,
-            windowWidth: 1400
+            allowTaint: true,
+            width: captureContainer.scrollWidth,
+            height: captureContainer.scrollHeight
         }).then(canvas => {
             const link = document.createElement('a');
-            link.download = `Organigramme_Decathlon_Complet_${new Date().toISOString().split('T')[0]}.png`;
+            link.download = `Organigramme_Decathlon_${new Date().toISOString().split('T')[0]}.png`;
             link.href = canvas.toDataURL('image/png');
             link.style.display = 'none';
             document.body.appendChild(link);
@@ -213,18 +236,22 @@ window.captureLiveChart = function () {
 
             // Cleanup
             document.body.removeChild(captureContainer);
-            btn.innerHTML = originalText;
-            btn.disabled = false;
+            if (btn) {
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }
         }).catch(err => {
             console.error('Capture error:', err);
             alert('Erreur lors de la capture : ' + err.message);
             if (document.getElementById('temp-capture-container')) {
                 document.body.removeChild(captureContainer);
             }
-            btn.innerHTML = originalText;
-            btn.disabled = false;
+            if (btn) {
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }
         });
-    }, 500);
+    }, 1000); // 1 second to be absolutely sure
 }
 
 // Render node for decision tree (symmetrical)
