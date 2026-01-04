@@ -138,7 +138,8 @@ function renderOrgChartImage() {
     html += `
         <div class="tree-controls no-print" style="text-align: center; margin-bottom: 15px; display: flex; gap: 10px; justify-content: center; align-items: center; flex-wrap: wrap;">
             <button class="btn-admin" onclick="renderView('hierarchy')">🔙 Retour Vue Hiérarchie</button>
-            <button class="btn-admin" onclick="downloadOrgChart()" style="background: linear-gradient(135deg, #38b2ac 0%, #2c7a7b 100%);">💾 Télécharger l'Image</button>
+            <button class="btn-admin" onclick="downloadOrgChart()" title="Télécharger l'image statique d'origine" style="background: linear-gradient(135deg, #38b2ac 0%, #2c7a7b 100%);">💾 Image d'origine</button>
+            <button class="btn-admin" onclick="captureLiveChart('section-hierarchy')" title="Capturer l'organigramme actuel avec vos modifs" style="background: linear-gradient(135deg, #9f7aea 0%, #667eea 100%);">📸 Capturer Vue Actuelle</button>
             <button class="btn-admin" onclick="window.print()" style="background: linear-gradient(135deg, #38b2ac 0%, #2c7a7b 100%);">🖨️ Imprimer</button>
         </div>
     `;
@@ -156,12 +157,81 @@ function renderOrgChartImage() {
     return html;
 }
 
-// Download org chart image
+// Download org chart image (Robust version)
 window.downloadOrgChart = function () {
     const link = document.createElement('a');
-    link.href = 'organigramme_decathlon.png';
+    link.href = 'organigramme_decathlon.png?v=' + Date.now(); // Cache busting
     link.download = 'Organigramme_Decathlon_Complet.png';
+    link.style.display = 'none';
+    document.body.appendChild(link);
     link.click();
+    setTimeout(() => {
+        document.body.removeChild(link);
+    }, 100);
+}
+
+// Function to capture the current DOM as image
+window.captureLiveChart = function (sectionId) {
+    const section = document.getElementById(sectionId);
+    if (!section) return;
+
+    const btn = event.currentTarget;
+    const originalText = btn.innerHTML;
+    btn.innerHTML = '⌛ Préparation...';
+    btn.disabled = true;
+
+    // Save current states to restore later
+    const originalDisplay = section.style.display;
+    const originalOpacity = section.style.opacity;
+    const originalPosition = section.style.position;
+
+    // Temporarily make it visible for capture if it's hidden
+    if (window.getComputedStyle(section).display === 'none') {
+        section.style.display = 'block';
+        section.style.position = 'absolute';
+        section.style.top = '-9999px'; // Move out of view but keep in layout
+        section.style.opacity = '0';
+    }
+
+    btn.innerHTML = '⌛ Capture en cours...';
+
+    // Small delay to ensure layout is ready
+    setTimeout(() => {
+        html2canvas(section, {
+            backgroundColor: '#1a202c',
+            scale: 2,
+            useCORS: true,
+            logging: false,
+            windowWidth: 1920 // Force a standard width for consistency
+        }).then(canvas => {
+            const link = document.createElement('a');
+            link.download = `Organigramme_Decathlon_${new Date().toISOString().split('T')[0]}.png`;
+            link.href = canvas.toDataURL('image/png');
+            link.style.display = 'none';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            // Restore
+            section.style.display = originalDisplay;
+            section.style.opacity = originalOpacity;
+            section.style.position = originalPosition;
+
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+        }).catch(err => {
+            console.error('Capture error:', err);
+            alert('Erreur lors de la capture : ' + err.message);
+
+            // Restore even on error
+            section.style.display = originalDisplay;
+            section.style.opacity = originalOpacity;
+            section.style.position = originalPosition;
+
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+        });
+    }, 200);
 }
 
 // Render node for decision tree (symmetrical)
