@@ -18,6 +18,11 @@ function initializeApp() {
 
     // Vérifier si session admin active
     checkAdminSession();
+
+    // Démarrer la synchro Firebase si configuré
+    if (typeof listenToDataChanges === 'function') {
+        listenToDataChanges();
+    }
 }
 
 function updateStats() {
@@ -140,7 +145,7 @@ function renderOrgChartImage() {
 
     html += `
         <div class="org-chart-image-container" style="text-align: center; padding: 20px; background: white; border-radius: 10px; overflow: auto;">
-            <img src="docs/images/organigramme_decathlon.png" 
+            <img src="organigramme_decathlon.png" 
                  alt="Organigramme Complet Decathlon" 
                  id="org-chart-image"
                  style="max-width: 100%; height: auto; display: block; margin: 0 auto; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
@@ -154,7 +159,7 @@ function renderOrgChartImage() {
 // Download org chart image
 window.downloadOrgChart = function () {
     const link = document.createElement('a');
-    link.href = 'docs/images/organigramme_decathlon.png';
+    link.href = 'organigramme_decathlon.png';
     link.download = 'Organigramme_Decathlon_Complet.png';
     link.click();
 }
@@ -535,7 +540,6 @@ function buildSearchIndex() {
 
 window.handleSearch = function (query) {
     const resultsContainer = document.getElementById('search-results');
-    const input = document.getElementById('search-input');
 
     if (!query || query.trim().length < 2) {
         resultsContainer.classList.remove('active');
@@ -546,11 +550,13 @@ window.handleSearch = function (query) {
     // Build index if empty (first run)
     if (allPeopleFlat.length === 0) buildSearchIndex();
 
-    const lowerQuery = query.toLowerCase().trim();
+    // Normalisation pour ignorer les accents
+    const normalizeText = (text) => text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+    const normalizedQuery = normalizeText(query);
 
     const matches = allPeopleFlat.filter(p =>
-        p.name.toLowerCase().includes(lowerQuery) ||
-        p.title.toLowerCase().includes(lowerQuery)
+        normalizeText(p.name).includes(normalizedQuery) ||
+        normalizeText(p.title).includes(normalizedQuery)
     ).slice(0, 10); // Limit results
 
     displaySearchResults(matches);

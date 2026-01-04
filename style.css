@@ -904,3 +904,11 @@ body {
         color: black !important;
     }
 }
+
+/* ===== SYNC STATUS INDICATOR ===== */
+.sync-status-indicator {
+    cursor: help;
+    margin-left: 10px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}

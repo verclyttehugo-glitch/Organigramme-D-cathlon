@@ -211,6 +211,11 @@ function saveEdit() {
     // Re-render
     renderView(currentView);
 
+    // ⭐ SYNCHRO CLOUD
+    if (typeof saveAllToFirebase === 'function') {
+        saveAllToFirebase();
+    }
+
     alert('✅ Modifications enregistrées');
 }
 
@@ -241,6 +246,11 @@ function deletePerson() {
         updateStats();
         closeEditModal();
         renderView(currentView);
+
+        // ⭐ SYNCHRO CLOUD
+        if (typeof saveAllToFirebase === 'function') {
+            saveAllToFirebase();
+        }
 
         alert('✅ Personne supprimée');
     }
@@ -384,6 +394,11 @@ function saveNewPerson() {
     updateStats();
     closeAddModal();
     renderView(currentView);
+
+    // ⭐ SYNCHRO CLOUD
+    if (typeof saveAllToFirebase === 'function') {
+        saveAllToFirebase();
+    }
 
     alert(`✅ ${name} a été ajouté(e) avec succès !`);
 }
