@@ -30,14 +30,14 @@
     top: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(135deg, var(--bg-darker) 0%, var(--bg-dark) 100%);
+    background: white;
     padding: 15px 30px;
     display: none;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 4px 15px var(--shadow-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     z-index: 999;
-    border-bottom: 2px solid var(--color-manager);
+    border-bottom: 3px solid var(--decathlon-blue);
 }
 
 .admin-bar.active {
@@ -116,13 +116,13 @@ body.admin-mode {
 }
 
 .login-box {
-    background: var(--bg-darker);
+    background: white;
     border-radius: 20px;
     padding: 40px;
     max-width: 450px;
     width: 90%;
-    border: 2px solid var(--border-color);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
 }
 
 .login-box.edit-modal {
@@ -132,7 +132,7 @@ body.admin-mode {
 .login-box h2 {
     text-align: center;
     margin-bottom: 30px;
-    color: var(--text-primary);
+    color: var(--decathlon-blue);
     font-size: 1.8em;
 }
 
@@ -150,10 +150,10 @@ body.admin-mode {
 .form-input {
     width: 100%;
     padding: 12px;
-    background: var(--bg-card);
-    border: 2px solid var(--border-color);
+    background: #f8fafc;
+    border: 2px solid #e2e8f0;
     border-radius: 10px;
-    color: var(--text-primary);
+    color: #1a202c;
     font-size: 1em;
     font-family: inherit;
     transition: all 0.3s ease;
@@ -161,8 +161,8 @@ body.admin-mode {
 
 .form-input:focus {
     outline: none;
-    border-color: var(--color-process);
-    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+    border-color: var(--decathlon-blue);
+    box-shadow: 0 0 0 3px rgba(0, 130, 195, 0.1);
 }
 
 .error-message {
