@@ -173,85 +173,97 @@ window.downloadOrgChart = function () {
 // Function to capture the current DOM as image
 window.captureLiveChart = function (btn) {
     if (typeof html2canvas === 'undefined') {
-        alert('❌ Erreur : La bibliothèque de capture (html2canvas) n\'est pas chargée. Veuillez rafraîchir la page.');
+        alert('❌ Erreur : La bibliothèque de capture (html2canvas) n\'est pas chargée.');
         return;
     }
 
-    // Fallback for button if not passed
     if (!btn && typeof event !== 'undefined') btn = event.currentTarget;
-
     const originalText = btn ? btn.innerHTML : 'Capture';
+
     if (btn) {
         btn.innerHTML = '⌛ Préparation...';
         btn.disabled = true;
     }
 
     // 1. Create a temporary container for capture
+    // We use absolute positioning off-screen but keep opacity at 1
     const captureContainer = document.createElement('div');
     captureContainer.id = 'temp-capture-container';
-    captureContainer.style.position = 'fixed';
-    captureContainer.style.left = '0';
+    captureContainer.style.position = 'absolute';
+    captureContainer.style.left = '-10000px';
     captureContainer.style.top = '0';
-    captureContainer.style.zIndex = '-9999';
-    captureContainer.style.opacity = '0.01';
-    captureContainer.style.width = '2400px'; // Wide enough for any branch
+    captureContainer.style.width = '2400px';
     captureContainer.style.background = '#1a202c';
-    captureContainer.style.pointerEvents = 'none';
+    captureContainer.style.color = '#ffffff'; // Ensure white text
     document.body.appendChild(captureContainer);
 
-    // 2. Render the hierarchy into it with FORCE EXPAND
+    // 2. Render the hierarchy into it
     try {
-        captureContainer.innerHTML = renderCompleteHierarchy(true);
+        const hierarchyHtml = renderCompleteHierarchy(true);
+        if (!hierarchyHtml || hierarchyHtml.length < 100) {
+            throw new Error('Données hiérarchiques vides ou trop courtes');
+        }
+        captureContainer.innerHTML = hierarchyHtml;
+
+        // Wait a bit to ensure all nested elements are in the DOM
+        if (btn) btn.innerHTML = '⌛ Capture en cours...';
+
+        setTimeout(() => {
+            html2canvas(captureContainer, {
+                backgroundColor: '#1a202c',
+                scale: 2,
+                useCORS: true,
+                logging: true, // Enable logging for troubleshooting if needed
+                width: captureContainer.scrollWidth,
+                height: captureContainer.scrollHeight,
+                onclone: (clonedDoc) => {
+                    // Ensure the cloned container is visible in the clone
+                    const clonedContainer = clonedDoc.getElementById('temp-capture-container');
+                    if (clonedContainer) {
+                        clonedContainer.style.left = '0';
+                        clonedContainer.style.position = 'relative';
+                        clonedContainer.style.visibility = 'visible';
+                        clonedContainer.style.opacity = '1';
+                    }
+                }
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = `Organigramme_Decathlon_${new Date().toISOString().split('T')[0]}.png`;
+                link.href = canvas.toDataURL('image/png');
+                link.style.display = 'none';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+
+                // Cleanup
+                document.body.removeChild(captureContainer);
+                if (btn) {
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                }
+            }).catch(err => {
+                console.error('Capture error:', err);
+                alert('Erreur lors de la capture : ' + err.message);
+                if (document.getElementById('temp-capture-container')) {
+                    document.body.removeChild(captureContainer);
+                }
+                if (btn) {
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                }
+            });
+        }, 1500); // Increased delay for safety
     } catch (e) {
         console.error('Rendering error:', e);
-        alert('Erreur lors de la génération de l\'organigramme : ' + e.message);
+        alert('Erreur lors de la génération : ' + e.message);
         if (btn) {
             btn.innerHTML = originalText;
             btn.disabled = false;
         }
-        document.body.removeChild(captureContainer);
-        return;
-    }
-
-    if (btn) btn.innerHTML = '⌛ Capture en cours...';
-
-    // 3. Wait a bit for rendering and layout
-    setTimeout(() => {
-        html2canvas(captureContainer, {
-            backgroundColor: '#1a202c',
-            scale: 2, // High quality
-            useCORS: true,
-            logging: false,
-            allowTaint: true,
-            width: captureContainer.scrollWidth,
-            height: captureContainer.scrollHeight
-        }).then(canvas => {
-            const link = document.createElement('a');
-            link.download = `Organigramme_Decathlon_${new Date().toISOString().split('T')[0]}.png`;
-            link.href = canvas.toDataURL('image/png');
-            link.style.display = 'none';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-
-            // Cleanup
+        if (document.getElementById('temp-capture-container')) {
             document.body.removeChild(captureContainer);
-            if (btn) {
-                btn.innerHTML = originalText;
-                btn.disabled = false;
-            }
-        }).catch(err => {
-            console.error('Capture error:', err);
-            alert('Erreur lors de la capture : ' + err.message);
-            if (document.getElementById('temp-capture-container')) {
-                document.body.removeChild(captureContainer);
-            }
-            if (btn) {
-                btn.innerHTML = originalText;
-                btn.disabled = false;
-            }
-        });
-    }, 1000); // 1 second to be absolutely sure
+        }
+    }
 }
 
 // Render node for decision tree (symmetrical)
