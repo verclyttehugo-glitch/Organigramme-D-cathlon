@@ -225,11 +225,11 @@ window.captureLiveChart = function (btn) {
                     }
                 }
             }).then(canvas => {
-                // Use toBlob for better handling of large images
+                // Use toBlob force JPEG for speed and smaller size
                 canvas.toBlob((blob) => {
                     const url = URL.createObjectURL(blob);
                     const link = document.createElement('a');
-                    link.download = `Organigramme_Decathlon_${new Date().toISOString().split('T')[0]}.png`;
+                    link.download = `Organigramme_Decathlon_${new Date().toISOString().split('T')[0]}.jpg`;
                     link.href = url;
                     link.style.display = 'none';
                     document.body.appendChild(link);
@@ -249,7 +249,7 @@ window.captureLiveChart = function (btn) {
                         btn.innerHTML = originalText;
                         btn.disabled = false;
                     }
-                }, 'image/png', 1.0); // Force PNG at maximum quality
+                }, 'image/jpeg', 0.9); // Optimized JPEG quality
             }).catch(err => {
                 console.error('Capture error:', err);
                 alert('Erreur capture : ' + err.message);
