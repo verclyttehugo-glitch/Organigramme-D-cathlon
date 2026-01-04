@@ -1,14 +1,15 @@
 // firebase-config.js - Configuration et synchronisation temps réel
 
-// ⚠️ À REMPLACER PAR TES CLÉS FIREBASE (voir firebase_plan.md)
+// Configuration Firebase (Cloud Sync)
 const firebaseConfig = {
-    apiKey: "ENTRE_TA_CLE_ICI",
+    apiKey: "AIzaSyC3Fxk-a7mm5f72dYuA7bZdEnZU56zKtGM",
     authDomain: "decat-7d013.firebaseapp.com",
-    databaseURL: "https://decat-7d013-default-rtdb.europe-west1.firebasedatabase.app/",
+    databaseURL: "https://decat-7d013-default-rtdb.europe-west1.firebasedatabase.app",
     projectId: "decat-7d013",
-    storageBucket: "decat-7d013.appspot.com",
-    messagingSenderId: "123456789",
-    appId: "1:123456789:web:abcdef123456"
+    storageBucket: "decat-7d013.firebasestorage.app",
+    messagingSenderId: "968449689754",
+    appId: "1:968449689754:web:4def6b5a8fca3fc2c93723",
+    measurementId: "G-N2LF0T1RGN"
 };
 
 // Initialisation (Compat mode)
