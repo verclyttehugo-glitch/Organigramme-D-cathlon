@@ -101,5 +101,31 @@ R: Passez en mode édition, **décochez** la case "Ce poste gère des prestatair
 **Q: Est-ce que les prestataires gérés (Badge Violet) comptent dans le "Total Collaborateurs" ?**
 R: Non, ils sont comptés à part dans "Externes gérés" pour ne pas fausser l'effectif officiel.
 
-**Q: J'ai modifié des données, comment sauvegarder ?**
-R: Les modifications sont locales. Pour sauvegarder définitivement, utilisez le bouton **"Export Données"** dans la barre admin pour récupérer le fichier `data.js` mis à jour.
+## ☁️ 5. Sauvegarde Automatique & Cloud
+ 
+ L'organigramme est désormais doté d'une **synchronisation en temps réel**. Vous n'avez plus besoin de sauvegarder manuellement vos changements.
+ 
+ ### Indicateur de Synchro (Haut de page)
+ À côté du titre, une icône de nuage vous indique l'état de la connexion :
+ *   **Nuage Vert (☁️) :** Connecté au Cloud. Tous vos changements sont enregistrés instantanément pour tout le monde.
+ *   **Sablier (⏳) :** Enregistrement en cours.
+ *   **Dossier (📁) :** Mode Hors-ligne. Les changements restent sur votre ordinateur mais ne sont pas partagés.
+ *   **Croix Rouge (❌) :** Erreur de connexion.
+ 
+ > **💡 Astuce :** Si vous travaillez à plusieurs sur l'organigramme, les changements faits par un collègue apparaîtront sur votre écran sans même rafraîchir la page !
+ 
+ ---
+ 
+ ## ❓ 6. FAQ Rapide
+ 
+ **Q: Comment retirer le badge violet d'une personne ?**
+ R: Passez en mode édition, **décochez** la case "Ce poste gère des prestataires" et enregistrez.
+ 
+ **Q: Est-ce que les prestataires gérés (Badge Violet) comptent dans le "Total Collaborateurs" ?**
+ R: Non, ils sont comptés à part dans "Externes gérés" pour ne pas fausser l'effectif officiel.
+ 
+ **Q: Dois-je envoyer mes modifications à l'équipe technique ?**
+ R: Non ! Grâce à la sauvegarde automatique Cloud, dès que vous cliquez sur "Enregistrer" ou "Créer", le site est mis à jour pour tous les utilisateurs de Decathlon.
+ 
+ **Q: Puis-je quand même faire une sauvegarde de sécurité ?**
+ R: Oui, le bouton **"💾 Exporter"** dans la barre admin reste disponible pour télécharger une copie de secours de la base de données actuelle.
