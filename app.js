@@ -139,7 +139,7 @@ function renderOrgChartImage() {
         <div class="tree-controls no-print" style="text-align: center; margin-bottom: 15px; display: flex; gap: 10px; justify-content: center; align-items: center; flex-wrap: wrap;">
             <button class="btn-admin" onclick="renderView('hierarchy')">🔙 Retour Vue Hiérarchie</button>
             <button class="btn-admin" onclick="downloadOrgChart()" title="Télécharger l'image statique d'origine" style="background: linear-gradient(135deg, #38b2ac 0%, #2c7a7b 100%);">💾 Image d'origine</button>
-            <button class="btn-admin" onclick="captureLiveChart('section-hierarchy')" title="Capturer l'organigramme actuel avec vos modifs" style="background: linear-gradient(135deg, #9f7aea 0%, #667eea 100%);">📸 Capturer Vue Actuelle</button>
+            <button class="btn-admin" onclick="captureLiveChart()" title="Capturer l'organigramme actuel avec vos modifs" style="background: linear-gradient(135deg, #9f7aea 0%, #667eea 100%);">📸 Capturer Vue Actuelle</button>
             <button class="btn-admin" onclick="window.print()" style="background: linear-gradient(135deg, #38b2ac 0%, #2c7a7b 100%);">🖨️ Imprimer</button>
         </div>
     `;
@@ -171,67 +171,60 @@ window.downloadOrgChart = function () {
 }
 
 // Function to capture the current DOM as image
-window.captureLiveChart = function (sectionId) {
-    const section = document.getElementById(sectionId);
-    if (!section) return;
-
+window.captureLiveChart = function () {
     const btn = event.currentTarget;
     const originalText = btn.innerHTML;
     btn.innerHTML = '⌛ Préparation...';
     btn.disabled = true;
 
-    // Save current states to restore later
-    const originalDisplay = section.style.display;
-    const originalOpacity = section.style.opacity;
-    const originalPosition = section.style.position;
+    // 1. Create a temporary container for capture
+    const captureContainer = document.createElement('div');
+    captureContainer.id = 'temp-capture-container';
+    captureContainer.style.position = 'absolute';
+    captureContainer.style.left = '-9999px';
+    captureContainer.style.top = '0';
+    captureContainer.style.width = '1400px';
+    captureContainer.style.background = '#1a202c';
+    document.body.appendChild(captureContainer);
 
-    // Temporarily make it visible for capture if it's hidden
-    if (window.getComputedStyle(section).display === 'none') {
-        section.style.display = 'block';
-        section.style.position = 'absolute';
-        section.style.top = '-9999px'; // Move out of view but keep in layout
-        section.style.opacity = '0';
-    }
+    // 2. Render the hierarchy into it with FORCE EXPAND
+    captureContainer.innerHTML = renderCompleteHierarchy(true);
 
     btn.innerHTML = '⌛ Capture en cours...';
 
-    // Small delay to ensure layout is ready
+    // 3. Wait a bit for rendering
     setTimeout(() => {
-        html2canvas(section, {
+        html2canvas(captureContainer, {
             backgroundColor: '#1a202c',
             scale: 2,
             useCORS: true,
             logging: false,
-            windowWidth: 1920 // Force a standard width for consistency
+            width: captureContainer.offsetWidth,
+            height: captureContainer.offsetHeight,
+            windowWidth: 1400
         }).then(canvas => {
             const link = document.createElement('a');
-            link.download = `Organigramme_Decathlon_${new Date().toISOString().split('T')[0]}.png`;
+            link.download = `Organigramme_Decathlon_Complet_${new Date().toISOString().split('T')[0]}.png`;
             link.href = canvas.toDataURL('image/png');
             link.style.display = 'none';
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
 
-            // Restore
-            section.style.display = originalDisplay;
-            section.style.opacity = originalOpacity;
-            section.style.position = originalPosition;
-
+            // Cleanup
+            document.body.removeChild(captureContainer);
             btn.innerHTML = originalText;
             btn.disabled = false;
         }).catch(err => {
             console.error('Capture error:', err);
             alert('Erreur lors de la capture : ' + err.message);
-
-            // Restore even on error
-            section.style.display = originalDisplay;
-            section.style.opacity = originalOpacity;
-            section.style.position = originalPosition;
-
+            if (document.getElementById('temp-capture-container')) {
+                document.body.removeChild(captureContainer);
+            }
             btn.innerHTML = originalText;
             btn.disabled = false;
         });
-    }, 200);
+    }, 500);
 }
 
 // Render node for decision tree (symmetrical)
@@ -277,7 +270,7 @@ function renderDecisionTreeNode(person, peopleMap, level = 0) {
 }
 
 // Restore vertical hierarchy view
-function renderCompleteHierarchy() {
+function renderCompleteHierarchy(forceExpand = false) {
     // Combine all axes to find the true root
     const allPeople = [
         ...ORG_DATA.direction,
@@ -297,22 +290,22 @@ function renderCompleteHierarchy() {
     // Find root (person with no parent)
     const roots = allPeople.filter(p => !allChildIds.has(p.id));
 
-    let html = `<div class="tree-container hierarchy-complete">`;
+    let html = `<div class="tree-container hierarchy-complete ${forceExpand ? 'capture-mode' : ''}">`;
     html += `<h2 class="view-title">🌳 HIÉRARCHIE COMPLÈTE - VUE VERTICALE</h2>`;
     html += `<div class="scrollable-content">`;
 
     roots.forEach(root => {
-        html += renderCompleteTreeNode(root, peopleMap);
+        html += renderCompleteTreeNode(root, peopleMap, 0, forceExpand);
     });
 
     html += `</div></div>`;
     return html;
 }
 
-function renderCompleteTreeNode(person, peopleMap, level = 0) {
+function renderCompleteTreeNode(person, peopleMap, level = 0, forceExpand = false) {
     const children = person.children.map(cid => peopleMap[cid]).filter(Boolean);
     const hasChildren = children.length > 0;
-    const isExpanded = level < 2; // Default: expand first 2 levels
+    const isExpanded = forceExpand || level < 2; // Default: expand first 2 levels
 
     // Determine card type based on role
     let cardType = 'transverse';

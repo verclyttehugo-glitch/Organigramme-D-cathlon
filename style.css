@@ -745,7 +745,26 @@ body {
     }
 }
 
-/* ===== SEARCH & TREE CONTROLS ===== */
+/* ===== CAPTURE MODE ===== */
+.capture-mode .scrollable-content {
+    max-height: none !important;
+    overflow: visible !important;
+    padding-right: 0 !important;
+}
+
+.capture-mode {
+    border: none !important;
+    box-shadow: none !important;
+    background: #1a202c !important;
+    width: fit-content !important;
+    min-width: 1200px;
+}
+
+/* Ensure cards are visible during capture */
+.capture-mode .person-card {
+    break-inside: avoid;
+}
+
 .search-controls {
     display: flex;
     gap: 15px;
