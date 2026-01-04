@@ -170,10 +170,10 @@ window.downloadOrgChart = function () {
     }, 100);
 }
 
-// Function to capture the current DOM as image
+// Function to capture the current DOM as image (EXPLICIT PNG)
 window.captureLiveChart = function (btn) {
     if (typeof html2canvas === 'undefined') {
-        alert('❌ Erreur : La bibliothèque de capture (html2canvas) n\'est pas chargée.');
+        alert('❌ Erreur : La bibliothèque html2canvas n\'est pas chargée. Veuillez patienter.');
         return;
     }
 
@@ -181,69 +181,78 @@ window.captureLiveChart = function (btn) {
     const originalText = btn ? btn.innerHTML : 'Capture';
 
     if (btn) {
-        btn.innerHTML = '⌛ Préparation...';
+        btn.innerHTML = '⌛ Préparation PNG...';
         btn.disabled = true;
     }
 
     // 1. Create a temporary container for capture
-    // We use absolute positioning off-screen but keep opacity at 1
     const captureContainer = document.createElement('div');
     captureContainer.id = 'temp-capture-container';
     captureContainer.style.position = 'absolute';
-    captureContainer.style.left = '-10000px';
+    captureContainer.style.left = '-20000px'; // Very far off-screen
     captureContainer.style.top = '0';
     captureContainer.style.width = '2400px';
-    captureContainer.style.background = '#1a202c';
-    captureContainer.style.color = '#ffffff'; // Ensure white text
+    captureContainer.style.background = '#1a202c'; // Dark theme
+    captureContainer.style.color = '#ffffff';
+    captureContainer.style.padding = '40px';
     document.body.appendChild(captureContainer);
 
     // 2. Render the hierarchy into it
     try {
         const hierarchyHtml = renderCompleteHierarchy(true);
-        if (!hierarchyHtml || hierarchyHtml.length < 100) {
-            throw new Error('Données hiérarchiques vides ou trop courtes');
-        }
         captureContainer.innerHTML = hierarchyHtml;
 
-        // Wait a bit to ensure all nested elements are in the DOM
-        if (btn) btn.innerHTML = '⌛ Capture en cours...';
+        // Safety check: ensure content is actually there
+        if (captureContainer.querySelectorAll('.person-card').length === 0) {
+            throw new Error('Aucun collaborateur trouvé pour la capture.');
+        }
 
+        if (btn) btn.innerHTML = '⌛ Génération PNG...';
+
+        // 3. Wait for all styles and elements to be ready
         setTimeout(() => {
             html2canvas(captureContainer, {
                 backgroundColor: '#1a202c',
-                scale: 2,
+                scale: 2, // 2x resolution for sharpness
                 useCORS: true,
-                logging: true, // Enable logging for troubleshooting if needed
-                width: captureContainer.scrollWidth,
-                height: captureContainer.scrollHeight,
+                logging: false,
+                width: captureContainer.scrollWidth + 100, // Margin safety
+                height: captureContainer.scrollHeight + 100,
                 onclone: (clonedDoc) => {
-                    // Ensure the cloned container is visible in the clone
                     const clonedContainer = clonedDoc.getElementById('temp-capture-container');
                     if (clonedContainer) {
-                        clonedContainer.style.left = '0';
-                        clonedContainer.style.position = 'relative';
-                        clonedContainer.style.visibility = 'visible';
-                        clonedContainer.style.opacity = '1';
+                        clonedContainer.style.left = '0'; // Bring back to origin in the virtual doc
                     }
                 }
             }).then(canvas => {
-                const link = document.createElement('a');
-                link.download = `Organigramme_Decathlon_${new Date().toISOString().split('T')[0]}.png`;
-                link.href = canvas.toDataURL('image/png');
-                link.style.display = 'none';
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
+                // Use toBlob for better handling of large images
+                canvas.toBlob((blob) => {
+                    const url = URL.createObjectURL(blob);
+                    const link = document.createElement('a');
+                    link.download = `Organigramme_Decathlon_${new Date().toISOString().split('T')[0]}.png`;
+                    link.href = url;
+                    link.style.display = 'none';
+                    document.body.appendChild(link);
+                    link.click();
 
-                // Cleanup
-                document.body.removeChild(captureContainer);
-                if (btn) {
-                    btn.innerHTML = originalText;
-                    btn.disabled = false;
-                }
+                    // Cleanup URL and link
+                    setTimeout(() => {
+                        URL.revokeObjectURL(url);
+                        document.body.removeChild(link);
+                    }, 500);
+
+                    // Final Cleanup
+                    if (document.getElementById('temp-capture-container')) {
+                        document.body.removeChild(captureContainer);
+                    }
+                    if (btn) {
+                        btn.innerHTML = originalText;
+                        btn.disabled = false;
+                    }
+                }, 'image/png', 1.0); // Force PNG at maximum quality
             }).catch(err => {
                 console.error('Capture error:', err);
-                alert('Erreur lors de la capture : ' + err.message);
+                alert('Erreur capture : ' + err.message);
                 if (document.getElementById('temp-capture-container')) {
                     document.body.removeChild(captureContainer);
                 }
@@ -252,10 +261,10 @@ window.captureLiveChart = function (btn) {
                     btn.disabled = false;
                 }
             });
-        }, 1500); // Increased delay for safety
+        }, 2000); // 2 seconds delay to ensure full rendering of 500+ nodes
     } catch (e) {
         console.error('Rendering error:', e);
-        alert('Erreur lors de la génération : ' + e.message);
+        alert('Erreur rendu : ' + e.message);
         if (btn) {
             btn.innerHTML = originalText;
             btn.disabled = false;
