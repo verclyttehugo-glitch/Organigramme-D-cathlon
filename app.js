@@ -330,7 +330,7 @@ function renderCompleteTreeNode(person, peopleMap, level = 0, forceExpand = fals
     if (hasChildren) {
         html += `<div class="node-children" id="children-${person.id}" style="display: ${isExpanded ? 'block' : 'none'}">`;
         children.forEach(child => {
-            html += renderCompleteTreeNode(child, peopleMap, level + 1);
+            html += renderCompleteTreeNode(child, peopleMap, level + 1, forceExpand);
         });
         html += `</div>`;
     }
