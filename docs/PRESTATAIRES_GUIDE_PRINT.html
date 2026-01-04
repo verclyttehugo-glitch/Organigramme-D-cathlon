@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide Gestion des Prestataires - Decathlon</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,400&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+            background: white;
+        }
+
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+
+            body {
+                padding: 0;
+            }
+
+            a {
+                text-decoration: none;
+                color: black;
+            }
+        }
+
+        h1 {
+            color: #2c5282;
+            border-bottom: 3px solid #007abd;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #2b6cb0;
+            margin-top: 30px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 5px;
+        }
+
+        h3 {
+            color: #4a5568;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.9em;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 12px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        th {
+            background-color: #f7fafc;
+            color: #2d3748;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        code {
+            background-color: #f0f4f8;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-family: monospace;
+            color: #c53030;
+            border: 1px solid #e2e8f0;
+        }
+
+        .highlight-box {
+            background-color: #ebf8ff;
+            border-left: 4px solid #4299e1;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .badge-blue {
+            display: inline-block;
+            background-color: #007abd;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+
+        .badge-purple {
+            display: inline-block;
+            background: linear-gradient(135deg, #9f7aea 0%, #805ad5 100%);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+
+        .print-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #48bb78;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .print-btn:hover {
+            transform: translateY(-2px);
+            background: #38a169;
+        }
+
+        .footer {
+            margin-top: 50px;
+            font-size: 0.8em;
+            color: #718096;
+            text-align: center;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button onclick="window.print()" class="print-btn no-print">🖨️ Imprimer / Sauvegarder en PDF</button>
+
+    <h1>📘 Guide Utilisateur - Gestion des Prestataires</h1>
+
+    <p>Ce document est la référence officielle pour gérer les prestataires dans l'organigramme Decathlon. Il contient
+        les procédures et les codes d'accès administrateur.</p>
+
+    <h2>🔐 1. Accès Administrateur</h2>
+    <p>Pour modifier l'organigramme, connectez-vous via le cadenas (Admin) en bas à droite de l'écran.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Utilisateur</th>
+                <th>Mot de passe</th>
+                <th>Rôle</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>marine</code></td>
+                <td><code>decathlon2025</code></td>
+                <td><strong>Admin Principal</strong> (Marine DELCHIE)</td>
+            </tr>
+            <tr>
+                <td><code>externe</code></td>
+                <td><code>consultant2025</code></td>
+                <td><strong>Accès Temporaire</strong> (Consultant)</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="highlight-box">
+        <strong>Note :</strong> Une fois connecté, le cadenas disparaît et une barre d'administration noire apparaît en
+        haut de l'écran avec votre nom.
+    </div>
+
+    <h2>👥 2. Comprendre le Système Dual</h2>
+    <p>L'organigramme gère deux situations différentes :</p>
+
+    <h3>🔵 Cas A : La personne EST un prestataire</h3>
+    <p>C'est un individu (freelance, consultant) qui a sa propre carte dans l'organigramme.</p>
+    <ul>
+        <li><strong>Visuel :</strong> Bulle bleue <span class="badge-blue">?</span> en haut à droite de sa photo.</li>
+        <li><strong>Exemple :</strong> Un Expert Technique en mission pour 6 mois.</li>
+    </ul>
+
+    <h3>🟣 Cas B : Le poste GÈRE des prestataires</h3>
+    <p>C'est un manager interne qui pilote une équipe externe (qui n'est pas affichée carte par carte).</p>
+    <ul>
+        <li><strong>Visuel :** Badge violet <span class="badge-purple">👥 8 prestataires</span> en bas de sa carte.</li>
+        <li><strong>Exemple :** Un Chef de Projet qui pilote une équipe de 10 dévs via une ESN.</li>
+    </ul>
+
+    <h2>✏️ 3. Tutoriel : Ajouter / Modifier</h2>
+
+    <h3>Pour ajouter des prestataires gérés (Cas B) :</h3>
+    <ol>
+        <li>Connectez-vous en admin.</li>
+        <li>Cliquez sur le <strong>bouton Crayon (✏️)</strong> sur la carte de la personne.</li>
+        <li>Dans la fenêtre, cochez la case : <strong>☑️ Ce poste gère des prestataires externes</strong>.</li>
+        <li>Deux champs apparaissent :
+            <ul>
+                <li><strong>Nombre :</strong> Inscrivez le nombre (ex: 12)</li>
+                <li><strong>Type :</strong> (Optionnel) Inscrivez le métier (ex: Consultants Design)</li>
+            </ul>
+        </li>
+        <li>Cliquez sur <strong>Enregistrer</strong>.</li>
+    </ol>
+
+    <div class="highlight-box">
+        ✨ <strong>Résultat :</strong> Le badge violet apparaît immédiatement sur la carte avec le compteur à jour.
+    </div>
+
+    <h2>➕ 4. Gestion des Postes (Ajouter / Supprimer)</h2>
+    <p>Vous avez la main totale sur la structure de l'organigramme.</p>
+
+    <h3>Créer un nouveau poste</h3>
+    <ol>
+        <li>Dans la barre noire d'administration (en haut), cliquez sur <strong>➕ Ajouter</strong>.</li>
+        <li>Une fenêtre s'ouvre : renseignez l'Axe, le Manager de rattachement, le Nom et le Titre.</li>
+        <li>Cliquez sur <strong>Créer</strong>. La nouvelle carte s'ajoute immédiatement.</li>
+    </ol>
+
+    <h3>Supprimer un poste</h3>
+    <ol>
+        <li>Cliquez sur le <strong>crayon (✏️)</strong> du poste.</li>
+        <li>Cliquez sur le bouton rouge <strong>🗑️ Supprimer</strong> en bas à gauche de la fenêtre.</li>
+        <li>Confirmez l'alerte.</li>
+    </ol>
+
+    <h2>🔍 5. Visualisation & Filtres</h2>
+
+    <h3>Le Bouton "AVEC PRESTATAIRES"</h3>
+    <p>En haut de la page, cliquez sur le bouton violet <span class="badge-purple">👥 AVEC PRESTATAIRES</span>.</p>
+    <ul>
+        <li><strong>Effet :** Masque tout le monde SAUF les managers qui gèrent des prestataires.</li>
+        <li><strong>Utilité :** Vision immédiate de la force de travail externe.</li>
+    </ul>
+
+    <h3>Les Statistiques (En-tête)</h3>
+    <ul>
+        <li><strong>Total Collaborateurs :** L'effectif interne classique.</li>
+        <li><strong>🔵 X Prestataires :** Nombre de consultants individuels.</li>
+        <li><strong>👥 Y Externes gérés :** Volume total de sous-traitance piloté.</li>
+    </ul>
+
+    <h2>❓ 5. FAQ Rapide</h2>
+
+    <p><strong>Q: Comment retirer le badge violet d'une personne ?</strong><br>
+        R: Passez en mode édition, <strong>décochez</strong> la case "Ce poste gère des prestataires" et enregistrez.
+    </p>
+
+    <p><strong>Q: Est-ce que les prestataires gérés comptent dans le "Total Collaborateurs" ?</strong><br>
+        R: Non, ils sont comptés à part pour ne pas fausser l'effectif officiel.</p>
+
+    <p><strong>Q: J'ai modifié des données, comment sauvegarder ?</strong><br>
+        R: Les modifications sont locales. Pour sauvegarder définitivement, utilisez le bouton <strong>"Export
+            Données"</strong> dans la barre admin.</p>
+
+    <div class="footer">
+        Document généré le 03/01/2026 - Guide Officiel Organigramme Decathlon
+    </div>
+
+</body>
+
+</html>

@@ -694,3 +694,213 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+/* ===== SEARCH & TREE CONTROLS ===== */
+.search-controls {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-tree {
+    background: linear-gradient(135deg, var(--color-process) 0%, #3182ce 100%);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-size: 1em;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(66, 153, 225, 0.4);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-tree:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(66, 153, 225, 0.6);
+}
+
+.search-container {
+    position: relative;
+    width: 350px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px 20px;
+    padding-left: 45px;
+    background: var(--bg-card);
+    border: 2px solid var(--border-color);
+    border-radius: 25px;
+    color: var(--text-primary);
+    font-size: 1em;
+    transition: all 0.3s ease;
+}
+
+.search-container::before {
+    content: "🔍";
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.1em;
+    pointer-events: none;
+    color: var(--text-muted);
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--color-process);
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
+    background: var(--bg-darker);
+}
+
+.search-results-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--bg-darker);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    margin-top: 10px;
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 100;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    display: none;
+}
+
+.search-results-dropdown.active {
+    display: block;
+}
+
+.search-result-item {
+    padding: 12px 20px;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: background 0.2s;
+    display: flex;
+    flex-direction: column;
+}
+
+.search-result-item:last-child {
+    border-bottom: none;
+}
+
+.search-result-item:hover {
+    background: rgba(66, 153, 225, 0.2);
+}
+
+.result-name {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.result-title {
+    font-size: 0.85em;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+/* Highlight Effect */
+.highlight-person {
+    animation: highlightPulse 2s infinite;
+    border: 2px solid #ed8936 !important;
+    box-shadow: 0 0 20px rgba(237, 137, 54, 0.6) !important;
+    z-index: 10;
+}
+
+@keyframes highlightPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(237, 137, 54, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(237, 137, 54, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(237, 137, 54, 0);
+    }
+}
+
+}
+
+/* ===== PRINT STYLES FOR DECISION TREE ===== */
+@media print {
+
+    /* Hide everything except decision tree */
+    body>*:not(.container) {
+        display: none !important;
+    }
+
+    .header,
+    .controls,
+    .search-controls,
+    .legend-box,
+    .admin-bar,
+    .admin-trigger,
+    .no-print {
+        display: none !important;
+    }
+
+    /* Show only decision tree section */
+    .org-section:not(#section-decision-tree) {
+        display: none !important;
+    }
+
+    #section-decision-tree {
+        display: block !important;
+    }
+
+    /* Optimize for print */
+    .decision-tree-view .scrollable-content {
+        overflow: visible !important;
+        max-height: none !important;
+        padding: 10px;
+    }
+
+    .decision-tree-view .person-card {
+        page-break-inside: avoid;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;
+    }
+
+    .decision-tree-view .tree-node {
+        page-break-inside: avoid;
+    }
+
+    /* Ensure white background for print */
+    body {
+        background: white !important;
+    }
+
+    .tree-container {
+        background: white !important;
+        border: none !important;
+    }
+
+    .view-title {
+        color: black !important;
+        font-size: 18pt;
+        margin-bottom: 20px;
+    }
+
+    /* Adjust colors for print */
+    .person-card {
+        background: white !important;
+        color: black !important;
+    }
+
+    .person-name,
+    .person-title,
+    .person-contact {
+        color: black !important;
+    }
+}

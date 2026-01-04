@@ -111,11 +111,24 @@
             </button>
         </div>
 
+        <!-- SEARCH & DECISION TREE -->
+        <div class="controls search-controls">
+            <button class="btn-tree" onclick="showDecisionTree()">
+                🌳 Arbre de Décision
+            </button>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="🔍 Rechercher une personne..."
+                    oninput="handleSearch(this.value)">
+                <div id="search-results" class="search-results-dropdown"></div>
+            </div>
+        </div>
+
         <!-- VUES (remplies dynamiquement par app.js) -->
         <div class="org-section active" id="section-hierarchy"></div>
         <div class="org-section" id="section-process"></div>
         <div class="org-section" id="section-sports"></div>
         <div class="org-section" id="section-transverse"></div>
+        <div class="org-section" id="section-decision-tree"></div> <!-- NEW: Decision Tree Section -->
 
         <!-- LÉGENDE -->
         <div class="legend-box">

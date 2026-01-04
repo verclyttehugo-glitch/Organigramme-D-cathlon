@@ -47,6 +47,9 @@ const ORG_DATA = {
             "email": "matthieu.briere@decathlon.com",
             "isTeamManager": true,
             "isPrestataire": false,
+            "hasContractors": true,
+            "contractorsCount": 8,
+            "contractorsType": "Consultants Process & Méthodes",
             "children": [
                 "frejaville-e",
                 "riviere-j",
@@ -265,6 +268,9 @@ const ORG_DATA = {
             "email": "francois.hespel@decathlon.com",
             "isTeamManager": true,
             "isPrestataire": false,
+            "hasContractors": true,
+            "contractorsCount": 12,
+            "contractorsType": "Ingénieurs méthodes & Techniciens",
             "children": [
                 "zatta-a",
                 "redoute-a",
