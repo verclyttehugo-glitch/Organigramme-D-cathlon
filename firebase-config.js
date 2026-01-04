@@ -3,10 +3,10 @@
 // ⚠️ À REMPLACER PAR TES CLÉS FIREBASE (voir firebase_plan.md)
 const firebaseConfig = {
     apiKey: "ENTRE_TA_CLE_ICI",
-    authDomain: "ton-projet.firebaseapp.com",
-    databaseURL: "https://ton-projet-default-rtdb.firebaseio.com",
-    projectId: "ton-projet",
-    storageBucket: "ton-projet.appspot.com",
+    authDomain: "decat-7d013.firebaseapp.com",
+    databaseURL: "https://decat-7d013-default-rtdb.europe-west1.firebasedatabase.app/",
+    projectId: "decat-7d013",
+    storageBucket: "decat-7d013.appspot.com",
     messagingSenderId: "123456789",
     appId: "1:123456789:web:abcdef123456"
 };
