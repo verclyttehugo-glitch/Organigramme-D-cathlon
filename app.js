@@ -213,11 +213,11 @@ window.captureLiveChart = function (btn) {
         setTimeout(() => {
             html2canvas(captureContainer, {
                 backgroundColor: '#1a202c',
-                scale: 2, // 2x resolution for sharpness
+                scale: 1.5, // Optimized scale for speed/quality balance
                 useCORS: true,
-                logging: false,
-                width: captureContainer.scrollWidth + 100, // Margin safety
-                height: captureContainer.scrollHeight + 100,
+                logging: false, // Performance optimization
+                width: captureContainer.scrollWidth + 50,
+                height: captureContainer.scrollHeight + 50,
                 onclone: (clonedDoc) => {
                     const clonedContainer = clonedDoc.getElementById('temp-capture-container');
                     if (clonedContainer) {
